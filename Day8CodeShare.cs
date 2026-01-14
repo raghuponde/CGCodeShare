@@ -842,3 +842,45 @@ namespace constructordemo
         }
     }
 }
+Traditonal way of doing get and set 
+------------------------------------
+namespace setandgetmethodsdemo
+{
+    class Customer
+    {
+        private int ID;
+        private string CustomerName;
+        public void setID(int k)
+        {
+            ID = k;
+        }
+        public int getID()
+        {
+            return ID;
+
+        }
+        public void SetName(string name)
+        {
+            CustomerName = name;
+        }
+        public string getCustomerName()
+        {
+            return CustomerName;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Customer obj = new Customer();
+            obj.setID(101);
+            obj.SetName("Ravi");
+            Console.WriteLine($"{obj.getID()}--{obj.getCustomerName()}");
+            Console.ReadLine();
+        }
+    }
+}
+
+
+
+	
