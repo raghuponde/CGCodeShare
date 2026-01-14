@@ -1018,8 +1018,10 @@ Auto Implemented properties
 -----------------------------
 namespace setandgetmethodsdemo
 {
+    //check code share for all versions of this program 
     class Customer
     {
+       // int kk; this is not a proerty 
        public int ID { get; set; }
         public string Name { get; set; }
        
@@ -1028,6 +1030,7 @@ namespace setandgetmethodsdemo
     {
         static void Main(string[] args)
         {
+           // Console.WriteLine($"{kk}");
             Customer obj = new Customer();
             obj.ID = 101;
             obj.Name= "ravi";
@@ -1036,3 +1039,7 @@ namespace setandgetmethodsdemo
         }
     }
 }
+
+
+Enums 
+-------
