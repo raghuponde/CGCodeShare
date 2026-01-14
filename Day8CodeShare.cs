@@ -1043,3 +1043,22 @@ namespace setandgetmethodsdemo
 
 Enums 
 -------
+Enum Demos 
+---------
+Symbolic name given to integral constants we call it as enums they have to be declared outsdie main you cannot 
+declare them inside main .
+
+namespace Enumdemo
+{
+    internal class Program
+    {
+        enum weekdays { sun=10,mon,tue,wed,thu=100,fri,sat};
+
+        static void Main(string[] args)
+        {
+          Console.WriteLine($"{(int)weekdays.fri}");
+            Console.WriteLine($"{(int)weekdays.mon}");
+            Console.ReadLine();
+        }
+    }
+}
