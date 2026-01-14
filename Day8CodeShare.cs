@@ -764,5 +764,32 @@ namespace InBuitDelegateDemo
         }
     }
 }
+construcntor demo
+-----------------
 
+namespace constructordemo
+{
+    class Vehicle
+    {
+        public string Make { set; get; }
+        public string Model { set; get; }
 
+        public Vehicle()
+        {
+            Console.WriteLine("Default Constructor called");
+        }
+        public Vehicle(string make1,string model1)
+        {
+                this.Make = make1;
+            this.Model = model1;
+            Console.WriteLine($"Parameterized Constructor called: Make={Make}, Model={Model}");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
