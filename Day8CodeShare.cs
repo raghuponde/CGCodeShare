@@ -442,6 +442,7 @@ namespace delegatedemo1
         public delegate int mydelegate2(int a, int b);
         static void Main(string[] args)
         {
+          //  add(10, 20);
             mydelegate1 m1 = add;
             m1(12, 45);
             mydelegate2 m2 = substract;
@@ -450,8 +451,9 @@ namespace delegatedemo1
             Console.WriteLine($"The multilication is :{m2(23, 6)}");
             mydelegate1 m3 = add;
             m3 += divide;
-            m3(100, 50);
+            m3.Invoke(100, 50);//other way of calling a delgate
             Console.ReadLine();
         }
     }
 }
+
