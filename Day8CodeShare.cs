@@ -1,3 +1,13 @@
+Generics:
+---------
+
+Generics means code reuse dont write the same code repeteadely put the code inside a method and call the method repeatedly which is called as generic method 
+
+and in the same manner dont write the same method repeteadly put the methods inside a class and use the class repeteadly called as Generic class 
+
+when you are using generics type safety is ensured 
+
+
 
 namespace GenericsDemo
 {
