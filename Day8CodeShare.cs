@@ -634,3 +634,52 @@ namespace eventdelegatedemoinconsole
 }
 
   
+In C#, Func, Action, and Predicate are built-in delegates that represent different types of methods. 
+  They are commonly used for passing methods as parameters, providing a more functional programming style.
+
+Func: A delegate that can take zero or more input parameters and must return a value.
+
+Syntax: Func<T1, T2, TResult> where T1 and T2 are input types, and TResult is the return type.
+Action: A delegate that can take zero or more input parameters but does not return a value.
+
+Syntax: Action<T1, T2> where T1 and T2 are input types.
+Predicate: A delegate that takes a single parameter and returns a bool.
+
+Syntax: Predicate<T> where T is the input type.
+
+suppose i am having functions like this in the program 
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InBuiltdelgatesdemo
+{
+    internal class Program
+    {
+        public static void add(int a, float b, decimal k)
+        {
+            Console.WriteLine($"The sum is:{a + Convert.ToDecimal(b) + k}");
+        }
+
+        public static double add(int a, decimal b, double kk)
+        {
+            return (a + Convert.ToDouble(b) + kk);
+
+        }
+
+        public static bool checklength(string str)
+        {
+            if (str.Length > 10)
+                return true;
+            else
+                return false;
+        }
+        static void Main(string[] args)
+        {
+        }
+    }
+}
+
