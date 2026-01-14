@@ -415,3 +415,43 @@ namespace delegatedemo1
     }
 }
 
+final code 
+----------
+namespace delegatedemo1
+{
+     class Program
+    {
+        public static void add(int x ,int y)
+        {
+            Console.WriteLine($"The sum is :{x+y}");
+        }
+        public static int substract(int x ,int y)
+        {
+            return x - y;
+        }
+        public static  int multiply(int x ,int y)
+        {
+            return x * y; 
+        }
+        public static void divide(int x,int y)
+        {
+            Console.WriteLine($"The division is :{x / y}");
+
+        }
+        public delegate void mydelegate1(int a, int b);
+        public delegate int mydelegate2(int a, int b);
+        static void Main(string[] args)
+        {
+            mydelegate1 m1 = add;
+            m1(12, 45);
+            mydelegate2 m2 = substract;
+             Console.WriteLine($"The substraction is :{m2(23, 6)}");
+            m2+= multiply;//multi cast delegate same pointer pointing to multiple functions 
+            Console.WriteLine($"The multilication is :{m2(23, 6)}");
+            mydelegate1 m3 = add;
+            m3 += divide;
+            m3(100, 50);
+            Console.ReadLine();
+        }
+    }
+}
