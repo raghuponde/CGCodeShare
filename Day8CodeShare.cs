@@ -1102,6 +1102,20 @@ final code of enum
             Console.ReadLine();
         }
     }
+	
 }
+
+Extension Methods :
+------------------
+Extension methods in C# are a powerful feature that allows you to "add" methods to existing types without modifying the original type or creating a new derived type. 
+	This is particularly useful when you want to add functionality to classes that you don't have the source code for or can't modify (such as classes from the .NET framework).
+How Extension Methods Work
+Extension methods are static methods defined in static classes.
+They are called as if they were instance methods on the extended type.
+	The first parameter of an extension method specifies which type the method extends, and it is preceded by the this keyword.
+
+
+
+
 
 	
