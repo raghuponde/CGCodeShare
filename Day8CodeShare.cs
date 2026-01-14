@@ -29,7 +29,15 @@ namespace GenericsDemo
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            DateTime date1 = DateTime.Now;
+            DateTime date2 = DateTime.Now.AddDays(2);
+            Console.WriteLine("\nBefore swapping");
+            Console.WriteLine($"Date1:{date1} \nDate2:{date2}");
+            swap(ref date1, ref date2);
+            Console.WriteLine("\nAfter swapping");
+            Console.WriteLine($"Date1:{date1} \nDate2:{date2}");
+            Console.ReadLine();
         }
     }
 }
+
