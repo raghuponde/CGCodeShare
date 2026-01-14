@@ -970,3 +970,47 @@ readonly
 }
 
 	
+write only
+--------------
+namespace setandgetmethodsdemo
+{
+    class Customer
+    {
+        private int _cid=-1;
+       
+        public int ID
+        {
+            set
+            {
+                _cid = value;
+            }
+           
+        }
+        private string _Cname=string.Empty;
+        public string CustomerName
+        {
+            set
+            {
+                _Cname = value;
+            }
+            
+        }
+        public void displaycustomer()
+        {
+            Console.WriteLine($"{_cid}--{_Cname}");
+        }
+       
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Customer obj = new Customer();
+            obj.ID = 101;
+            obj.CustomerName = "ravi";
+           obj.displaycustomer();
+            Console.ReadLine();
+        }
+    }
+}
+
