@@ -451,7 +451,14 @@ namespace delegatedemo1
             Console.WriteLine($"The multilication is :{m2(23, 6)}");
             mydelegate1 m3 = add;
             m3 += divide;
-            m3.Invoke(100, 50);//other way of calling a delgate 
+            m3.Invoke(100, 50);//other way of calling a delgate
+            mydelegate2 m4 = substract;
+                        m4 += multiply;
+            foreach (mydelegate2 del in m4.GetInvocationList())
+            {
+                Console.WriteLine($"Result :{del(50, 10)}");
+            }
+			// using for each loop i can print return values also 
             Console.ReadLine();
         }
     }
