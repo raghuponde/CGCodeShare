@@ -1014,3 +1014,25 @@ namespace setandgetmethodsdemo
     }
 }
 
+Auto Implemented properties 
+-----------------------------
+namespace setandgetmethodsdemo
+{
+    class Customer
+    {
+       public int ID { get; set; }
+        public string Name { get; set; }
+       
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Customer obj = new Customer();
+            obj.ID = 101;
+            obj.Name= "ravi";
+            Console.WriteLine($"{obj.ID}--{obj.Name}");
+            Console.ReadLine();
+        }
+    }
+}
