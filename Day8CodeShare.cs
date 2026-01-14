@@ -603,3 +603,34 @@ namespace lambdausingdelegate
         }
     }
 }
+Till Now i was doing console application where no event is there means only functions weere there
+to that function i was pointing using deletagte and  i was executng the code in fuction now 
+let us create one default event in console and event will now call a delegate and delegate will run to which function it is pointing .
+
+  event -->delegate --->function 
+namespace eventdelegatedemoinconsole
+{
+     class Program
+    {
+        public Program()
+        {
+            myevent = new mydelegate1(testfunction);
+        }
+        public void testfunction()
+        {
+            Console.WriteLine("Test function called");
+        }
+        public delegate void mydelegate1();
+        public event mydelegate1 myevent;
+        static void Main(string[] args)
+        {
+           Program pp=new Program();
+            pp.myevent();
+            //above two lines can be wtiteen in a single line like tis 
+            new Program().myevent();
+            Console.ReadLine();
+        }
+    }
+}
+
+  
