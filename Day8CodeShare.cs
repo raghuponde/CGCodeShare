@@ -1115,6 +1115,47 @@ They are called as if they were instance methods on the extended type.
 	The first parameter of an extension method specifies which type the method extends, and it is preceded by the this keyword.
 
 
+namespace ExtensionMethooddemo
+{
+    public static class  IntExtesnions
+    {
+        public static bool IsEven(this int number)
+        {
+            return number % 2 == 0;
+        }
+
+    }
+    public static class StringExtesnions
+    {
+        public static bool ispallindrome(this string str)
+        {
+            int i = 0;
+            int j = str.Length - 1;
+            while (i < j)
+            {
+                if (str[i] != str[j])
+                    return false;
+                i++;
+                j--;
+            }
+            return true;
+        }
+        }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int number;
+            number = 56;
+            bool res = number.IsEven();
+            Console.WriteLine($"Is {number} even? : {res}");
+            string str = "liril";
+            Console.WriteLine(str);
+            Console.WriteLine($"Is {str} pallindrome? : {str.ispallindrome()}");
+            Console.ReadLine();
+        }
+    }
+}
 
 
 
