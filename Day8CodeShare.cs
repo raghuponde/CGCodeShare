@@ -524,3 +524,82 @@ namespace anonoumuusingdelegate
     }
 }
 
+delegate version 3 with lamda expression:
+------------------------------------------
+//Lambda expression : 
+//-------------------------
+//some times u want to execute the function in a single line when 
+//	u think that inside that function lot of code is not there then i will
+//	make that function run using lambda expression and this is very much used
+//			   in MVC programming and linq programming
+
+namespace lambdausingdelegate
+{
+     class Program
+    {
+        public static void add(int x, int y)
+        {
+            Console.WriteLine($"The sum is :{x + y}");
+        }
+        public static int substract(int x, int y)
+        {
+            return x - y;
+        }
+        public static int multiply(int x, int y)
+        {
+            return x * y;
+        }
+        public static void divide(int x, int y)
+        {
+            Console.WriteLine($"The division is :{x / y}");
+
+        }
+        public delegate void mydelegate1(int a, int b);
+        public delegate int mydelegate2(int a, int b);
+
+        static void Main(string[] args)
+        {
+            
+        }
+    }
+}
+final code using lambda expression 
+----------------------------------
+namespace lambdausingdelegate
+{
+     class Program
+    {
+        //public static void add(int x, int y)
+        //{
+        //    Console.WriteLine($"The sum is :{x + y}");
+        //}
+        //public static int substract(int x, int y)
+        //{
+        //    return x - y;
+        //}
+        //public static int multiply(int x, int y)
+        //{
+        //    return x * y;
+        //}
+        //public static void divide(int x, int y)
+        //{
+        //    Console.WriteLine($"The division is :{x / y}");
+
+        //}
+        public delegate void mydelegate1(int a, int b);
+        public delegate int mydelegate2(int a, int b);
+
+        static void Main(string[] args)
+        {
+            mydelegate1 m1=(x,y)=> Console.WriteLine($"The sum is :{x + y}");
+            m1+=(x,y)=> Console.WriteLine($"The division is :{x / y}");
+            mydelegate2 m2 = (x, y) => x - y;
+            m2 += (x, y) => x * y;
+            foreach (mydelegate2 mm in m2.GetInvocationList())
+            {
+                Console.WriteLine($"Result :{mm(50, 10)}");
+            }
+            Console.ReadLine();
+        }
+    }
+}
