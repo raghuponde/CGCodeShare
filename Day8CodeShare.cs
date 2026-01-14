@@ -311,3 +311,107 @@ namespace GenericsDemo
         }
     }
 }
+
+
+Delegates and Events :
+----------------------
+delegates are function pointers .delegate means getting work done .
+
+when event is raised its corresponding delegate is called and that delegate will call the function .
+
+delgate will have same return type and parameters of that function 
+
+event --->delegate --->function 
+
+
+public void add(int x, int y) is function 
+
+syntax:
+-------
+public delegate retuntypeoffunction delegatename (parameters in function) 
+
+public delegate void mydelegate(int x, int y) is the delegate for function add 
+
+
+here name of delegate is mydelegate and it is having same return type of function add 
+and same parameters .
+
+
+
+Delegates are function pointers and delegate means getting work done (just telling meaning) 
+
+when ever event is raised event means any event like button click event etc and that event will call its corresponding delegate and
+that delegate will call the function 
+
+in windows application for every event like mouse move event ,button click event there is a corresponding delegate in
+built provided but in console application there are no events only functions will be there and i will write delegate to the functions 
+
+let us see the in built delegate in windows application 
+
+this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
+			// 
+
+
+so here above EventHandler is the in built delegate over here 
+
+now i will create my own delegates for console application and here events will be not be there okay 
+here delegates are reference type they point to some thing and it is totally run time means run time it will 
+point to function and execute the function 
+
+
+
+event ---->delegate ---->function 
+
+
+syntax:
+-------
+public delegate retuntypeoffunction delegatename (parameters in function) 
+
+public delegate void mydelegate(int x, int y) is the delegate for function add 
+
+
+void add(int x, int y) 
+{
+
+
+}
+
+void substract(int x, int y) 
+{
+
+
+}
+
+In delegates while creating return type of function should match with the function and no of paramters in side the 
+function should match with  the numbers of parameters in the function then only it can point to that function 
+
+so same deleagte pointing to multiple functions we call it as multi cast delegate 
+
+
+namespace delegatedemo1
+{
+
+
+     class Program
+    {
+        public void add(int x ,int y)
+        {
+            Console.WriteLine($"The sum is :{x+y}");
+        }
+        public int substract(int x ,int y)
+        {
+            return x - y;
+        }
+        public int multiply(int x ,int y)
+        {
+            return x * y; 
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
+
