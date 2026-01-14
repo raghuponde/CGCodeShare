@@ -926,5 +926,47 @@ namespace setandgetmethodsdemo
     }
 }
 
+readonly 
+----------
+	namespace setandgetmethodsdemo
+{
+    class Customer
+    {
+        private int _cid=-1;
+        public Customer(int id1,string customername1)
+        {
+            _cid = id1;
+            _Cname = customername1;
+        }
+        public int ID
+        {
+          
+            get
+            {
+                return _cid;
+            }
+        }
+        private string _Cname=string.Empty;
+        public string CustomerName
+        {
+            
+            get
+            {
+                return _Cname;
+            }
+        }
+       
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Customer obj = new Customer(101,"ravi");
+            
+            Console.WriteLine($"{obj.ID}--{obj.CustomerName}");
+            Console.ReadLine();
+        }
+    }
+}
 
 	
