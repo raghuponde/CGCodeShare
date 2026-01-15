@@ -946,3 +946,29 @@ namespace NonGenericHashHashtable
     }
 }
 here also i can stroee any thng but in the form key value pair agina key can be anything and value can be anything
+Sorted List 
+-------------
+using System.Collections;
+
+namespace NonGenericSortedListdemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            SortedList students=new SortedList();
+            students.Add(101, "Alice");
+            students.Add(102, "Bob");
+            students.Add(105, "Charlie");
+            students.Add(104, "david");
+            students.Add(103, "kiran");
+
+            foreach(DictionaryEntry entry in students)
+            {
+                Console.WriteLine($"Student id:{entry.Key}--StudentName:{entry.Value}");
+            }
+            Console.ReadLine();
+
+        }
+    }
+}
