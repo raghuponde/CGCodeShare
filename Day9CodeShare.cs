@@ -913,3 +913,36 @@ namespace NonGenericArrayListDemo
         }
     }
 }
+HashTable
+------------
+using System.Collections;
+
+namespace NonGenericHashHashtable
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Hashtable ht = new Hashtable();
+            ht.Add(1, "kiran");
+            ht.Add('a', 789.77);
+            ht.Add("mahesh",DateTime.Now);
+
+            foreach(DictionaryEntry entry in ht)
+            {
+                Console.WriteLine($"ID:{entry.Key}---Value:{entry.Value}");
+            }
+            if(ht.ContainsKey(1))
+            {
+                Console.WriteLine($"ID:1,value is {ht[1]}");
+            };
+            ht.Remove('a');
+            foreach (DictionaryEntry entry in ht)
+            {
+                Console.WriteLine($"ID:{entry.Key}---Value:{entry.Value}");
+            }
+            Console.ReadLine();
+        }
+    }
+}
+here also i can stroee any thng but in the form key value pair agina key can be anything and value can be anything
