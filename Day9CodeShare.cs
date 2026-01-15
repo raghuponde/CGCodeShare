@@ -893,8 +893,23 @@ namespace NonGenericArrayListDemo
             {
                 Console.WriteLine(ele);
             }
+            int[] fourmore = new int[] { 100, 200, 300, 400 };
+            obj.AddRange(fourmore);
+            Console.WriteLine($"\n no of elements:{obj.Count}");
+            Console.WriteLine($"\n capacity :{obj.Capacity}");
+            foreach (var ele in obj)
+            {
+                Console.WriteLine(ele);
+            }
+            obj.Insert(0, "first");
+            obj.RemoveAt(3);
+            Console.WriteLine($"\n no of elements:{obj.Count}");
+            Console.WriteLine($"\n capacity :{obj.Capacity}");
+            foreach (var ele in obj)
+            {
+                Console.WriteLine(ele);
+            }
             Console.ReadLine();
         }
     }
 }
-
