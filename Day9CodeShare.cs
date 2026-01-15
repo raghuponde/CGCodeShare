@@ -563,5 +563,28 @@ namespace IsAsDemo
         }
     }
 }
+What to explain to students
+emp2 is Manager
+Returns true if emp2 refers to a Manager (or derived from Manager).
+
+emp2 as Manager
+
+If compatible → returns a Manager reference.
+
+If not compatible → returns null (no exception).
+
+Pattern you can emphasize:
+
+Use is when you only want to check the type:
+
+if (obj is Manager) { ... }
+
+Use as when you want to cast and then use the object:
+
+Manager m = obj as Manager;
+if (m != null)
+{
+    m.ApproveLeave();
+}
 
 
