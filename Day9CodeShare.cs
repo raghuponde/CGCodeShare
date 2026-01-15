@@ -43,3 +43,40 @@ namespace paramsdemo
         }
     }
 }
+
+Notidication delegate example
+------------------------------
+namespace promotionusingdelegateforemployees
+{
+   public class Employee
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+
+        public decimal Salary { set; get; }
+
+        public int Experience { set; get; }
+
+        public Employee(int id,string name,decimal salary,int experience )
+        {
+            ID=id;
+            Name=name;
+            Salary=salary;
+            Experience=experience;
+
+        }
+        public override string ToString()
+        {
+            return $"ID:{ID} Name:{Name} Salary:{Salary} Experience:{Experience}";
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
+
+
