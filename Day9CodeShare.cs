@@ -43,7 +43,36 @@ namespace paramsdemo
         }
     }
 }
+Question
+-----------
+Employee Promotion Notification using Delegates in C#
 
+**Scenario:**  
+A company wants to implement a flexible employee promotion notification system. The logic for determining whether an employee qualifies for promotion can vary. The system should also notify different stakeholders (e.g., HR department, Team Lead) when an employee is promoted.
+
+**Requirements:**
+
+1. Define a delegate `PromotionCriteria` that takes an `Employee` object and returns a bool indicating promotion eligibility.
+
+2. Define a delegate `Notification` that takes an `Employee` object and sends a notification (prints a message).
+
+3. Create a class `Employee` with properties: `ID`, `Name`, `Salary`, and `Experience`.
+
+4. Implement a static method `PromoteEmployees`, which takes a list of employees, a `PromotionCriteria` delegate instance, and one or more `Notification` delegate instances.
+
+5. The `PromoteEmployees` method should:  
+   - Iterate over the employees.  
+   - Use the criteria delegate to check eligibility.  
+   - For eligible employees, invoke the notification delegate(s) to send notifications.
+
+6. In the `Main` method:  
+   - Create a list of employees.  
+   - Create different promotion criteria (e.g., salary above a threshold, experience more
+   than 5 years).  
+   - Create multiple notification methods simulating notifications to HR, Team Lead, etc.  
+   - Pass delegates to the `PromoteEmployees` method and observe flexible behavior.
+
+***
 Notidication delegate example
 ------------------------------
 namespace promotionusingdelegateforemployees
@@ -304,3 +333,38 @@ as we have not learned List yet i am converting this program into normal static 
         }
     }
 }
+
+Trypars ,parse and covert clases 
+----------------------------------
+namespace Tryparsedemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            tryparsedemo();
+            Console.ReadLine();
+        }
+
+        private static void tryparsedemo()
+        {
+
+            Console.WriteLine("Enter Product Price ");
+            string input = Console.ReadLine();
+            bool isvalid = decimal.TryParse(input, out decimal price);
+            // if it becomes true then it will store its value in price variable
+            // try parse return type is boolean
+            // for any type i can do tryparse ,here this will not throw exception 
+            // becasue i am handing in else block the logic 
+            if (isvalid)
+            {
+                Console.WriteLine($"Product Price is : {price}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid Price Input please enter numeric value");
+            }
+        }
+    }
+}
+
