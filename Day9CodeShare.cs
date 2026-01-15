@@ -589,6 +589,8 @@ if (m != null)
 
 Partial class 
 -------------
+when  i want to share my class among multiple developers means i want to distribute same class to multiple developers then i can write code using 
+partial key word here 
 
 namespace partialclassdemo
 {
