@@ -689,6 +689,71 @@ namespace Garbagcollectordemo1
     }
 }
 
+garbage collector demo 2
+  -----------------------
+    namespace garbagecollectordemo2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        class A
+        {
+            public A()
+            {
+                MessageBox.Show("Creating A");
+            }
+            ~A()
+            {
+
+                MessageBox.Show("destroying A");
+               
+            }
+        }
+        class B : A
+        {
+            public B()
+            {
+                MessageBox.Show("Creating B");
+            }
+            ~B()
+            {
+
+                MessageBox.Show("destroying B");
+               
+            }
+        }
+        class C : B
+        {
+            public C()
+            {
+                MessageBox.Show("Creating C");
+            }
+            ~C()
+            {
+
+                MessageBox.Show("destroying C");
+             
+            }
+        }
+        class GarbageCollection : IDisposable
+        {
+            public void Dispose()
+            {
+                GC.SuppressFinalize(this);
+                MessageBox.Show("disposing object");
+                MessageBox.Show("freeing the resouces captured by object");
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
 
 
 
