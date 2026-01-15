@@ -859,6 +859,11 @@ namespace Indexerdemo
             obj[0] = "Csharp";
             obj[1] = "Java";
             obj[2] = "C++";
+
+
+            // obj[3] = "python";// out of bound exception 
+
+            Console.WriteLine($"{obj[0]}-{obj[1]}-{obj[2]}");
         }
     }
 }
