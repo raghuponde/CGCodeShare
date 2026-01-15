@@ -897,7 +897,7 @@ namespace NonGenericArrayListDemo
             obj.AddRange(fourmore);
             Console.WriteLine($"\n no of elements:{obj.Count}");
             Console.WriteLine($"\n capacity :{obj.Capacity}");
-            foreach (var ele in obj)
+            foreach (var ele in obj) 
             {
                 Console.WriteLine(ele);
             }
