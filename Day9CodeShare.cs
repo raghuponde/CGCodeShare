@@ -699,45 +699,7 @@ garbage collector demo 2
         {
             InitializeComponent();
         }
-        class A
-        {
-            public A()
-            {
-                MessageBox.Show("Creating A");
-            }
-            ~A()
-            {
-
-                MessageBox.Show("destroying A");
-               
-            }
-        }
-        class B : A
-        {
-            public B()
-            {
-                MessageBox.Show("Creating B");
-            }
-            ~B()
-            {
-
-                MessageBox.Show("destroying B");
-               
-            }
-        }
-        class C : B
-        {
-            public C()
-            {
-                MessageBox.Show("Creating C");
-            }
-            ~C()
-            {
-
-                MessageBox.Show("destroying C");
-             
-            }
-        }
+      
         class GarbageCollection : IDisposable
         {
             public void Dispose()
@@ -754,6 +716,43 @@ garbage collector demo 2
     }
 }
 
+final code 
+-----------
+namespace garbagecollectordemo2
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        
+        class GarbageCollection : IDisposable
+        {
+            public void dosomething()
+            {
+                MessageBox.Show("performing usual tasks");
+            }
+            public void Dispose()
+            {
+                GC.SuppressFinalize(this);
+                MessageBox.Show("disposing object");
+                MessageBox.Show("freeing the resouces captured by object");
+            }
+            ~GarbageCollection()
+            {
+                MessageBox.Show("destryig object");
+                MessageBox.Show("freeing the resouces captured by object");
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GarbageCollection garbage = new GarbageCollection();
+            garbage.dosomething();
+            garbage.Dispose();
+        }
+    }
+}
 
 
 
