@@ -70,13 +70,22 @@ namespace promotionusingdelegateforemployees
             return $"ID:{ID} Name:{Name} Salary:{Salary} Experience:{Experience}";
         }
     }
+
+    public delegate bool PromotionCriteria(Employee emp);
+
+    public delegate void Notification(Employee emp) ;
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var employees = new List<Employee>()
+            {
+                new Employee(101,"Alice",60000,6),
+                new Employee(102,"Bob",45000,4),
+                new Employee(103,"Charlie",88000,7),
+                new Employee(104,"David",30000,2),  
+                new Employee(105,"Eve",82000,8)
+            };
         }
     }
 }
-
-
