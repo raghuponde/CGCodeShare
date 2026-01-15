@@ -630,15 +630,26 @@ Finilize and dispose methods
 ------------------------------
 Garbage collection :
 ---------------------
-when object goes out of scope means either u are intilizing to null or closing the winform then ..
- then .net is having a method inbuilt using finalize it calls the destructor okay and u want to call it explicitly means 
- gc.collect u have to say and to demonstrate this u need to again click the button when u do this it will call 
- its previous destructor 
- which are in queue because how can i do again 
- click without doing or executing previous destructors this shows gc use okay .
+when the object goes out of scope it will call its inbuilt method finilize() where the destructors will be called but in windows application or console applicationn i cannot see those destructor codes why because they are called at the background and to collect those object explicitly i will use gc.collect method 
 
 
-namespace Garbagcollectordemo1
+Now create a windows application and write the code like this here one button click  event is there 
+
+
+
+
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace garbalgecollector
 {
     public partial class Form1 : Form
     {
@@ -646,7 +657,7 @@ namespace Garbagcollectordemo1
         {
             InitializeComponent();
         }
-     class A
+        class A
         {
             public A()
             {
@@ -655,8 +666,9 @@ namespace Garbagcollectordemo1
             ~A()
             {
                 for (int i = 0; i < 100000; i++) ;
-                MessageBox.Show("destroying A");
+                MessageBox.Show("Desctructor  A");
             }
+
         }
         class B : A
         {
@@ -667,57 +679,69 @@ namespace Garbagcollectordemo1
             ~B()
             {
                 for (int i = 0; i < 100000; i++) ;
-                MessageBox.Show("destroying B");
+                MessageBox.Show("Desctructor  B");
             }
+
         }
         class C : B
         {
+
             public C()
             {
-                MessageBox.Show("Creating C");
+               MessageBox.Show("Creating C");
             }
             ~C()
             {
                 for (int i = 0; i < 100000; i++) ;
-                MessageBox.Show("destroying C");
+                MessageBox.Show("Desctructor  C");
             }
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
+            C cc = new C();
+            
+          
+            Console.ReadLine();
         }
+
+       
     }
 }
 
-garbage collector demo 2
-  -----------------------
-    namespace garbagecollectordemo2
+after wirting like this also after closing the application of windows u cant see the destructor code 
+
+so go to program.cs file of windows and write like this 
+
+namespace Garbagcollectordemo1
 {
-    public partial class Form1 : Form
+    internal static class Program
     {
-        public Form1()
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            InitializeComponent();
-        }
-      
-        class GarbageCollection : IDisposable
-        {
-            public void Dispose()
-            {
-                GC.SuppressFinalize(this);
-                MessageBox.Show("disposing object");
-                MessageBox.Show("freeing the resouces captured by object");
-            }
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
 
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
     }
 }
 
-final code 
------------
+so last three lines are important and add it same thing do it for next program also 
+
+another logic on garbage collector 
+-------------------------------------
+
+
+here also same logic when i closed the winform i cant see the method when i am supressing it using dispose method otherwise i will see it is liek this try okay .
+
 namespace garbagecollectordemo2
 {
     public partial class Form1 : Form
@@ -749,7 +773,31 @@ namespace garbagecollectordemo2
         {
             GarbageCollection garbage = new GarbageCollection();
             garbage.dosomething();
-            garbage.Dispose();
+           // garbage.Dispose(); //if uncomment this code then destructor code i cant see 
+           
+        }
+    }
+}
+
+again in this program.cs write these three lines of code 
+
+namespace garbagecollectordemo2
+{
+    internal static class Program
+    {
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Form1());
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
         }
     }
 }
