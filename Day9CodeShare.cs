@@ -631,7 +631,64 @@ Finilize and dispose methods
 Garbage collection :
 ---------------------
 when object goes out of scope means either u are intilizing to null or closing the winform then ..
-    then .net is having a method inbuilt using finalize it calls the destructor okay and u want to call it explicitly means 
-    gc.collect u have to say and to demonstrate this u need to again click the button when u do this it will call its previous destructor 
-    which are in queue because how can i do again click without doing or executing previous destructors this shows gc use okay .
-		
+ then .net is having a method inbuilt using finalize it calls the destructor okay and u want to call it explicitly means 
+ gc.collect u have to say and to demonstrate this u need to again click the button when u do this it will call 
+ its previous destructor 
+ which are in queue because how can i do again 
+ click without doing or executing previous destructors this shows gc use okay .
+
+
+namespace Garbagcollectordemo1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+     class A
+        {
+            public A()
+            {
+                MessageBox.Show("Creating A");
+            }
+            ~A()
+            {
+                for (int i = 0; i < 100000; i++) ;
+                MessageBox.Show("destroying A");
+            }
+        }
+        class B : A
+        {
+            public B()
+            {
+                MessageBox.Show("Creating B");
+            }
+            ~B()
+            {
+                for (int i = 0; i < 100000; i++) ;
+                MessageBox.Show("destroying B");
+            }
+        }
+        class C : B
+        {
+            public C()
+            {
+                MessageBox.Show("Creating C");
+            }
+            ~C()
+            {
+                for (int i = 0; i < 100000; i++) ;
+                MessageBox.Show("destroying C");
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
+
+
+
+
