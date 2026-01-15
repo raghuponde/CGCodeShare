@@ -630,7 +630,8 @@ Finilize and dispose methods
 ------------------------------
 Garbage collection :
 ---------------------
-when the object goes out of scope it will call its inbuilt method finilize() where the destructors will be called but in windows application or console applicationn i cannot see those destructor codes why because they are called at the background and to collect those object explicitly i will use gc.collect method 
+when the object goes out of scope it will call its inbuilt method finilize() where the destructors will be called but in windows application or 
+    console applicationn i cannot see those destructor codes why because they are called at the background and to collect those object explicitly i will use gc.collect method 
 
 
 Now create a windows application and write the code like this here one button click  event is there 
@@ -803,4 +804,25 @@ namespace garbagecollectordemo2
 }
 
 
+Indexers
+---------
+namespace Indexerdemo
+{
+    class abcd
+    {
+        private string[] val = new string[3];
+    }
+     class Program
+    {
+        static void Main(string[] args)
+        {
+          abcd obj=new abcd();
+            //when  i want to use object array as property 
+            // then  i will use indexers
+            obj[0] = "Csharp";
+            obj[1] = "Java";
+            obj[2] = "C++";
+        }
+    }
+}
 
