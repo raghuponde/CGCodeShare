@@ -626,3 +626,12 @@ namespace partialclassdemo
 }
 
     
+Finilize and dispose methods
+------------------------------
+Garbage collection :
+---------------------
+when object goes out of scope means either u are intilizing to null or closing the winform then ..
+    then .net is having a method inbuilt using finalize it calls the destructor okay and u want to call it explicitly means 
+    gc.collect u have to say and to demonstrate this u need to again click the button when u do this it will call its previous destructor 
+    which are in queue because how can i do again click without doing or executing previous destructors this shows gc use okay .
+		
