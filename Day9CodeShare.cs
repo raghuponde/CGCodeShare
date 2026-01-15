@@ -867,3 +867,34 @@ namespace Indexerdemo
         }
     }
 }
+
+Collections 
+--------------
+Non generic collections
+----------------------
+using System.Collections;
+
+namespace NonGenericArrayListDemo
+{
+     class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList obj = new ArrayList();
+            obj.Add(1);
+            obj.Add(true);
+            obj.Add("Raghavendra");
+            obj.Add(DateTime.Now);
+            obj.Add(234.567);
+
+            Console.WriteLine($"\n no of elements:{obj.Count}");
+            Console.WriteLine($"\n capacity :{obj.Capacity}");
+            foreach(var ele in obj)
+            {
+                Console.WriteLine(ele);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
