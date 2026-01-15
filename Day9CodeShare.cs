@@ -74,8 +74,37 @@ namespace promotionusingdelegateforemployees
     public delegate bool PromotionCriteria(Employee emp);
 
     public delegate void Notification(Employee emp) ;
-    internal class Program
+    class Program
     {
+
+        public static bool Highsalarycrietera(Employee emp)
+        {
+            return emp.Salary > 80000;
+        }
+
+        public static bool Experiencecrietera(Employee emp)
+        {
+            return emp.Experience >= 5;
+        }
+        public static void SendHRNotification  (Employee emp)
+        {
+          Console.WriteLine($"HR Notification: Employee {emp.Name} has been promoted.");
+
+        }
+        public static void teamLeadNotification(Employee emp)
+        {
+            Console.WriteLine($"Team Lead Notification: Employee {emp.Name} has been promoted.");
+        }
+
+        public static void financeteamNotifcation(Employee emp)
+        {
+            Console.WriteLine($"Finance Team Notification: Employee {emp.Name} has been promoted.");
+        }
+        public static void PromoteEmployee(List<Employee> employees,
+            PromotionCriteria criteria, params Notification[] notifications)
+        {
+            
+        }
         static void Main(string[] args)
         {
             var employees = new List<Employee>()
