@@ -459,3 +459,40 @@ namespace Tryparsedemo
         }
     }
 }
+
+use of Is and As operator 
+--------------------------
+In C#, is is for type checking and as is for safe casting (returns null if the cast fails). A clean way to show both is with an inheritance example.
+
+namespace IsAsDemo
+{
+    class Employee
+    {
+         public string Name { get; set; }
+        public Employee(string name)
+        {
+            Name = name;
+        }
+
+    }
+    class Manager : Employee
+    {
+        public Manager(string name) : base(name)
+        {
+        }
+        public void ApproveLeave()
+        {
+            Console.WriteLine($" {Name} approved leave request");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
+
+
+
