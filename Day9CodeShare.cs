@@ -690,7 +690,7 @@ namespace garbalgecollector
             {
                MessageBox.Show("Creating C");
             }
-            ~C()
+            ~C() 
             {
                 for (int i = 0; i < 100000; i++) ;
                 MessageBox.Show("Desctructor  C");
