@@ -378,7 +378,7 @@ namespace GenericDictionayDemo
     }
 }
 
-stack dmeo (LIFO)
+stack dmeo (LIFO)(it exsist in both generic and non generic )
     --------------
     namespace stacdemo
 {
@@ -416,6 +416,30 @@ stack dmeo (LIFO)
             foreach (int i in numstack)//it is  keeping in list 
             {
                 Console.WriteLine(i);
+            }
+        }
+    }
+}
+Queue demo (FIFO)
+    --------------
+    namespace QueueDemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           Queue<string> queue = new Queue<string>();
+            //FIFO
+            queue.Enqueue("Alice");
+            queue.Enqueue("Bob");
+            queue.Enqueue("Charlie");
+            queue.Enqueue("David");
+
+
+            Console.WriteLine("\n elements in queue");
+            foreach(string name in queue)
+            {
+                Console.WriteLine(name);
             }
         }
     }
