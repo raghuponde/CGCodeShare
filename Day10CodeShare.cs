@@ -28,6 +28,11 @@ namespace GenericListDemo
             }
         }
 
+        public static void insertcustomer(Customer c,List<Customer> clist)
+        {
+            clist.Add(c);
+        }
+
     }
     internal class Program
     {
@@ -77,8 +82,14 @@ namespace GenericListDemo
 
             List<Customer> custlist = Customer.retrive();
             Customer.PrintCustomers(custlist);
+            Customer newcustomer = new Customer()
+            {
+                CustomerID=104,
+                CustomerName="mahesh"
+            };
+            Customer.insertcustomer(newcustomer, custlist);
+            Customer.PrintCustomers(custlist);
             Console.ReadLine();
         }
     }
 }
-
