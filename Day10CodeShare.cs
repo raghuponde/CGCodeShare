@@ -7,15 +7,17 @@ namespace GenericListDemo
     {
         public int CustomerID { get; set; }
         public string CustomerName { get; set; }
-
-        public static List<Customer> retrive()
-        {
-            List<Customer> clist = new List<Customer>() 
+    
+        
+        static   List<Customer> clist = new List<Customer>()
             {
             new Customer {CustomerID=101,CustomerName="ravi"},
             new Customer {CustomerID=102,CustomerName="Sita"},
             new Customer {CustomerID=103,CustomerName="sohan"},
             };
+        public static List<Customer> retrive()
+        {
+           
             return clist; 
         }
 
@@ -33,9 +35,25 @@ namespace GenericListDemo
             clist.Add(c);
         }
 
+        public static Customer findcustomer(int custid,List<Customer> clist)
+        {
+            Customer customerfound = null;
+            foreach(Customer c in clist)
+            {
+                if(c.CustomerID==custid)
+                {
+                    customerfound = c;
+                    break;
+                }
+            }
+            return customerfound;
+        }
+
     }
     internal class Program
     {
+
+
         static void Main(string[] args)
         {
             List<int> numbers = new List<int>();
@@ -89,7 +107,19 @@ namespace GenericListDemo
             };
             Customer.insertcustomer(newcustomer, custlist);
             Customer.PrintCustomers(custlist);
-            Console.ReadLine();
+            Console.WriteLine("\n enter id of student to find customer name ");
+
+            int custid = Convert.ToInt16(Console.ReadLine());
+           Customer custfound= Customer.findcustomer(custid, custlist);
+            if(custfound!=null)
+            {
+                Console.WriteLine($"The customer with {custfound.CustomerID} is having name {custfound.CustomerName}");
+            }
+            else
+            {
+                Console.WriteLine("The customer is not there in list ");
+            }
+                Console.ReadLine();
         }
     }
 }
