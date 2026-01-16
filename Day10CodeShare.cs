@@ -463,3 +463,25 @@ namespace QueueDemo
         }
     }
 }
+
+
+add this class above class program 
+
+    class Employee
+        {
+            public string Name { get; set; }
+            public int Id { get; set; }
+            public decimal Salary { get; set; }
+
+            public Employee(string name, int id, decimal salary)
+            {
+                Name = name;
+                Id = id;
+                Salary = salary;
+            }
+
+         public override string ToString()
+            {
+                return $"{Name} (ID: {Id}, Salary: {Salary:C})";
+            }
+    }
