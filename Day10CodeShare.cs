@@ -377,3 +377,47 @@ namespace GenericDictionayDemo
         }
     }
 }
+
+stack dmeo (LIFO)
+    --------------
+    namespace stacdemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Stack<int> numstack=new Stack<int>();
+            //push elelments into stack 
+            //lifo
+
+            numstack.Push(10);
+            numstack.Push(20);
+            numstack.Push(30);
+            numstack.Push(40);
+
+            Console.WriteLine("\n printing the elements of stack");
+            foreach(int i in numstack)
+            {
+                Console.WriteLine(i);
+            }
+            //pop elelemts frm stack 
+            int popedelement=numstack.Pop();
+            Console.WriteLine($"popped element :{popedelement}");
+            Console.WriteLine("\n printing the elements of stack");
+            foreach (int i in numstack)//it is not keeping in list removing it
+            {
+                Console.WriteLine(i);
+            }
+            //peek the top element without removing it 
+
+            int topelement=numstack.Peek();
+            Console.WriteLine($"Peeked element:{topelement}");
+            Console.WriteLine("\n printing the elements of stack");
+            foreach (int i in numstack)//it is  keeping in list 
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
