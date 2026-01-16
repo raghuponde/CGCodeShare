@@ -5,7 +5,7 @@ namespace GenericListDemo
 
     class Customer
     {
-        public int CustomerID { get; set; }
+        public int CustomerID { get; set; } 
         public string CustomerName { get; set; }
     
         
