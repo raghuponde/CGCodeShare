@@ -464,6 +464,8 @@ namespace QueueDemo
     }
 }
 
+IComparable demo
+-------------------
 
 add this class above class program 
 
@@ -485,3 +487,29 @@ add this class above class program
                 return $"{Name} (ID: {Id}, Salary: {Salary:C})";
             }
     }
+
+write the below code in main method 
+
+List<int> numbers = new List<int>() {12,67,8,2,78,43,22,90,129 };
+            // primitive data types 
+
+            numbers.Sort();
+            foreach (int i in numbers)
+            {
+                Console.Write($"{i}  ");
+            }
+
+            List<Employee> employees = new List<Employee>() 
+            {
+                new Employee("Jane", 102, 75000m),
+               new Employee("John", 101, 90000m),
+                new Employee("Mike", 103, 65000m)
+            };
+
+            employees.Sort();
+            Console.WriteLine("\n");
+            foreach (Employee employee in employees)
+            {
+                Console.WriteLine(employee);
+            }
+
