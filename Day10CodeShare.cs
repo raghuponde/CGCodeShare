@@ -301,7 +301,7 @@ namespace GenericListDemo
     }
 }
 
-Dictionary generic one 
+Dictionary generic one (here i will store data in key value pair but it is generic i have to mention some type and according to that type only i can enter values)
 ---------------------
 namespace GenericDictionayDemo
 {
