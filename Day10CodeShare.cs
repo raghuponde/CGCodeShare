@@ -19,6 +19,15 @@ namespace GenericListDemo
             return clist; 
         }
 
+        public static void PrintCustomers(List<Customer> clist)
+        {
+            Console.WriteLine("\n Displaying customer ");
+            foreach (Customer c in clist)
+            {
+                Console.WriteLine($"{c.CustomerID}---{c.CustomerName}");
+            }
+        }
+
     }
     internal class Program
     {
@@ -65,6 +74,9 @@ namespace GenericListDemo
             {
                 Console.Write($"\t{ele}"); 
             }
+
+            List<Customer> custlist = Customer.retrive();
+            Customer.PrintCustomers(custlist);
             Console.ReadLine();
         }
     }
