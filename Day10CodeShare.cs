@@ -422,7 +422,7 @@ stack dmeo (LIFO)(it exsist in both generic and non generic )
 }
 Queue demo (FIFO)
     --------------
-    namespace QueueDemo
+namespace QueueDemo
 {
     internal class Program
     {
@@ -441,7 +441,25 @@ Queue demo (FIFO)
             {
                 Console.WriteLine(name);
             }
+            //Dequeing the elelmt from the queue 
+            string dequedelelemtn=queue.Dequeue();
+            Console.WriteLine($"The element dequeed is {dequedelelemtn}");
+
+            Console.WriteLine("\n elements in queue");
+            foreach (string name in queue)
+            {
+                Console.WriteLine(name);
+            }
+
+            //peeking 
+            string peekedeleemnt = queue.Peek();
+            Console.WriteLine($"The element peeekded is {peekedeleemnt}");
+
+            Console.WriteLine("\n elements in queue");
+            foreach (string name in queue)
+            {
+                Console.WriteLine(name);
+            }
         }
     }
 }
-
