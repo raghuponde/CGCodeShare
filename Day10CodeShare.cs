@@ -5,7 +5,7 @@ namespace GenericListDemo
 
     class Customer
     {
-        public int CustomerID { get; set; } 
+        public int CustomerID { get; set; }
         public string CustomerName { get; set; }
     
         
@@ -47,6 +47,18 @@ namespace GenericListDemo
                 }
             }
             return customerfound;
+        }
+        public static void updatecustomer(int custid,List<Customer> clist)
+        {
+            for(int i=0;i<clist.Count;i++)
+            {
+                if (clist[i].CustomerID==custid)
+                {
+                    Console.WriteLine("\n enter new name :");
+                    string newname = Console.ReadLine();
+                    clist[i].CustomerName = newname;
+                }
+            }
         }
 
     }
@@ -119,6 +131,11 @@ namespace GenericListDemo
             {
                 Console.WriteLine("The customer is not there in list ");
             }
+            Console.WriteLine("\n enter the id of customer who u want to update name");
+            int custid2 = Convert.ToInt16(Console.ReadLine());
+            Customer.updatecustomer(custid2, custlist);
+            Customer.PrintCustomers(custlist);
+
                 Console.ReadLine();
         }
     }
