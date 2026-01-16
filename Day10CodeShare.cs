@@ -301,3 +301,36 @@ namespace GenericListDemo
     }
 }
 
+Dictionary generic one 
+---------------------
+namespace GenericDictionayDemo
+{
+    class Customer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<int,string> dic=new Dictionary<int,string>();
+            Console.WriteLine("\n Enter number of elements in dictionary ");
+            int counter=Convert.ToInt32(Console.ReadLine());
+            for(int i=0;i< counter;i++)
+            {
+                Console.WriteLine("enter key ");
+                int key = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("enter value");
+                string value = Console.ReadLine();  
+                dic.Add(key, value);
+            }
+            Console.WriteLine("\n Printing the dictionary");
+            foreach (KeyValuePair<int, string> pair in dic)
+            {
+                Console.WriteLine($"{pair.Key}:{pair.Value}");
+            }
+            Console.ReadLine();
+        }
+    }
+}
