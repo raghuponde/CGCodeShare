@@ -18,7 +18,18 @@ namespace GenericListDemo
             "mohan"
             
             };
+
+            foreach (int num in numbers)
+            {
+                Console.Write($"\t{num}");
+            }
+            Console.WriteLine();
+            foreach(string name in names)
+            {
+                Console.WriteLine(name); 
+            }
+
+            Console.ReadLine();
         }
     }
 }
-
