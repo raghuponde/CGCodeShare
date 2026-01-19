@@ -382,7 +382,7 @@ namespace WebApplication1
 
             app.MapGet("/", () => "Hello World!");
             app.Logger.LogDebug("debug-message");
-            app.Logger.LogInformation("info-message");
+            app.Logger.LogInformation("info-message"); 
             app.Logger.LogWarning("warn-message");
             app.Logger.LogError("error-message");
             app.Logger.LogCritical("critical-message");
