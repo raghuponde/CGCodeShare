@@ -131,5 +131,19 @@ namespace FileHandlinginWinForms
                 }
             }
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                string filename = openFileDialog1.FileName;
+                if (MessageBox.Show($"Are you sure you want to delete {filename}?", "Confirm Delete", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
+                {
+                    File.Delete(filename);
+                    MessageBox.Show("File deleted successfully.");
+                }
+            }
+        }
     }
 }
