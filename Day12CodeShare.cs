@@ -206,10 +206,111 @@ namespace FileHandlinginConsole
             sw.Close();
             fs.Close();
         }
+        public static void fileappend()
+        {
+
+            Console.WriteLine("Enter the file path where you want to save the text:");
+            string filePath = Console.ReadLine();
+
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                try
+                {
+                    using (FileStream fs = new FileStream(filePath, FileMode.Append))
+                    using (StreamWriter sw = new StreamWriter(fs))
+                    {
+                        Console.WriteLine("Enter the text you want to append:");
+                        string textToAppend = Console.ReadLine();
+
+                        sw.Write(textToAppend);
+                        sw.Flush();
+                    }
+
+                    Console.WriteLine("Text appended successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No file path provided.");
+            }
+        }
+
+        public static void filecopy()
+        {
+            Console.WriteLine("Enter the source file path:");
+            string sourceFilePath = Console.ReadLine();
+
+            if (File.Exists(sourceFilePath))
+            {
+                Console.WriteLine("Enter the destination file path:");
+                string destinationFilePath = Console.ReadLine();
+
+                try
+                {
+                    File.Copy(sourceFilePath, destinationFilePath, true);
+                    Console.WriteLine("File copied successfully.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred while copying the file: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The source file does not exist.");
+            }
+
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+        }
+
+        public static void filedelete()
+        {
+            Console.WriteLine("Enter the file path you want to delete:");
+            string filePath = Console.ReadLine();
+
+            if (File.Exists(filePath))
+            {
+                Console.WriteLine($"Are you sure you want to delete {filePath}? (yes/no)");
+                string confirmation = Console.ReadLine();
+
+                if (confirmation?.ToLower() == "yes")
+                {
+                    try
+                    {
+                        File.Delete(filePath);
+                        Console.WriteLine("File deleted successfully.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while deleting the file: {ex.Message}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("File deletion canceled.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("The file does not exist.");
+            }
+
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+        }
+
         static void Main(string[] args)
         {
            // readdata();
             writedata();
+            //  fileappend();
+            // filecopy();
+            //filedelete();
             Console.ReadLine();
         }
     }
