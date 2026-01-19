@@ -41,7 +41,7 @@ namespace FileHandlinginWinForms
           DialogResult res= openFileDialog1.ShowDialog();
             if (res == DialogResult.OK)
             {
-                string file1 = openFileDialog1.FileName;
+                string file1 = openFileDialog1.FileName;  
                 try
                 {
                     fs=new FileStream(file1,FileMode.Open);
