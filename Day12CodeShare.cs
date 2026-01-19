@@ -193,9 +193,24 @@ namespace FileHandlinginConsole
             }
 
         }
+        public static void writedata()
+        {
+            FileStream fs = new FileStream
+                (@"D:\CapgeminiChandigarh\Day12\Day12Projects\FileHandlinginConsole\sample.txt",
+                FileMode.Append, FileAccess.Write);
+            Console.WriteLine("enter something inside the file ");
+            string input = Console.ReadLine();
+            StreamWriter sw = new StreamWriter(fs);
+            sw.Write(input);
+            sw.Flush();
+            sw.Close();
+            fs.Close();
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+           // readdata();
+            writedata();
+            Console.ReadLine();
         }
     }
 }
