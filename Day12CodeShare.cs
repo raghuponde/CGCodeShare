@@ -160,4 +160,22 @@ from 3rd method copy the path of file in txt file and paste it in command prompt
 it is same as windows only readdata we are using seek method means where to start and end etc 
 
 
+namespace FileHandlinginConsole
+{
+    internal class Program
+    {
+        public static void readdata()
+        {
+            FileStream fs = null;
+            StreamReader sr;
+
+            fs = new FileStream(@"",FileMode.Open,FileAccess.Read);
+
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
 
