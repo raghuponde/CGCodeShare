@@ -119,7 +119,7 @@ namespace FileHandlinginWinForms
             DialogResult sourceResult = openFileDialog1.ShowDialog();
             if (sourceResult == DialogResult.OK)
             {
-                string sourceFile = openFileDialog1.FileName;
+                string sourceFile = openFileDialog1.FileName; 
 
                 DialogResult destResult = saveFileDialog1.ShowDialog();
                 if (destResult == DialogResult.OK)
@@ -147,3 +147,17 @@ namespace FileHandlinginWinForms
         }
     }
 }
+
+
+
+
+File Handling in Console 
+-------------------------
+add one file of txt into the project and go to proeprties of that file and make this
+copy to output directory :always copy do it and add some text data from lipsum.com 
+
+from 3rd method copy the path of file in txt file and paste it in command prompt and execute the code 
+it is same as windows only readdata we are using seek method means where to start and end etc 
+
+
+
