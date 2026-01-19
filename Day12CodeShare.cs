@@ -112,5 +112,24 @@ namespace FileHandlinginWinForms
 
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+            DialogResult sourceResult = openFileDialog1.ShowDialog();
+            if (sourceResult == DialogResult.OK)
+            {
+                string sourceFile = openFileDialog1.FileName;
+
+                DialogResult destResult = saveFileDialog1.ShowDialog();
+                if (destResult == DialogResult.OK)
+                {
+                    string destFile = saveFileDialog1.FileName;
+
+                    File.Copy(sourceFile, destFile, true);
+                    MessageBox.Show("File copied successfully.");
+                }
+            }
+        }
     }
 }
