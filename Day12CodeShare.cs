@@ -38,17 +38,17 @@ namespace FileHandlinginWinForms
         StreamWriter sw;
         private void button4_Click(object sender, EventArgs e)
         {
-          DialogResult res= openFileDialog1.ShowDialog();
+            DialogResult res = openFileDialog1.ShowDialog();
             if (res == DialogResult.OK)
             {
-                string file1 = openFileDialog1.FileName;  
+                string file1 = openFileDialog1.FileName;
                 try
                 {
-                    fs=new FileStream(file1,FileMode.Open);
-                    sr=new StreamReader(fs);
+                    fs = new FileStream(file1, FileMode.Open);
+                    sr = new StreamReader(fs);
                     textBox1.Text = sr.ReadToEnd();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -56,6 +56,32 @@ namespace FileHandlinginWinForms
                 {
                     fs.Close();
                     sr.Close();
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+           DialogResult res= saveFileDialog1.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                string file2= saveFileDialog1.FileName;
+                try
+                {
+                    fs=new FileStream(file2, FileMode.Create);
+                    sw=new StreamWriter(fs);
+                    sw.Write(textBox1.Text);
+
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    sw.Flush();
+                    sw.Close();
+                    fs.Close();
                 }
             }
         }
