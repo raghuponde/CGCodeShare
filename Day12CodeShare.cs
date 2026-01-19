@@ -169,7 +169,28 @@ namespace FileHandlinginConsole
             FileStream fs = null;
             StreamReader sr;
 
-            fs = new FileStream(@"",FileMode.Open,FileAccess.Read);
+            fs = new FileStream(@"D:\CapgeminiChandigarh\Day12\Day12Projects\FileHandlinginConsole\sample.txt", FileMode.Open,FileAccess.Read);
+            sr= new StreamReader(fs);
+            sr.BaseStream.Seek(0, SeekOrigin.Begin);
+            //first try above then put 200 and begin it will come 
+            // put 200 and say end nothing will come 
+            // put -200 and say end from backward direction it will read 
+            // here first take the psotion to begin and after leaving 100 read it okay 
+            // in the same manner current psotion by default will be begining only so again it 
+            // will go to begining as current and after leaving 100 prrint all 
+            // now if i write end then cussor will go to end point and after 100 spaces it will read
+            // where of course data 
+            // wont be there so u can do -100 and say end then curose will go 100 inside from back side
+            // and after that
+            // we  will read so this is the logic          
+            string str = sr.ReadLine();
+            while (str != null)
+            {
+                Console.WriteLine($"{str}");
+                str = sr.ReadLine();
+
+
+            }
 
         }
         static void Main(string[] args)
@@ -178,4 +199,3 @@ namespace FileHandlinginConsole
         }
     }
 }
-
