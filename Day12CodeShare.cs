@@ -382,7 +382,7 @@ namespace WebApplication1
 
             app.MapGet("/", () => "Hello World!");
             app.Logger.LogDebug("debug-message");
-            app.Logger.LogInformation("info-message"); 
+            app.Logger.LogInformation("info-message");
             app.Logger.LogWarning("warn-message");
             app.Logger.LogError("error-message");
             app.Logger.LogCritical("critical-message");
@@ -468,16 +468,6 @@ The above slide is telling me that where i can see theses message and all one is
 
 and another is  in output window debug option also u can see not check logging 6 slide
 
-
-so another place where u can check is go to start menu and type event viewer and custom views and go insdie that here 
-debug is not default but information messages i can check okay 
-
-select source as .netruntime and see logs checking logging7 slide for this okay 
-
-now right side create custom view add above setting as shown in logging8 
-
-and give some name to view after these settinngs and say okk so same is created as custom view and shown here 
-
 so i want to show debug also 
 
 go to development setting internal file and do the following changes okay ...
@@ -500,9 +490,7 @@ so
 }
 
 
-now build and run and again go to event viewer which u have created and refresh it once to see ..debug also 
-
-after doing this much setting also i am not seeing inoformation icon as in that i can see the debug message 
+now build and run and again now  you can see the debug message as well 
 
 
 now i dont have any project or i dont know any web based programing where i can go inside difffernt layers of project 
@@ -650,4 +638,6 @@ namespace WebApplication1
     }
 }
 
-so this program i had stored in Day12 folder only for your reference okay 
+
+
+
