@@ -188,6 +188,16 @@ namespace Linqdemo1
             var sumofarray = (from number in numbers select number).Sum();
             var sumofarray2 = numbers.Sum();
             Console.WriteLine($"The sum is {sumofarray}---{sumofarray2}");
+
+            //4. give me all the names starting with K 
+
+            var nameswithk = from name in names where name.StartsWith("K") select name;// query syntax
+            var nameswithk2 = names.Where(x => x.StartsWith("K"));
+            Console.WriteLine();
+            foreach(string name in nameswithk2)
+            {
+                Console.WriteLine($"{name}");
+            }
             Console.ReadLine();
         }
     }
