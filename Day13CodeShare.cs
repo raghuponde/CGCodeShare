@@ -153,13 +153,20 @@ namespace Linqdemo1
     {
         static void Main(string[] args)
         {
-            int[] numbers = new int[] { 12, 33, 44, 55, 6, 78, 100, 289, 7725, 90 };
+            int[] numbers = new int[] { 12, 33, 44, 55, 6, 78, 100, 289, 25, 90 };
             string[] names = new string[] { "Ravi", "Kiran", "Kishore", "Kavitha", "Mahesh" };
             //give me all the numbers greater than 30 in numbers
 
+            //query syntax 
+
+            var numbergreaterthan30 = from number in numbers where number > 30 select number;
+            foreach (int num in numbergreaterthan30)
+            {
+                Console.Write($"\t{num}");
+            }
+            Console.ReadLine();
 
         }
     }
 }
-
 
