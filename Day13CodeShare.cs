@@ -198,6 +198,22 @@ namespace Linqdemo1
             {
                 Console.WriteLine($"{name}");
             }
+            //5 give me length of each name means no of chars in each name
+            Console.WriteLine();
+            var nameswithlength = from name in names select name;
+            var nameswithlength2 = names;
+            Console.WriteLine();
+            foreach(string name in nameswithlength)
+            {
+                Console.WriteLine($"{name} is having length {name.Length} chars in it ");
+            }
+            Console.WriteLine("enter the string to find count of vowels in a string ");
+            string input = Console.ReadLine();
+            var vowels=input.Where(x=>"aeiou".Contains(x));
+            var vowels2 = from x in input where "aeiou".Contains(x) select x;
+            var vowelscount=vowels.Count();
+            var vowelcount2= vowels2.Count();
+            Console.WriteLine($"The vowels count in a string is {vowelscount}--{vowelcount2}");
             Console.ReadLine();
         }
     }
