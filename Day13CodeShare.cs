@@ -147,5 +147,19 @@ In your syllabus they have given only linq to objects so we will be doing demos 
 
 syntax will be like sql way but select comes last and from comes first and in between where ,order by and other functionalities can be used .
 
+namespace Linqdemo1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[] { 12, 33, 44, 55, 6, 78, 100, 289, 7725, 90 };
+            string[] names = new string[] { "Ravi", "Kiran", "Kishore", "Kavitha", "Mahesh" };
+            //give me all the numbers greater than 30 in numbers
+
+
+        }
+    }
+}
 
 
