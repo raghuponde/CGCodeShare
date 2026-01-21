@@ -155,7 +155,7 @@ namespace Linqdemo1
         {
             int[] numbers = new int[] { 12, 33, 44, 55, 6, 78, 100, 289, 25, 90 };
             string[] names = new string[] { "Ravi", "Kiran", "Kishore", "Kavitha", "Mahesh" };
-            //give me all the numbers greater than 30 in numbers
+            //1.give me all the numbers greater than 30 in numbers
 
             //query syntax 
 
@@ -164,9 +164,25 @@ namespace Linqdemo1
             {
                 Console.Write($"\t{num}");
             }
-            Console.ReadLine();
 
+            Console.WriteLine();
+            //method syntax using lamb
+            var numbergreaterthan30_2=numbers.Where(x=>x > 30);
+            foreach (int num in numbergreaterthan30_2)
+            {
+                Console.Write($"\t{num}");
+            }
+            //2. give me all the even numbers 
+
+            var evennumbers=from number in numbers where number%2==0 select number;//query syntax 
+            var evennumbers2=numbers.Where(x=>x%2==0);
+            Console.WriteLine();
+            //displaying even numbers 
+            foreach (int num in evennumbers2)
+            {
+                Console.Write($"\t{num}");
+            }
+            Console.ReadLine();
         }
     }
 }
-
