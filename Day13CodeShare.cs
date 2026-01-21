@@ -4,7 +4,38 @@ For an application all its data is stored in memory what if u want to store that
 binary ,xml or some other format to store it or transfer so we can say saving the state of an object  permenantly in one format is called as serilization .
 
 open one windows based application and put one button and one text box as well 
-addd reference to dll file System.Runtime.Serialization.Formatters.Binary;and 
+addd reference to dll file
+System.Runtime.Serialization.Formatters.Binary;and 
 System.Runtime.Serialization.Formatters.Soap; and as usual include namespaces 
 
 add three text boxes and one button for serilize and deserilize like that and code is below 
+
+using System.Collections;
+using System.Runtime.Serialization.Formatters.Soap;
+namespace serilization
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        ArrayList obj = new ArrayList();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            obj.Add(textBox1.Text);
+            textBox1.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SoapFormatter ss = new SoapFormatter();
+            string filename = @"D:\sampledemo1.xml";
+            using (FileStream fs = new FileStream
+                (filename, FileMode.Create))
+            {
+                ss.Serialize(fs, obj);
+            }
+        }
+    }
+}
