@@ -109,3 +109,7 @@ namespace serilization
   </ItemGroup>
 
 </Project>
+
+post lunch join batch code :CAP-.NE-JAN-OFF-0091
+	and give the exam 
+
