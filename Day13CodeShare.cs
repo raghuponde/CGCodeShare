@@ -181,7 +181,13 @@ namespace Linqdemo1
             foreach (int num in evennumbers2)
             {
                 Console.Write($"\t{num}");
+
             }
+            Console.WriteLine();
+            //3 give me sum of elelemts in array 
+            var sumofarray = (from number in numbers select number).Sum();
+            var sumofarray2 = numbers.Sum();
+            Console.WriteLine($"The sum is {sumofarray}---{sumofarray2}");
             Console.ReadLine();
         }
     }
