@@ -621,7 +621,7 @@ namespace structstudentdemo
 }
 what i cannot do 
 ------------------
-                 namespace structdemo
+ namespace structdemo
 {
     public struct Student
     {
@@ -630,7 +630,10 @@ what i cannot do
         //not possible also protected internal 
         public double[] Marks { set; get; }
 
+        //~Student()  no destrcutors here these are value types 
+        //{
 
+        //}
         public Student(int id, string name, int numberofsubjects)
         {
             ID = id;
@@ -720,5 +723,3 @@ what i cannot do
         }
     }
 }
-
-                 -
