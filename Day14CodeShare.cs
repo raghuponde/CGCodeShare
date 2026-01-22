@@ -199,3 +199,9 @@ namespace LinqtoEmployeeobjectdemo
         }
     }
 }
+
+Now take any program which u have created using collections like Day 10 Projects or u can go to drive in Day 10 and go to program.cs file of 
+Generic list demo and copy that whole code in chat gpt or perplexity and down write i want the complete code using linq 
+
+and include that code in project and run and see it once 
+
