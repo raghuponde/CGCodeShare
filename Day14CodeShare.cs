@@ -58,3 +58,33 @@ namespace LinqtoEmployeeObjectDemo
     }
 }
 
+program.cs code 
+--------------
+namespace LinqtoEmployeeobjectdemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var employees = EmployeeRepository.Retrive();
+
+            var employees2 = from emp in EmployeeRepository.Retrive() select emp;
+
+            //here above i had used two ways of retriving one is what we do in normal way 
+            // another is query syntx in both the cases i can see list of employees 
+
+            foreach (var employee in employees)
+            {
+                Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
+            }
+
+            Console.WriteLine("\n\n");
+            foreach (var employee in employees2)
+            {
+                Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
+            }
+        }
+    }
+}
+
+
