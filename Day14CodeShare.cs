@@ -58,6 +58,8 @@ namespace LinqtoEmployeeObjectDemo
     }
 }
 
+using System.ComponentModel.Design;
+
 namespace LinqtoEmployeeobjectdemo
 {
     internal class Program
@@ -163,6 +165,24 @@ namespace LinqtoEmployeeobjectdemo
                 Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
 
             }
+
+            //i will give employeeid give me the details of emplyee 
+            Console.WriteLine("\n\n");
+            Console.WriteLine("\n enter the employeeid to get the details of employee");
+            int employeeid=Convert.ToInt32(Console.ReadLine());
+            var empcheck=from emp in employees where emp.EmployeeID==employeeid select emp;
+            Employee empfound = empcheck.FirstOrDefault();
+            if(empfound != null) 
+                {
+                    Console.WriteLine($"{empfound.EmployeeID}--{empfound.FirstName}");
+                }
+                else
+                {
+                Console.WriteLine("emp not found");
+                
+                }
+
+           
         }
     }
 }
