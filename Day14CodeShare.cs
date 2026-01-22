@@ -182,7 +182,20 @@ namespace LinqtoEmployeeobjectdemo
                 
                 }
 
-           
+            // i want to group by city 
+            var groupbycity = employees.GroupBy(x => x.City);
+
+            foreach (var group in groupbycity)
+            {
+                Console.WriteLine($"\nThere are {group.Count()} employees in {group.Key}");
+                Console.WriteLine("************************************************");
+                Console.WriteLine($"{group.Key}--{group.Sum(x => x.Sal)}");
+                foreach(var emp in group)
+                {
+                    Console.WriteLine($"{emp.FirstName} {emp.Sal}" );
+                }
+                  
+            }
         }
     }
 }
