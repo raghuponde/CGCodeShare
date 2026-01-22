@@ -792,5 +792,5 @@ namespace class_instance_refercnevariable
     }
 }
 
-Console.WriteLine(p1.Name);
+
 
