@@ -124,6 +124,37 @@ namespace LinqtoEmployeeobjectdemo
 
 
             }
+            Console.WriteLine("\n\n");
+            foreach (var employee in firstnameandcity2)// here i can write firstnameandcity2 
+            {
+                Console.WriteLine($"{employee.fname}--{employee.cityname}");
+
+
+            }
+
+            var firstnameandcity3 =employees.Select(x=>new { x.FirstName, x.City });//metthod syntax 
+            Console.WriteLine("\n\n");
+            foreach (var employee in firstnameandcity3)// here i can write firstnameandcity2 
+            {
+                Console.WriteLine($"{employee.FirstName}--{employee.City}");
+
+
+            }
+
+            // i want to concatante frist name andn last name of employees and give it as full name 
+            var fullnamedisplay = from emp in employees2
+                                  select new
+                                  {
+                                      fullname = emp.FirstName + " " + emp.LastName
+                                  };
+
+            Console.WriteLine("\n");
+            foreach (var employee in fullnamedisplay)
+            {
+                Console.WriteLine($"{employee.fullname}");
+            }
+
+            Console.WriteLine("\n\n");
         }
     }
 }
