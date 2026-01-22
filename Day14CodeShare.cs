@@ -756,9 +756,8 @@ Reference Variables:
 Person p1 = new Person("Alice");
 Person p2 = p1;  // p2 references same object
 p2.Name = "Bob";
-
-above rough code of explanation is there so my code 
--------------------------------------------------
+Mycode 
+-------
 namespace class_instance_refercnevariable
 {
     class car
@@ -784,13 +783,14 @@ namespace class_instance_refercnevariable
         static void Main(string[] args)
         {
 
-            car car1 = new car("Toyato", 100);
+            car car1 = new car("Toyato", 100);//ference variable 
             car car2 = new car("Honda", 110);// ssperate values they 
+            car car3 = car2;// refereing // refercne variable
+            Console.WriteLine($"{car3.speed}--{car3.brand}");   
+
+
             Console.WriteLine($"{car.totalcars}");
 
         }
     }
 }
-
-
-
