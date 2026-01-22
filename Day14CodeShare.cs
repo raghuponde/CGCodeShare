@@ -58,8 +58,6 @@ namespace LinqtoEmployeeObjectDemo
     }
 }
 
-program.cs code 
---------------
 namespace LinqtoEmployeeobjectdemo
 {
     internal class Program
@@ -83,8 +81,24 @@ namespace LinqtoEmployeeobjectdemo
             {
                 Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
             }
+            Console.WriteLine("Listing employees order by city and then order by sal");
+            Console.WriteLine("\n\n");
+            var usingorderbythen = employees2.OrderBy(x => x.City).ThenBy(x => x.Sal);
+            var usingorderbythen2 = from emp in employees2 orderby emp.City, emp.Sal select emp;
+            Console.WriteLine("\n\n");
+            foreach(var employee in usingorderbythen)
+            {
+                Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
+
+
+            }
+            Console.WriteLine("\n\n");
+            foreach (var employee in usingorderbythen2)
+            {
+                Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
+
+
+            }
         }
     }
 }
-
-
