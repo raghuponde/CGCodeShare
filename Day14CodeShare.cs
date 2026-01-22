@@ -83,8 +83,8 @@ namespace LinqtoEmployeeobjectdemo
             }
             Console.WriteLine("Listing employees order by city and then order by sal");
             Console.WriteLine("\n\n");
-            var usingorderbythen = employees2.OrderBy(x => x.City).ThenBy(x => x.Sal);
-            var usingorderbythen2 = from emp in employees2 orderby emp.City, emp.Sal select emp;
+            var usingorderbythen = employees2.OrderBy(x => x.City).ThenBy(x => x.Sal);//method syntax of linq
+            var usingorderbythen2 = from emp in employees2 orderby emp.City, emp.Sal select emp;//query syntax of linq
             Console.WriteLine("\n\n");
             foreach(var employee in usingorderbythen)
             {
@@ -96,6 +96,31 @@ namespace LinqtoEmployeeobjectdemo
             foreach (var employee in usingorderbythen2)
             {
                 Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
+
+
+            }
+
+            //when u want to project only few proeprties or columns then u have to use different syntax when u say select emp
+            // all columns are selected but now in the case syntax u have to learn 
+
+            var firstnameandcity = from emp in employees2
+                                   select new
+                                   {
+                                       emp.FirstName,
+                                       emp.City
+                                   };
+
+            var firstnameandcity2 = from emp in employees
+                                    select new
+                                    {
+                                        fname=emp.FirstName,
+                                        cityname=emp.City
+                                    };
+
+            Console.WriteLine("\n\n");
+            foreach (var employee in firstnameandcity)// here i can write firstnameandcity2 
+            {
+                Console.WriteLine($"{employee.FirstName}--{employee.City}");
 
 
             }
