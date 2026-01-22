@@ -38,7 +38,7 @@ namespace LinqtoEmployeeObjectDemo
             {
 
                 new Employee{EmployeeID=101,FirstName="sudha",LastName="rani",City="Bangalore",Sal=34000},
-                new Employee{EmployeeID=101,FirstName="Madhu",LastName="sudhan",City="Hyderabad",Sal=30000},
+                new Employee{EmployeeID=102,FirstName="Madhu",LastName="sudhan",City="Hyderabad",Sal=30000},
                  new Employee{EmployeeID=103,FirstName="Kiran ",LastName="Kumar",City="Hyderabad",Sal=35000},
 
                 new Employee{EmployeeID=104,FirstName="sita",LastName="rani",City="Hyderabad",Sal=25000},
