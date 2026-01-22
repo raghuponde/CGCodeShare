@@ -155,6 +155,14 @@ namespace LinqtoEmployeeobjectdemo
             }
 
             Console.WriteLine("\n\n");
+            //i want to skip  first 2 employees and and want to take remaining 3 and last employee i want to leave
+            var fewskipusage = employees.Skip(2).Take(3);
+            Console.WriteLine("\n\n");
+            foreach(var employee in fewskipusage)
+            {
+                Console.WriteLine($"{employee.EmployeeID}--{employee.FirstName}--{employee.LastName}--{employee.City}--{employee.Sal}");
+
+            }
         }
     }
 }
