@@ -723,3 +723,38 @@ what i cannot do
         }
     }
 }
+Instance, Class & Reference Variables
+--------------------------------------
+Instance variables belong to specific object instances, class variables (static) belong to the class itself and are shared across all instances, while reference variables hold memory addresses pointing to objects. Understanding these distinctions is key for memory management and object-oriented programming in C#. 
+
+Code Examples
+
+Instance Variables:
+
+public class Car {
+    public string brand;  // Instance variable
+    public int speed;     // Instance variable
+    public Car(string b, int s) { brand = b; speed = s; }
+}
+Car car1 = new Car("Toyota", 100);
+Car car2 = new Car("Honda", 120);  // Separate values [web:1]
+
+
+Class Variables:
+
+
+public class Car {
+    public static int totalCars = 0;  // Class variable
+    public Car() { totalCars++; }
+}
+
+// car1 and car2 share totalCars value [web:1][web:7]
+
+Reference Variables:
+
+
+Person p1 = new Person("Alice");
+Person p2 = p1;  // p2 references same object
+p2.Name = "Bob";
+Console.WriteLine(p1.Name);
+
