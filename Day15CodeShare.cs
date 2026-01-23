@@ -360,7 +360,7 @@ namespace usingstaticlassdemo
     {
         public static void WhoAmI()
         {
-            WriteLine("C# 6.0 New Feature!");
+            WriteLine("C# 6.0 New Feature!");  
         }
     }
     class UsingStatic
