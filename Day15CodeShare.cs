@@ -189,5 +189,52 @@ Console.WriteLine($"The sum is {a + b}");
 i can add namespaces of systen and io but i cannot put top level statements down it should be kept up only as they are top level statement
 
 
+--next --
+now i will add one file of c# class and try to write top level statements there  like ths 
+
+Console.WriteLine("Hello world"); //here it wil give error 
+
+--next---
+
+    I want to use a in main method in another class 
+
+        using System;
+using System.IO;
+
+int a = 20;
+int b = 30;
+Console.WriteLine($"The sum is {a + b}");
+hai.Demo obj=new hai.Demo();
+obj.Method1(a);
+
+//class Program
+//{
+//    public static void Main()
+//    {
+
+//    }
+//}
+
+class Program2
+{
+    public static void Main()
+    {
+        Console.WriteLine("Hello world");
+    }
+}
+namespace hai
+{
+    class Demo
+    {
+        public void Method1(int a)
+        {
+            //  Console.WriteLine($"{a}");//i cant use a here in main 
+            //method a varible
+            Console.WriteLine($"{a}");
+
+        }
+    }
+}
+
 
 
