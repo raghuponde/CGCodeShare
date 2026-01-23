@@ -373,6 +373,6 @@ namespace usingstaticlassdemo
         }
     }
 }
-
+  
 
 
