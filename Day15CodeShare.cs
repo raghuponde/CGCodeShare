@@ -326,7 +326,7 @@ click on project and and disable to ImplicitUsings
 
 
 using System;
-namespace ConsoleApp3
+namespace usingstaticlassdemo
 {
     class MySelf
     {
@@ -346,4 +346,31 @@ namespace ConsoleApp3
     }
  
 }
+
+
+Modification of my program
+--------------------------
+using static System.Console;
+using static usingstaticlassdemo.MySelf;
+namespace usingstaticlassdemo
+{
+    static class MySelf
+    {
+        public static void WhoAmI()
+        {
+            WriteLine("C# 6.0 New Feature!");
+        }
+    }
+    class UsingStatic
+    {
+        static void Main(string[] args)
+        {
+           // MySelf obj = new MySelf();
+            WhoAmI();
+            ReadLine();
+        }
+    }
+}
+
+
 
