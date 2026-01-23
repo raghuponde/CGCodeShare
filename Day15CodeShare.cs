@@ -280,22 +280,22 @@ namespace hai
 
  2)Local Function 
  ********************
- namespace LocalFunctionsDemo
+namespace LocalFunctionsDemo
 {
     internal class Program
     {
         public int CaluclateSomething (int a, int b)
         {
-            int sum = a + b;
-            int difference = a - b;
+            int sum = Sum(a,b);
+            int difference = Difference(a,b);
             return sum * difference;
-            int Sum(int x,int y)
+            int Sum(int x, int y)
             {
                 return x + y;
             }
-            int Difference(int x,int y)
+            int Difference(int x, int y)
             {
-                return x - y; 
+                return x - y;
             }
         }
         static void Main(string[] args)
@@ -306,5 +306,3 @@ namespace hai
         }
     }
 }
-
-
