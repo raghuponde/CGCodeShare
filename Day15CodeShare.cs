@@ -89,3 +89,35 @@ namespace RegexDemo
         }
     }
 }
+
+
+m?n
+
+here it means this ? means 0 or 1 time i will come 
+
+m?n
+m mn maaaaan n
+True--@2--2
+True--@11--1
+True--@13--1
+
+first here not matches becuase n also should come 
+
+next if u dont write also mn case it is true 
+
+next for maaaaan n is there but i had already told m can come 0 or 1 time so here also correct and matches
+
+lastly n is there which is same 
+
+Pan card validation 
+----------------------
+^[A-Z]{5}[0-9]{4}[A-Z]$
+Email validation 
+--------------
+^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$
+
+so refer https://regexhero.net/reference/ for creating pattern ...
+
+
+
+
