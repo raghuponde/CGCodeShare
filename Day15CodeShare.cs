@@ -122,7 +122,71 @@ C# features from C# 8.0 to C# 12.0
 -------------------------------------
 1)Top Level statements
 
+int a=20;
+int b = 30;
+Console.WriteLine($"The sum is {a + b}");
 
+class Program
+{
+    public static void Main()
+    {
+
+    }
+}
+//here i am getting error it is assumed tht program class is there and main method so i am getting error 
+
+--next ---
+
+    int a=20;
+int b = 30;
+Console.WriteLine($"The sum is {a + b}");
+
+//class Program
+//{
+//    public static void Main()
+//    {
+
+//    }
+//}
+
+class Program2
+{
+    public static void Main()
+    {
+        Console.WriteLine("Hello world");
+    }
+}
+
+u can write like this but hello world i cannot see 
+
+next
+-----
+using System;
+using System.IO;
+
+
+
+//class Program
+//{
+//    public static void Main()
+//    {
+
+//    }
+//}
+
+class Program2
+{
+    public static void Main()
+    {
+        Console.WriteLine("Hello world");
+    }
+}
+
+int a = 20;
+int b = 30;
+Console.WriteLine($"The sum is {a + b}");
+
+i can add namespaces of systen and io but i cannot put top level statements down it should be kept up only as they are top level statement
 
 
 
