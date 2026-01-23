@@ -306,3 +306,44 @@ namespace LocalFunctionsDemo
         }
     }
 }
+
+3)Using static 
+---------------
+    check the below program 
+-------------------------
+click on project and and disable to ImplicitUsings
+
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
+
+
+using System;
+namespace ConsoleApp3
+{
+    class MySelf
+    {
+        public  void WhoAmI()
+        {
+            Console.WriteLine("C# 6.0 New Feature!");
+        }
+    }
+    class UsingStatic
+    {
+        static void Main(string[] args)
+        {
+            MySelf obj = new MySelf();
+            obj.WhoAmI();
+            Console.ReadLine();
+        }
+    }
+ 
+}
+
