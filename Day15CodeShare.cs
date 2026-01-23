@@ -324,7 +324,9 @@ click on project and and disable to ImplicitUsings
 
 </Project>
 
+once rebuild the project so then include namespace 
 
+    
 using System;
 namespace usingstaticlassdemo
 {
