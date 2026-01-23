@@ -236,5 +236,47 @@ namespace hai
     }
 }
 
+next-- i waant to print the code of program2 
+---------------------------------------------
+using System;
+using System.IO;
+
+int a = 20;
+int b = 30;
+Console.WriteLine($"The sum is {a + b}");
+hai.Demo obj=new hai.Demo();
+obj.Method1(a);
+Program2 pp2=new Program2();
+Program2.Main();//static to static outside class ....using class name ...
+
+//class Program
+//{
+//    public static void Main()
+//    {
+
+//    }
+//}
+
+class Program2
+{
+    public static void Main()
+    {
+        Console.WriteLine("Hello world");
+    }
+}
+namespace hai
+{
+    class Demo
+    {
+        public void Method1(int a)
+        {
+            //  Console.WriteLine($"{a}");//i cant use a here in main 
+            //method a varible
+            Console.WriteLine($"{a}");
+
+        }
+    }
+}
+
 
 
