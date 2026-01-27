@@ -526,6 +526,7 @@ namespace ThreadDemo1
 
 The above program with run sequentitaly means as per the order the above program will run now i want to make above programas Thread based program
 here output is os depednetnt every time i will not get same output let us check
+
 now i am using my own delegate to call a trhead using funciton 
 
 using System.Threading;
@@ -568,3 +569,4 @@ namespace ThreadDemo1
     }
 }
 
+so it is not allowing ...
