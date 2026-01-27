@@ -727,5 +727,50 @@ namespace ThreadDemo3usingjoin
         }
     }
 }
+udpaetd code 
+------------
+namespace ThreadDemo3usingjoin
+{
+    internal class Program
+    {
+
+        public static void Fun1()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                Console.WriteLine("Func1() writes {0}", i);
+            }
+
+        }
+
+        public static void Fun2()
+        {
+            for (int j = 6; j > 0; j--)
+            {
+                Console.WriteLine("Func2() writes {0}", j);
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Start of the main program ");
+            Thread firstthread = new Thread(new ThreadStart(Fun1));
+            Thread secondthread = new Thread(new ThreadStart(Fun2));
+           
+            secondthread.Start();
+            firstthread.Start();
+
+
+
+            secondthread.Join();
+          //  firstthread.Join();// here frist thread will disturb second as u have 
+          //not done join join means after join whatever is there will come next only 
+          // and when u say join no body will disturb that thread whic is join 
+
+            Console.WriteLine("End of main()");
+        }
+    }
+}
 
 
