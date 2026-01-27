@@ -353,4 +353,64 @@ Thenn go to this link
    
 https://www.microsoft.com/en-us/download/details.aspx?id=104781
 
-   
+   A thread is the smallest unit of code containing sequence of instructions 
+    that gets executed to define a unique flow of control and path of execution
+    of a program.
+  
+   example of multithreaded process is internet explorer.
+ 
+   we generally go for threads when we have to deal large and complex applications.
+
+ * Inside the process there are threads so a process that is made up of one thread is called 
+ * single threaded process.
+ * A process containg two or more threads in it is called multithreaded process.
+ * Example of this is web browser i.e internet explorer so within the web browser
+ * u can print the page and scroll also so in one process there are mutiple threads.
+ * when we do multithreading time is saved as we simaltaneously execute the application.
+ * every program has one thread...u can create more threads if necessary.
+ * problem with single threaded application is that possibily lengthy activities must
+ * complete before other activities can begin and that may be inportant
+ * so user feeels that he has spend lot of time.
+ * so he goes for multithreading.
+ *A memeory is allocated to processs not for thread.
+ * 
+ * Multitasking is the ability to execute more than one task at a time.
+ * multitasking is of two types:
+ * 1.process based multitasking
+ * 2.Thread based multitasking
+ * 
+ * 1 example is dos coommand open and running program in editor.
+ * 2.text editor is a single process and in that two threads are running.
+ * one is of wrting to file and another s printing.
+ * These are light weight process.
+ * 
+ * four advantages of multithreading:
+ * 
+ * 1.improved performance.
+ * 2.minized system resources because same address space is shared by different threads.
+ * 3.simaltanues acces due to  quick contxt switching
+ * 4.program structure simplification.beacuse task is shared.
+ * 
+ * 
+ * disadvantages:
+ * 
+ * 1.race condition leads to corruption of data ...producer and consumer problem example
+ * 2.deadlock condition happens when two threads wait for each other to complete thir operation.
+ * 3.lock starvation.:execution of thread is postponed due to low priority
+ * 
+ * 
+ * Multithreading is platform dependent or os dependent because each time the order or sequence of
+ * output changes.
+ * 
+ * so implement concurency also we go for threads.
+ * human body si also example of concurrency we do breathing,smiling,etc 
+ * ada was the first language to implement concurrency.
+ * c,c++  are example of single threaded languages it wont support multithreading.
+ * 
+ * garbage collector  is the lowest  priority thread.
+ * 
+ * 
+ * 
+ * 
+ * 
+ *
