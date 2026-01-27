@@ -344,3 +344,13 @@ namespace patternmatchingdemo2
     }
 }
 
+Installing Sql Server 2022 
+--------------------------
+Tom Install sql server first u have to configure IIS server becasue sql server by default gets installed on IIS server this we have done earlier also if u have not done do it 
+
+
+Thenn go to this link 
+   
+https://www.microsoft.com/en-us/download/details.aspx?id=104781
+
+   
