@@ -185,6 +185,7 @@ namespace ExpressionBodiedMethodsDemo
 
 Tuples 
 ---------
+when single varibale is storing multiple types then we call it as tuples we can desctruce the tuple variable into my individual variables like this 
 namespace TuplesDemo
 {
     internal class Program
