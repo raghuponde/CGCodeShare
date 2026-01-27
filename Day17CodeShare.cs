@@ -392,7 +392,7 @@ MultiThreading
  * 1.improved performance.
  * 2.minized system resources because same address space is shared by different threads.
  * 3.simaltanues acces due to  quick contxt switching
- * 4.program structure simplification.beacuse task is shared.
+ * 4.program structure simplification.beacuse task is shared. 
  * 
  * 
  * disadvantages:
