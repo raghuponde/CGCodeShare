@@ -800,4 +800,34 @@ class Test
         Console.ReadLine();
     }
 }
+Async Await demo
+----------------
+namespace AsyncAwaitDemo
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Text = "";
+            label2.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "Before Delay";
+            Thread.Sleep(10000);
+            label2.Text = "after Delay";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Say Hello");
+        }
+    }
+}
 
