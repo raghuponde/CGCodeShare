@@ -526,4 +526,45 @@ namespace ThreadDemo1
 
 The above program with run sequentitaly means as per the order the above program will run now i want to make above programas Thread based program
 here output is os depednetnt every time i will not get same output let us check
+now i am using my own delegate to call a trhead using funciton 
+
+using System.Threading;
+
+namespace ThreadDemo1
+{
+    internal class Program
+    {
+
+        public static void Func1()
+        {
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine($"Func 1 write {i}");
+            }
+        }
+        public static void Func2()
+        {
+            for (int i = 10; i >0; i--)
+            {
+                Console.WriteLine($"Func 2 write {i}");
+            }
+        }
+        public delegate void ThreadStart1();
+        // 
+        static void Main(string[] args)
+        {
+            ThreadStart1 t1 = new ThreadStart1(Func1);
+            //ThreadStart t2 = new ThreadStart(Func2);
+            Thread first = new Thread(t1);//error
+          Thread second = new Thread(Func2);
+            first.Priority = ThreadPriority.Lowest;
+            second.Priority = ThreadPriority.Highest;
+
+            first.Start();
+            second.Start();
+           
+            Console.ReadLine();
+        }
+    }
+}
 
