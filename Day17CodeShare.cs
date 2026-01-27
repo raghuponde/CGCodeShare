@@ -443,6 +443,7 @@ MultiThreading
 
 using threads 
 -----------------
+There is an inbuilt delegate with the name ThreadStart which will point to all functions whoes return type is void and wil not take any parameters 
 using System.Threading;
 
 namespace ThreadDemo1
@@ -483,5 +484,5 @@ namespace ThreadDemo1
 
 
 The above program with run sequentitaly means as per the order the above program will run now i want to make above programas Thread based program
-
+here output is os depednetnt every time i will not get same output let us check
 
