@@ -686,3 +686,46 @@ namespace ThreadDemo2
 }
 
 
+Using join to wait for running threads :
+
+_________________________________________
+
+U can make a thread to wait for other running threads to complete by calling the join method and consider 
+
+namespace ThreadDemo3usingjoin
+{
+    internal class Program
+    {
+
+        public static void Fun1()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                Console.WriteLine("Func1() writes {0}", i);
+            }
+
+        }
+
+        public static void Fun2()
+        {
+            for (int j = 6; j > 0; j--)
+            {
+                Console.WriteLine("Func2() writes {0}", j);
+            }
+
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Start of the main program ");
+            Thread firstthread = new Thread(new ThreadStart(Fun1));
+            Thread secondthread = new Thread(new ThreadStart(Fun2));
+            firstthread.Start();
+            secondthread.Start();
+            
+            Console.WriteLine("End of main()");
+        }
+    }
+}
+
+
