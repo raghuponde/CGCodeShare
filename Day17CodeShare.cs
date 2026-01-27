@@ -210,3 +210,25 @@ namespace TuplesDemo
     }
 }
 
+Pattern matching demo 
+---------------------
+namespace patternmatchingdemo1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int score = 85;
+            string grade = score switch
+            {
+                >= 90 => "A 🎉",
+                >= 80 => "B 👍",
+                >= 70 => "C 😊",
+                >= 60 => "D 🙂",
+                _ => "F 😞"
+            };
+            Console.WriteLine($"Score {score}={grade}");
+            Console.ReadLine();
+        }
+    }
+}
