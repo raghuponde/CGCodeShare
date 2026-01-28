@@ -91,4 +91,27 @@ insert into demo2 values (null,'kiran',null,'kishore2') --error--one time null i
 --here mname lname are having table level constraint and id is column level constraint 
 
 
+--primary key 
+--------------
+-- A combination of not null and unique is nothing but primary key 
+-- this can be applied both as column level and table level 
+-- remeber only one primary key will be there for a table 
+-- means in one primary there can be multiple columns
+
+-- column level primary key
+create table demo3(id int primary key,fname varchar(30) not null,
+mname varchar(30) null,lname varchar(40));
+insert into demo3 values(101,'kiran',null,null);
+insert into demo3 values(101,'kiran',null,null);--error
+insert into demo3 values(null,'kiran',null,null);--error
+
+-- table level
+create table demo4(id int ,fname varchar(40) not null,
+mname varchar(30),lname varchar(40),
+constraint pk1 primary key(id))
+
+insert into demo4 values(101,'kiran',null,null);
+insert into demo4 values(101,'kiran',null,null);--error
+insert into demo4 values(null,'kiran',null,null);--error
+
 
