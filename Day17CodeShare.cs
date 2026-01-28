@@ -86,6 +86,9 @@ insert into demo2 values(102,'kiran',null,'das')--fine
 insert into demo2 values(102,'kiran',null,'das')--error
 insert into demo2 values (103,'kiran',null,'kishore')--fine
 insert into demo2 values (null,'kiran',null,'kishore1')--fine
-insert into demo2 values (null,'kiran',null,'kishore2') --error
+insert into demo2 values (null,'kiran',null,'kishore2') --error--one time null is allowed in duplicate
+
+--here mname lname are having table level constraint and id is column level constraint 
+
 
 
