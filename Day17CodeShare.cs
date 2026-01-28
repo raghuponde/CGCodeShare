@@ -90,7 +90,6 @@ insert into demo2 values (null,'kiran',null,'kishore2') --error--one time null i
 
 --here mname lname are having table level constraint and id is column level constraint 
 
-
 --primary key 
 --------------
 -- A combination of not null and unique is nothing but primary key 
@@ -113,5 +112,25 @@ constraint pk1 primary key(id))
 insert into demo4 values(101,'kiran',null,null);
 insert into demo4 values(101,'kiran',null,null);--error
 insert into demo4 values(null,'kiran',null,null);--error
+
+--creating a composite primary key 
+create table demo5(id int ,fname varchar(40) not null,mname varchar(40) ,lname varchar(40)
+constraint pk44 primary key(id,fname));
+
+insert into demo5 values(101,'kiran',null,null);--fine
+
+insert into demo5 values(101,'mahesh',null,null);--fine
+
+insert into demo5 values(102,'mahesh',null,null);--fine
+
+-- like this is wrong 
+
+-- below code is wrong one time only u can do primary key 
+-- 
+create table demo6(id int primary key,fname varchar(40) not null,
+mname varchar(30),lname varchar(40),
+constraint pk2 primary key(id,fname));
+
+
 
 
