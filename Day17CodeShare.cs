@@ -131,6 +131,18 @@ create table demo6(id int primary key,fname varchar(40) not null,
 mname varchar(30),lname varchar(40),
 constraint pk2 primary key(id,fname));
 
+--4)check constraint --values are checked based on condition 
+
+create table bankdemo(bankid int primary key ,bankname varchar(40),balance int check(balance>2000));
+--same written as table level 
+
+create table bankdemo2(bankid int primary key ,bankname varchar(40),balance int,constraint bkchk 
+check(balance>2000));
+
+insert into bankdemo values (101,'BOI',300); -- will get erroro as 300 is less than 2000
+insert into bankdemo2 values (101,'BOI',100) -- here also eror as more than 2000 only u need to enter 
+
+insert into bankdemo2 values(102,'BOB',2001);-- okay will run 
 
 
 
