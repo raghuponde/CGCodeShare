@@ -36,9 +36,28 @@ delete from student where studid in (102,104)
 delete from student;
 --delete student ; thi is also okay 
 
+--what is the differene between truncate and delete command 
 
+create table empinfo(empid int identity(1,1) primary key ,empname varchar(40))
 
+insert into empinfo values('ravi');
+insert into empinfo values('sita');
+insert into empinfo values('chandan')
 
+select * from empinfo;
+
+--first difference is u cannot use where clause with truncate and it is DDL command
+--where as delete can be used with where and it is dml command 
+
+--truncate empinfo where empname='sita';not possible
+
+delete empinfo
+insert into empinfo values('jagdish');
+truncate table empinfo
+
+insert into empinfo values('ayyapa');
+-- so u can see log are mainted when u delete command is used but 
+-- for truncate it is not maintained it starts from first 
 
 
 
