@@ -144,5 +144,18 @@ insert into bankdemo2 values (101,'BOI',100) -- here also eror as more than 2000
 
 insert into bankdemo2 values(102,'BOB',2001);-- okay will run 
 
+--5 Default constraint 
+
+--Default constraint : here if u forget 
+--any column system will put null to that column 
+--but i want my default value there so 
+-- default constraint is used 
+
+create table employee(empid int primary key ,
+empname varchar(30) default 'Mr.X',salary int);
+
+insert into employee(empid,salary) values(101,23000);
+
+select * from employee;
 
 
