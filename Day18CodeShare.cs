@@ -37,3 +37,19 @@ insert into emp1 values (102,'sita',10);
 insert into emp1 values(103,'suresh',20);
 insert into emp1 values(104,'sanjay',null);
 insert into emp1 values(105,'sunitha',40);--error
+
+--create one table where doctor is there and pateint is there and treatment is going on
+-- in treatment both doctor and patient is involved so now 
+-- create three tables of doctor ,patient and treatment 
+
+--you can decide any things in doctor or patient as master table but 
+--treatemnt will be child of both doctor and pateinte so create tables for this scenario 
+
+create table doctor(docid int primary key ,docname varchar(40))
+
+create table patient(patid int primary key,patname varchar(40),treatedby int foreign key 
+references doctor(docid));
+
+create table treatement(treatid int primary key,treatedby int ,takenby int,
+constraint dk22 foreign key (treatedby) references doctor(docid),
+constraint pkk44 foreign key (takenby) references patient(patid));
