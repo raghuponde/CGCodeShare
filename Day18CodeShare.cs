@@ -74,3 +74,7 @@ insert into empdetails values(102,'sohan',30000);
 insert into empdetails values(103,'sita',38000);
 
 
+
+select sum(empsal) as "totalsal" ,
+max(empsal) as "maxsal",min(empsal) as "minsal",avg(empsal) as "average",
+count(*) as "totalemps" from empdetails;
