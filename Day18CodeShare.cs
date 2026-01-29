@@ -11,3 +11,5 @@ create table dept(deptid int primary key,deptname varchar(40))
 insert into dept values(10,'HR');
 insert into dept values (20,'Sales')
 insert into dept values (30,'Marketing');
+
+
