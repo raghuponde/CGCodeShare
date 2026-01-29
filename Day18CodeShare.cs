@@ -176,6 +176,18 @@ where d1.deptname is null;
 select e1.empname  from dept3 d1 right join emp3 e1 on e1.worksin=d1.deptid
 where d1.deptname is null;
 
+-- give me the department wherre no employee is working 
+--version one 
+select d1.deptname,e1.empname from dept3 d1 left join emp3 e1 on d1.deptid=e1.worksin;
+
+--verison 2 
+
+select d1.deptname,e1.empname from dept3 d1 left join emp3 e1 on d1.deptid=e1.worksin
+where e1.empname is null;
+
+--version 3 
+select d1.deptname from dept3 d1 left join emp3 e1 on d1.deptid=e1.worksin
+where e1.empname is null;
 
 
 
