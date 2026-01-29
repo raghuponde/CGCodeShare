@@ -6,10 +6,21 @@ Definition : Two Tables are said to related to each other if they are having one
 The table which i create first is the master table  which is not depending on any table for is exsistence 
 but the child table will depend on master table it should contain in the foreign key only the values of master table .
 
-  use CG;
+use CG;
 create table dept(deptid int primary key,deptname varchar(40))
 insert into dept values(10,'HR');
 insert into dept values (20,'Sales')
 insert into dept values (30,'Marketing');
 
+create table emp(empid int  primary key, empname varchar(40),
+worksin int foreign key references dept(deptid));
+
+insert into emp values (101,'ravi',10);
+insert into emp values (102,'sita',10);
+insert into emp values(103,'suresh',20);
+insert into emp values(104,'sanjay',null);
+insert into emp values(105,'sunitha',40);--error
+
+select * from dept;
+select * from emp;
 
