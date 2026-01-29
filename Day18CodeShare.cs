@@ -171,6 +171,11 @@ where d1.deptname is null;
 select e1.empname  from emp3 e1 left join dept3 d1 on e1.worksin=d1.deptid
 where d1.deptname is null;
 
+--same question using right join 
+
+select e1.empname  from dept3 d1 right join emp3 e1 on e1.worksin=d1.deptid
+where d1.deptname is null;
+
 
 
 
