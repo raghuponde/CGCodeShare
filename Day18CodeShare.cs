@@ -53,3 +53,24 @@ references doctor(docid));
 create table treatement(treatid int primary key,treatedby int ,takenby int,
 constraint dk22 foreign key (treatedby) references doctor(docid),
 constraint pkk44 foreign key (takenby) references patient(patid));
+
+where to keep foreign key 
+-----------------------
+when one to one realtinship is there you can keep foreign key anywhere in the tables here no master and no child table will be there 
+
+when one to many is there put foreign key in the child table and which table u create after master is nothing but child table only 
+
+when many to many relationship is there the table is splitted into two one to many relationships .slide 33 refere 
+
+Aggregate Functions 
+--------------------
+sum ,avg ,min ,max,count are called aggregate functions 
+-- aggrgate functions usage here set of rows will go and will give single value
+
+create table empdetails(empid int primary key ,
+empname varchar(30),empsal int);
+insert into empdetails values(101,'ravi',34000)
+insert into empdetails values(102,'sohan',30000);
+insert into empdetails values(103,'sita',38000);
+
+
