@@ -147,3 +147,13 @@ insert into emp3 values(101,'ravi',10),
 
 select * from dept3;
 select * from emp3;
+
+
+--give me all the employees who have got dept;
+
+--version 1
+select e1.empname ,d1.deptname from emp3 e1 inner join dept3 d1 on e1.worksin=d1.deptid;
+--version 2
+select e1.empname + ' is working in '+ d1.deptname from emp3 e1 inner join 
+dept3 d1 on e1.worksin=d1.deptid;
+
