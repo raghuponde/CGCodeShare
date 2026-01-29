@@ -132,4 +132,18 @@ select job from empl group by job;--version
 select job,sum(sal) as "totalsal" from empl group by job ;--version 2
 select job,sum(sal) as "totalsal" from empl group by 
 job having sum(sal) > 5000;--version 3
+Joins
+---------
 
+ create table dept3(deptid int primary key ,deptname varchar(30));
+insert into dept3 values(10,'sales'),(20,'Marketing'),
+(30,'Software'),(40,'HR');
+create table emp3(empid int primary key ,empname varchar(30),
+worksin int foreign key 
+references dept3(deptid));
+insert into emp3 values(101,'ravi',10),
+(102,'kiran',20),(103,'mahesh',30),(104,'suresh',20),
+(105,'satish',null);
+
+select * from dept3;
+select * from emp3;
