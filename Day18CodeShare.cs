@@ -32,4 +32,8 @@ deptid int,constraint forkey1 foreign key(deptid) references dept(deptid));--tab
 
 
 
-
+insert into emp1 values (101,'ravi',10);
+insert into emp1 values (102,'sita',10);
+insert into emp1 values(103,'suresh',20);
+insert into emp1 values(104,'sanjay',null);
+insert into emp1 values(105,'sunitha',40);--error
