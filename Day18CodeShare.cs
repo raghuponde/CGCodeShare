@@ -189,5 +189,17 @@ where e1.empname is null;
 select d1.deptname from dept3 d1 left join emp3 e1 on d1.deptid=e1.worksin
 where e1.empname is null;
 
+-- joining with the third table 
+ create table Location(locid int primary key ,
+ locname varchar(30),empid int references 
+  emp3(empid));
 
+insert into location values (1001,'delhi',102);
+insert into location values (1002,'bangalore',103);
+insert into location values (1003,'pune',104);
+insert into location values(1004,'chennai',105);
+
+select * from dept3;
+select * from emp3;
+select * from location
 
