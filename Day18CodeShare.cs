@@ -125,3 +125,11 @@ select deptno,count(ename) from empl group by deptno;
 -- give me max and min salary in each category of jobs 
 select job from empl group by job
 select job ,max(sal),min(sal)  from empl group by job;
+
+-- give me sum of salaries in each job and filter whoes sum is > 5000
+
+select job from empl group by job;--version 
+select job,sum(sal) as "totalsal" from empl group by job ;--version 2
+select job,sum(sal) as "totalsal" from empl group by 
+job having sum(sal) > 5000;--version 3
+
