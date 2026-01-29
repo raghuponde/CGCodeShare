@@ -13,7 +13,7 @@ insert into dept values (20,'Sales')
 insert into dept values (30,'Marketing');
 
 create table emp(empid int  primary key, empname varchar(40),
-worksin int foreign key references dept(deptid));
+worksin int foreign key references dept(deptid));--column level constraint
 
 insert into emp values (101,'ravi',10);
 insert into emp values (102,'sita',10);
@@ -21,6 +21,15 @@ insert into emp values(103,'suresh',20);
 insert into emp values(104,'sanjay',null);
 insert into emp values(105,'sunitha',40);--error
 
+
+
 select * from dept;
 select * from emp;
+--another way of referring master table 
+
+create table emp1(empid int  primary key, empname varchar(40),
+deptid int,constraint forkey1 foreign key(deptid) references dept(deptid));--table level constraint
+
+
+
 
