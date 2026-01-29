@@ -156,4 +156,21 @@ select e1.empname ,d1.deptname from emp3 e1 inner join dept3 d1 on e1.worksin=d1
 --version 2
 select e1.empname + ' is working in '+ d1.deptname from emp3 e1 inner join 
 dept3 d1 on e1.worksin=d1.deptid;
+version 3 
+select e1.empname  from emp3 e1 inner join dept3 d1 on e1.worksin=d1.deptid;
+
+-- give me all the emploayees who have not got dept ;;
+--version 1
+select e1.empname ,d1.deptname from emp3 e1 left join dept3 d1 on e1.worksin=d1.deptid;
+
+-- version 2 
+select e1.empname ,d1.deptname from emp3 e1 left join dept3 d1 on e1.worksin=d1.deptid
+where d1.deptname is null;
+
+-- version 3 
+select e1.empname  from emp3 e1 left join dept3 d1 on e1.worksin=d1.deptid
+where d1.deptname is null;
+
+
+
 
