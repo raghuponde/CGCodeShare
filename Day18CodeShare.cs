@@ -229,7 +229,7 @@ e1.worksin=d1.deptid left join location l1 on e1.empid=l1.empid where l1.locname
 -- give me all the employees who has not got dept but got location 
 ---version 1
 select e1.empname,d1.deptname,l1.locname from emp3 e1 left join dept3 d1 on
-e1.worksin=d1.deptid inner join location l1 on e1.empid=l1.empid;
+e1.worksin=d1.deptid inner join location l1 on e1.empid=l1.empid; 
 
 --version 2 
 select e1.empname,d1.deptname,l1.locname from emp3 e1 left join dept3 d1 on
