@@ -54,43 +54,24 @@ create table treatement(treatid int primary key,treatedby int ,takenby int,
 constraint dk22 foreign key (treatedby) references doctor(docid),
 constraint pkk44 foreign key (takenby) references patient(patid));
 
-where to keep foreign key 
------------------------
-when one to one realtinship is there you can keep foreign key anywhere in the tables here no master and no child table will be there 
-
-when one to many is there put foreign key in the child table and which table u create after master is nothing but child table only 
-
-when many to many relationship is there the table is splitted into two one to many relationships .slide 33 refere 
-
-Aggregate Functions 
---------------------
-sum ,avg ,min ,max,count are called aggregate functions 
--- aggrgate functions usage here set of rows will go and will give single value
-
 create table empdetails(empid int primary key ,
 empname varchar(30),empsal int);
+
 insert into empdetails values(101,'ravi',34000)
 insert into empdetails values(102,'sohan',30000);
 insert into empdetails values(103,'sita',38000);
-
-
 
 select sum(empsal) as "totalsal" ,
 max(empsal) as "maxsal",min(empsal) as "minsal",avg(empsal) as "average",
 count(*) as "totalemps" from empdetails;
 
---Group By 
-------------
--- whatever columns are there in select clause that should be there in 
----group by clause also if not there then apply aggregate functions to the column of select clause 
- -- but when u dont hav much columns like single column only then u can use aggregate function as per the need of the qeustion 
- 
--- when ever they are asking for each ,for every apply group by to column with repeated values 
-
--- in the below table give me count of duplicate values in the table .
-
 create table ids(id int)
 insert into ids values(1),(2),(1),(1),(1),(2),(3)
+select * from ids;
+--version 1
+select id from ids group by id;-- it tells me how many groups are there 
+
+select id ,count(id) from ids group by id ;
 
 create table dept1(
   deptno int ,
@@ -98,8 +79,8 @@ create table dept1(
   loc    varchar(13),
   constraint pkk1 primary key(deptno)
 );
- 
- create table empl(
+
+ create table emp3(
   empno    int primary key,
   ename    varchar(10),
   job      varchar(9),
@@ -117,26 +98,30 @@ values(30, 'SALES', 'CHICAGO');
 insert into dept1
 values(40, 'OPERATIONS', 'BOSTON'); 
 
-select * from dept1;
-
-insert into empl values( 7839, 'KING', 'PRESIDENT', null,'1981-11-17' , 5000, null, 10);
-insert into empl values( 7698, 'BLAKE', 'MANAGER', 7839,'1981-05-01',2850, null, 30);
-insert into empl values( 7782, 'CLARK', 'MANAGER', 7839,'1981-06-09', 2450, null, 10);
-insert into empl values( 7566, 'JONES', 'MANAGER', 7839,'1981-04-02', 2975, null, 20);
-insert into empl values( 7788, 'SCOTT', 'ANALYST', 7566,'1987-04-19', 3000, null, 20);
-insert into empl values( 7902, 'FORD', 'ANALYST', 7566, '1981-12-03', 3000, null, 20);
-insert into empl values( 7369, 'SMITH', 'CLERK', 7902,'1980-12-17', 800, null, 20);
-insert into empl values( 7499, 'ALLEN', 'SALESMAN', 7698, '1981-02-20', 1600, 300, 30);
-insert into empl values(  7521, 'WARD', 'SALESMAN', 7698, '1981-02-22', 1250, 500, 30);
-insert into empl values( 7654, 'MARTIN', 'SALESMAN', 7698, '1981-09-28', 1250, 1400, 30);
-insert into empl values(  7844, 'TURNER', 'SALESMAN', 7698, '1981-09-08', 1500, 0, 30);
-insert into empl values( 7876, 'ADAMS', 'CLERK', 7788, '1987-05-23', 1100, null, 20);
-insert into empl values( 7900, 'JAMES', 'CLERK', 7698, '1981-12-03', 950, null, 30);
-insert into empl values( 7934, 'MILLER', 'CLERK', 7782, '1982-01-23', 1300, null, 10);
+ insert into emp3 values( 7839, 'KING', 'PRESIDENT', null,'1981-11-17' , 5000, null, 10);
+insert into emp3 values( 7698, 'BLAKE', 'MANAGER', 7839,'1981-05-01',2850, null, 30);
+insert into emp3 values( 7782, 'CLARK', 'MANAGER', 7839,'1981-06-09', 2450, null, 10);
+insert into emp3 values( 7566, 'JONES', 'MANAGER', 7839,'1981-04-02', 2975, null, 20);
+insert into emp3 values( 7788, 'SCOTT', 'ANALYST', 7566,'1987-04-19', 3000, null, 20);
+insert into emp3 values( 7902, 'FORD', 'ANALYST', 7566, '1981-12-03', 3000, null, 20);
+insert into emp3 values( 7369, 'SMITH', 'CLERK', 7902,'1980-12-17', 800, null, 20);
+insert into emp3 values( 7499, 'ALLEN', 'SALESMAN', 7698, '1981-02-20', 1600, 300, 30);
+insert into emp3 values(  7521, 'WARD', 'SALESMAN', 7698, '1981-02-22', 1250, 500, 30);
+insert into emp3 values( 7654, 'MARTIN', 'SALESMAN', 7698, '1981-09-28', 1250, 1400, 30);
+insert into emp3 values(  7844, 'TURNER', 'SALESMAN', 7698, '1981-09-08', 1500, 0, 30);
+insert into emp3 values( 7876, 'ADAMS', 'CLERK', 7788, '1987-05-23', 1100, null, 20);
+insert into emp3 values( 7900, 'JAMES', 'CLERK', 7698, '1981-12-03', 950, null, 30);
+insert into emp3 values( 7934, 'MILLER', 'CLERK', 7782, '1982-01-23', 1300, null, 10);
 
 select * from dept1;
-select * from emp1;
-
+select * from empl;
 
 -- give me count of employees in each dept use child table only ..
+--version 1 
+select deptno from empl group by deptno;
+--version 2 
+select deptno,count(ename) from empl group by deptno;
 
+-- give me max and min salary in each category of jobs 
+select job from empl group by job
+select job ,max(sal),min(sal)  from empl group by job;
