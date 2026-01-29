@@ -78,3 +78,18 @@ insert into empdetails values(103,'sita',38000);
 select sum(empsal) as "totalsal" ,
 max(empsal) as "maxsal",min(empsal) as "minsal",avg(empsal) as "average",
 count(*) as "totalemps" from empdetails;
+
+--Group By 
+------------
+-- whatever columns are there in select clause that should be there in 
+---group by clause also if not there then apply aggregate functions to the column of select clause 
+ -- but when u dont hav much columns like single column only then u can use aggregate function as per the need of the qeustion 
+ 
+-- when ever they are asking for each ,for every apply group by to column with repeated values 
+
+-- in the below table give me count of duplicate values in the table .
+
+create table ids(id int)
+insert into ids values(1),(2),(1),(1),(1),(2),(3)
+
+
