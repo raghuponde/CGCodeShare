@@ -66,6 +66,17 @@ select * from emp23;
 -- subquery means query insdie another query 
 
 
+create table empdemo3(empid integer  ,empname varchar(30) ,
+salary integer )
+insert into empdemo3 values ( 101,'ravi',1200);
+insert into empdemo3 values ( 102,'mohan',1100);
+insert into empdemo3 values ( 103,'kumar',1400);
+insert into empdemo3 values ( 104,'senthil',1000);
+insert into empdemo3 values ( 105,'manju',200);
+insert into empdemo3 values ( 106,'manoj',500);
+
+select * from empdemo3;
+
 
 
 
