@@ -147,7 +147,7 @@ left join classes c1 on c1.classid=sc.classid where c1.classname is null
 select s1.studentname  from students s1 left join studentclass sc on sc.studentid=s1.studentid
 left join classes c1 on c1.classid=sc.classid where c1.classname is null
 
---Alter command 
+-Alter command 
 -------------------
 
 --it is used to modify the structure of exsisting table using which u can perform any of the following tasks 
@@ -163,18 +163,34 @@ left join classes c1 on c1.classid=sc.classid where c1.classname is null
 --for 1,2,3 
 -- alter table <Tname> alter col <colname><dtype>[width][notnull/null]
 
+drop table students
 create table students (sno int,sname varchar(50),class int)
-
 
 insert into students values (101,'ravi',12)
 insert into students values(102,'kumar',4)
 insert into students values (103,'senthil',8)
 
-select * from students
+select * from students ;
 
 --alter table <Tname> alter col <colname><dtype>[width][notnull/null]
 alter table students alter column sname char(40) not null;
 
 sp_help students;
 
+--adding a new 
+--alter table <tablename> add <colname> <dtype><width>[not null]
+alter table students add  City varchar(40) not null 
 
+-- i cananot add values while desingina new colum after add new column 
+-- i can add so i will go with 
+alter table students add  City varchar(40)
+
+select * from students;
+
+--now i want to make not null that last city column 
+-- frist add some values in city and then apply frist formulas 
+update students set city='UK' where sno in (101,102,103)
+
+alter table students alter column City varchar(30) not null;
+
+sp_help students;
