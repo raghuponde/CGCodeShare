@@ -78,6 +78,28 @@ insert into empdemo3 values ( 106,'manoj',500);
 select * from empdemo3;
 
 
+-- give me second largest salary from the table 
+
+select max(salary) from empdemo3 where salary <(select max(salary) from empdemo3);
+
+--another way 
+select max(salary) from empdemo3 where salary not in (select max(salary) from empdemo3);
+
+
+-- third largest 
+
+select max(salary) from empdemo3 where salary < (select max(salary) from 
+empdemo3 where salary <(select max(salary) from empdemo3));
+
+--
+
+
+select empname,salary from empdemo3
+order by salary desc
+offset 3 rows 
+fetch next 1 row only;
+
+
 
 
 
