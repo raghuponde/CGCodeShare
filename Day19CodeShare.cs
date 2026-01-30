@@ -214,4 +214,12 @@ sp_help students ;
 -- alter table <tname> drop constriant <constraintname>
 alter table students drop constraint kk45
 
--- tryin
+-- trying to create composite primary key and droping the same
+alter table students alter column sno int not null;
+
+alter table students add constraint kk33  primary key(sno,sname)
+
+sp_help students ;
+
+--agina dropping 
+alter table students drop constraint kk33
