@@ -121,6 +121,20 @@ select * from classes;
 select * from studentclass;
 
 
+--version 1
+select s1.studentname ,c1.classname from students s1 join studentclass sc on sc.studentid=s1.studentid
+join classes c1 on c1.classid=sc.classid
+
+--version 2 
+select distinct(s1.studentname)  from students s1 join studentclass sc on sc.studentid=s1.studentid
+join classes c1 on c1.classid=sc.classid
+
+-- can be written like this also without referring classses table 
+select distinct(s1.studentname)  from students s1 join studentclass sc on sc.studentid=s1.studentid
+
+--- 
+
+
 
 
 
