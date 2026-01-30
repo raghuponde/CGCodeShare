@@ -172,6 +172,9 @@ insert into students values (103,'senthil',8)
 
 select * from students
 
+--alter table <Tname> alter col <colname><dtype>[width][notnull/null]
+alter table students alter column sname char(40) not null;
 
+sp_help students;
 
 
