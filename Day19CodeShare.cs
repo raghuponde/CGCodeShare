@@ -99,7 +99,26 @@ order by salary desc
 offset 3 rows 
 fetch next 1 row only;
 
+some assingment 
+-----------------
+First create three tables like this one is students and another is classes and another is studentclass 
+so there is many to many  relation ship between two tables so i have here one junction table okay so 
+now to answer the question never join student with classes table okay see
+in the answer i had joined the tables using juntion table which is studentclass 
 
+
+--assingment 
+drop table students
+  create table students(studentid int ,studentname varchar(30));
+insert into students values(1,'john'),(2,'Matt'),(3,'James');
+create table classes(classid int ,classname varchar(30));
+insert into classes values(1,'art'),(2,'history'),(3,'Maths');
+create table studentclass(studentid int,classid int );
+insert into studentclass values(1,1),(1,2),(3,1),(3,2),(3,3);
+
+select * from students;
+select * from classes;
+select * from studentclass;
 
 
 
