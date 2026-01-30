@@ -194,3 +194,10 @@ update students set city='UK' where sno in (101,102,103)
 alter table students alter column City varchar(30) not null;
 
 sp_help students;
+
+sp_help students;
+-- drop a columnn 
+--alter table <tname> drop column <colname>
+alter table students drop column City
+
+select * from students 
