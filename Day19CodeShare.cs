@@ -37,3 +37,39 @@ e1.managerid=e2.id where e2.name is null
 
 select e1.name as "empname" ,isnull(e2.name,'CEO') as "Manager"  from Employee e1 left join Employee e2 on 
 e1.managerid=e2.id 
+
+SUBQUERY 
+--------- 
+Query inside another query we call it as subquery 
+here parent query where clause value should match with child query select clause value while
+ defining subqueries .
+here i am talking about a select command inside an another select comand okay so here 
+here in subquery the child select  clause is independent of parent clause means individually it can give me output 
+it is not depending on parent query 
+
+
+create table dept23 (deptid int primary key ,deptname varchar(30))
+
+insert into dept23 values(10,'HR'),(20,'Software'),(30,'Sales');
+
+select * from dept23;
+
+create table emp23 (empid int primary key ,empname varchar(40),deptid
+int foreign key references dept23(deptid));
+
+insert into emp23 values(101,'ravi',30),(102,'kiran',10),(103,'sita',10)
+,(104,'suresh',20)
+
+select * from dept23;
+select * from emp23;
+
+-- subquery means query insdie another query 
+
+
+
+
+
+
+
+
+
