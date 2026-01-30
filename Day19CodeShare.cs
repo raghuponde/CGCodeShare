@@ -134,6 +134,18 @@ select distinct(s1.studentname)  from students s1 join studentclass sc on sc.stu
 
 --- 
 
+--- give me aal the students who have not attended the classes 
+--version 1 
+select s1.studentname ,c1.classname from students s1 left join studentclass sc on sc.studentid=s1.studentid
+left join classes c1 on c1.classid=sc.classid
+
+--version 2
+select s1.studentname ,c1.classname from students s1 left join studentclass sc on sc.studentid=s1.studentid
+left join classes c1 on c1.classid=sc.classid where c1.classname is null
+
+--version 3 
+select s1.studentname  from students s1 left join studentclass sc on sc.studentid=s1.studentid
+left join classes c1 on c1.classid=sc.classid where c1.classname is null
 
 
 
