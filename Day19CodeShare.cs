@@ -22,3 +22,18 @@ select e1.name as "empname" ,e2.name as "Manager" from Employee e1 inner join Em
 e1.managerid=e2.id;
 
 
+-- give me name of the employee also who is not having any manager and if he is top manager 
+-- tell or write beside him as CEO 
+
+--version 1 
+select e1.name as "empname" ,e2.name as "Manager" from Employee e1 left join Employee e2 on 
+e1.managerid=e2.id;
+
+--version 2 
+select e1.name as "empname" ,e2.name as "Manager" from Employee e1 left join Employee e2 on 
+e1.managerid=e2.id where e2.name is null
+
+-- want to keep him as CEO 
+
+select e1.name as "empname" ,isnull(e2.name,'CEO') as "Manager"  from Employee e1 left join Employee e2 on 
+e1.managerid=e2.id 
