@@ -134,3 +134,4 @@ INSERT INTO Products VALUES (6, 'Monitor', 1, 300);
 -- Verify data
 SELECT * FROM Products;
  
+Scenario: Find the highest priced product in each category using correlated subquery.
