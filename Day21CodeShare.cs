@@ -27,3 +27,10 @@ insert into Productsales values(4,3,450,9);
 
 select * from Products;
 select * from Productsales;
+
+-- give me product which is not used in sales only 
+
+select productid,prodname,Description from products where productid not in 
+(select productid from productsales)
+
+ 
