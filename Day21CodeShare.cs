@@ -139,3 +139,5 @@ SELECT * FROM Products1;
 -- inner query 
 select max(price) from products1 where category_id=2
 
+ 
+
