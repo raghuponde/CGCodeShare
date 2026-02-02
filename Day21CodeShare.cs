@@ -113,4 +113,24 @@ JOIN (
     GROUP BY dept_id
 ) dept_avg ON e.dept_id = dept_avg.dept_id
 WHERE e.salary > dept_avg.dept_avg;
+
+another sceanrio 
+
+CREATE TABLE Products (
+    product_id INT PRIMARY KEY,
+    product_name VARCHAR(50),
+    category_id INT,
+    price INT
+);
+
+-- Insert data into Products
+INSERT INTO Products VALUES (1, 'Laptop', 1, 1200);
+INSERT INTO Products VALUES (2, 'Mouse', 1, 25);
+INSERT INTO Products VALUES (3, 'DeskJet', 2, 150);
+INSERT INTO Products VALUES (4, 'LaserJet', 2, 800);
+INSERT INTO Products VALUES (5, 'Keyboard', 1, 75);
+INSERT INTO Products VALUES (6, 'Monitor', 1, 300);
+
+-- Verify data
+SELECT * FROM Products;
  
