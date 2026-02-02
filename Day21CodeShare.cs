@@ -64,7 +64,7 @@ WHERE
 select p1.prodname,sum(ps1.quantitysold) from products p1 inner join productSales ps1 on
 ps1.productid=p1.productid group by p1.prodname
 
- Scenario: Find employees earning more than their department's average salary.
+--Scenario: Find employees earning more than their department's average salary.
 
 CREATE TABLE Employees (
     empid INT PRIMARY KEY,
@@ -94,3 +94,22 @@ INSERT INTO Departments VALUES (2, 'HR');
 SELECT * FROM Employees;
 SELECT * FROM Departments;
 
+-- for the above situation use co related subquery or joins with group by 
+
+--version 1 
+select avg(salary) from  Employees where dept_id=2-- here 2 will get from outer table
+
+select e.empid,e.empname,e.salary,d.dept_name from Employees e join departments d on 
+d.dept_id=e.dept_id where e.salary>
+(select avg(salary) from  Employees where dept_id=e.dept_id)
+
+---using joins
+SELECT e.empid, e.empname, e.salary, d.dept_name
+FROM Employees e
+JOIN Departments d ON e.dept_id = d.dept_id
+JOIN (
+    SELECT dept_id, AVG(salary) AS dept_avg
+    FROM Employees
+    GROUP BY dept_id
+) dept_avg ON e.dept_id = dept_avg.dept_id
+WHERE e.salary > dept_avg.dept_avg;
