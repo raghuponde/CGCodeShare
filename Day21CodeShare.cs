@@ -116,7 +116,8 @@ WHERE e.salary > dept_avg.dept_avg;
 
 another sceanrio 
 
-CREATE TABLE Products (
+--another sceanrio 
+CREATE TABLE Products1 (
     product_id INT PRIMARY KEY,
     product_name VARCHAR(50),
     category_id INT,
@@ -124,14 +125,17 @@ CREATE TABLE Products (
 );
 
 -- Insert data into Products
-INSERT INTO Products VALUES (1, 'Laptop', 1, 1200);
-INSERT INTO Products VALUES (2, 'Mouse', 1, 25);
-INSERT INTO Products VALUES (3, 'DeskJet', 2, 150);
-INSERT INTO Products VALUES (4, 'LaserJet', 2, 800);
-INSERT INTO Products VALUES (5, 'Keyboard', 1, 75);
-INSERT INTO Products VALUES (6, 'Monitor', 1, 300);
+INSERT INTO Products1 VALUES (1, 'Laptop', 1, 1200);
+INSERT INTO Products1 VALUES (2, 'Mouse', 1, 25);
+INSERT INTO Products1 VALUES (3, 'DeskJet', 2, 150);
+INSERT INTO Products1 VALUES (4, 'LaserJet', 2, 800);
+INSERT INTO Products1 VALUES (5, 'Keyboard', 1, 75);
+INSERT INTO Products1 VALUES (6, 'Monitor', 1, 300);
 
 -- Verify data
-SELECT * FROM Products;
+SELECT * FROM Products1;
  
-Scenario: Find the highest priced product in each category using correlated subquery.
+--Scenario: Find the highest priced product in each category using correlated subquery.
+-- inner query 
+select max(price) from products1 where category_id=2
+
