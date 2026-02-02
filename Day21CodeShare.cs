@@ -147,7 +147,8 @@ select p.product_id,p.product_name, p.price
 from Products1 p where p.price =(select max(price) 
 from Products1 where category_id =p.category_id)
 
- --same above code using joins will be diffcult which will be like this down 
+--same above code using joins will be diffcult which will be like this down 
+-- here one virtual table is created ...of the same table ..
 SELECT p1.product_id, p1.product_name, p1.category_id, p1.price
 FROM products1 p1
 JOIN (
@@ -155,5 +156,4 @@ JOIN (
     FROM products1
     GROUP BY category_id
 ) p2 ON p1.category_id = p2.category_id AND p1.price = p2.max_price;
-
 
