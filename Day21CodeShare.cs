@@ -139,5 +139,13 @@ SELECT * FROM Products1;
 -- inner query 
 select max(price) from products1 where category_id=2
 
+ --Scenario: Find the highest priced product in each category using correlated subquery.
+-- inner query 
+select max(price) from products1 where category_id=2
+
+select p.product_id,p.product_name, p.price 
+from Products1 p where p.price =(select max(price) 
+from Products1 where category_id =p.category_id)
+
  
 
