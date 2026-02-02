@@ -38,10 +38,30 @@ select productid,prodname,Description from products where productid not in
 --version 1
 
 select sum(quantitysold) from Productsales where productid=2
+--version 2 
+select p1.prodname ,(select sum(quantitysold) from Productsales where 
+productid=p1.productid) as QTYSold from products p1 
 
-select ps1.prodname ,(select sum(quantitysold) from Productsales where 
-productid=ps1.productid) as QTYSold from products ps1
+SELECT p1.prodname,
+       (SELECT SUM(quantitysold) 
+        FROM Productsales 
+        WHERE productid = p1.productid) AS QTYSold
+FROM products p1
+WHERE EXISTS (SELECT 1 FROM Productsales WHERE productid = p1.productid);
+
+---other way 
+SELECT 
+    ps1.prodname,
+    (SELECT SUM(quantitysold)
+     FROM ProductSales
+     WHERE productid = ps1.productid) AS QTYSold
+FROM products ps1
+WHERE
+    (SELECT SUM(quantitysold)
+     FROM ProductSales
+     WHERE productid = ps1.productid) IS NOT NULL;
+--using joins 
+select p1.prodname,sum(ps1.quantitysold) from products p1 inner join productSales ps1 on
+ps1.productid=p1.productid group by p1.prodname
 
 
-
- 
