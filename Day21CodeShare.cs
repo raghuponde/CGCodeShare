@@ -34,3 +34,14 @@ select productid,prodname,Description from products where productid not in
 (select productid from productsales)
 
  
+--give me name of products and its sum of products sold for each product 
+--version 1
+
+select sum(quantitysold) from Productsales where productid=2
+
+select ps1.prodname ,(select sum(quantitysold) from Productsales where 
+productid=ps1.productid) as QTYSold from products ps1
+
+
+
+ 
