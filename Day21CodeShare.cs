@@ -201,4 +201,30 @@ END
 
 select * from Employees1
 
+-- code of commit transaction 
+
+BEGIN TRANSACTION;
+DECLARE @EmpID1 INT;
+-- Insert a new employee and get the generated EmployeeID
+INSERT INTO Employees1 (FirstName, LastName, Department) 
+VALUES ('ravi1', 'kumar1', 'software1');
+
+SET @EmpID1 = SCOPE_IDENTITY(); -- Get the last inserted ID
+
+-- Update the inserted employee
+UPDATE Employees1 SET Department='Testing' WHERE EmployeeID = @EmpID1;
+
+-- Force rollback by checking for an ID that does not exist
+IF NOT EXISTS (SELECT * FROM Employees1 WHERE EmployeeID =@EmpID1) -- EmployeeID 9999 does not exist
+BEGIN
+    PRINT 'Error: Employee not found, rolling back the transaction';
+    ROLLBACK TRANSACTION;
+END
+ELSE
+BEGIN
+    PRINT 'No errors, committing transaction';
+    COMMIT TRANSACTION;
+END
+
+select * from Employees1
 
