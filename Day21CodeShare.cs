@@ -177,5 +177,28 @@ Example Scenario:
 Let’s walk through a practical example where you insert, update, and delete records in a transaction, and either commit or rollback the changes.
 
 
+--code for roll back transaction 
+begin transaction
+declare @empid int ;
+--insert into employee1 table and get the genrated id 
+insert into Employees1(FirstName,LastName,Department) values('ravi','kumar','software');
+set @empid=SCOPE_IDENTITY();--get the last inserted value 
+--update the inserted value 
+-- Update the inserted employee
+UPDATE Employees1 SET Department='Testing' WHERE EmployeeID = @empid;
+-- Force rollback by checking for an ID that does not exist
+IF NOT EXISTS (SELECT * FROM Employees1 WHERE EmployeeID = 9999) -- EmployeeID 9999 does not exist
+BEGIN
+    PRINT 'Error: Employee not found, rolling back the transaction';
+    ROLLBACK TRANSACTION;
+END
+ELSE
+BEGIN
+    PRINT 'No errors, committing transaction';
+    COMMIT TRANSACTION;
+END
+
+
+select * from Employees1
 
 
