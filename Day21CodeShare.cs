@@ -66,18 +66,31 @@ ps1.productid=p1.productid group by p1.prodname
 
  Scenario: Find employees earning more than their department's average salary.
 
-Sample Tables
-text
-Employees Table:
-empid | empname | salary | dept_id
-101   | Ravi    | 1200   | 1
-102   | Mohan   | 2500   | 2  
-103   | Kumar   | 1400   | 1
-104   | Senthil | 800    | 1
-105   | Manju   | 2000   | 2
+CREATE TABLE Employees (
+    empid INT PRIMARY KEY,
+    empname VARCHAR(50),
+    salary INT,
+    dept_id INT
+);
 
-Departments Table:
-dept_id | dept_name
-1       | IT
-2       | HR
+-- Create Departments table
+CREATE TABLE Departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+-- Insert into Employees
+INSERT INTO Employees VALUES (101, 'Ravi', 1200, 1);
+INSERT INTO Employees VALUES (102, 'Mohan', 2500, 2);
+INSERT INTO Employees VALUES (103, 'Kumar', 1400, 1);
+INSERT INTO Employees VALUES (104, 'Senthil', 800, 1);
+INSERT INTO Employees VALUES (105, 'Manju', 2000, 2);
+
+-- Insert into Departments
+INSERT INTO Departments VALUES (1, 'IT');
+INSERT INTO Departments VALUES (2, 'HR');
+
+-- Verify data
+SELECT * FROM Employees;
+SELECT * FROM Departments;
 
