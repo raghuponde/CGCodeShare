@@ -113,3 +113,4 @@ JOIN (
     GROUP BY dept_id
 ) dept_avg ON e.dept_id = dept_avg.dept_id
 WHERE e.salary > dept_avg.dept_avg;
+ 
