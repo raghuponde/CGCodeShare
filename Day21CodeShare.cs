@@ -157,3 +157,25 @@ JOIN (
     GROUP BY category_id
 ) p2 ON p1.category_id = p2.category_id AND p1.price = p2.max_price;
 
+create a table like this 
+
+ CREATE TABLE Employees1 (
+    EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Department VARCHAR(50)
+);
+
+Transaction demo 
+------------------
+In SQL Server, COMMIT and ROLLBACK are used to manage transactions. A transaction is a unit of work that is either completely applied to the database or completely rolled back, ensuring consistency and integrity.
+
+Key Concepts:
+COMMIT: Saves all changes made during the transaction to the database.
+ROLLBACK: Undoes all changes made during the transaction.
+Example Scenario:
+Let’s walk through a practical example where you insert, update, and delete records in a transaction, and either commit or rollback the changes.
+
+
+
+
