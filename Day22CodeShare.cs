@@ -147,4 +147,19 @@ declare @sum1 int
 exec @result2=addnums 12,45,@sum1 output ;
 print 'The sum is '+Convert(varchar(20),@result2);
 
+create procedure calculator (@num1 int ,@num2 int,@addresult int output ,@substractresult
+int output)
+as
+begin 
+set @addresult=@num1 + @num2;
+set @substractresult=@num1-@num2;
+select @addresult;
+select @substractresult;
+end 
+
+declare @sum int ;
+declare @diff int;
+exec calculator 100,34,@sum output,@diff output 
+print 'The sum is '+Convert(varchar(20),@sum)
+print 'The diff is '+Convert(varchar(20),@diff)
 
