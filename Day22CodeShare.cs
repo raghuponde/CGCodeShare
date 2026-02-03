@@ -254,3 +254,16 @@ select * from studentdata where studid=@studid1
 end
 
 exec selectstud 101
+
+
+ --write a proc to display only  name of student only 
+
+alter  proc selectstud(@studid1 int)
+as
+begin
+declare @name1 varchar(40);
+select @name1=studname from studentdata where studid=@studid1;
+print @name1;
+end
+
+exec selectstud 101
