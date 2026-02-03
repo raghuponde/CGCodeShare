@@ -243,3 +243,14 @@ end
 exec deletestud 102
 
 select * from studentdata 
+
+
+-- sp for select 
+
+create proc selectstud(@studid1 int)
+as
+begin 
+select * from studentdata where studid=@studid1
+end
+
+exec selectstud 101
