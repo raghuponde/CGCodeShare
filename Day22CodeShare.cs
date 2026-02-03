@@ -367,4 +367,22 @@ select * from HumanResources.Department where Name like 'Pro%'
 
 select * from HumanResources.Department where Name like 'Sale_'
 
+ create table hi(
+names varchar(10),
+rollno int
+)
+
+
+insert into hi values ('Karsen',200)
+
+insert into hi values('Karson',500)
+insert into hi values('raghu',62)
+insert into hi values ('Carsen',100)
+insert into hi values('kiran',46)
+insert into hi values ('Carson',300)
+
+select * from hi;
+select * from hi where names like '[CK]ars[eo]n'
+select * from hi where names like '[^K]ars[eo]n'
+
 
