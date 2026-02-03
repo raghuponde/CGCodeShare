@@ -76,3 +76,14 @@ To execute a stored procedure :
 -----------------------------------
 exec <procedure_name> (paramters list)
 
+
+ create procedure printdata 
+as 
+begin 
+declare @x varchar(30)
+set @x='india is doing well'
+print @x;
+end 
+
+exec printdata
+
