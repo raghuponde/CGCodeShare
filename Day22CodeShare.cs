@@ -128,3 +128,23 @@ end
 declare @result1 int;
 exec @result1=addnums 10,45
 print 'The sum is '+Convert(varchar(20),@result1);
+
+
+
+-- i dont want to use my varibale i want to use varibale given me from outside 
+-- then in stored procedure  will use out variable like we were using in c#
+-- here i can use out or output also 
+
+alter procedure addnums (@num1 int,@num2 int,@result int output)
+as begin 
+set @result=@num1 +@num2;
+--print 'The sum is '+Convert(varchar(20),@result);
+return @result;
+end 
+
+declare @result2 int;
+declare @sum1 int 
+exec @result2=addnums 12,45,@sum1 output ;
+print 'The sum is '+Convert(varchar(20),@result2);
+
+
