@@ -113,3 +113,18 @@ print 'The sum is '+Convert(varchar(20),@result);
 end 
 
 exec addnums 20,34
+
+
+ -- returnign a value in stored procedure 
+
+alter procedure addnums (@num1 int,@num2 int)
+as begin 
+declare @result int;
+set @result=@num1 +@num2;
+--print 'The sum is '+Convert(varchar(20),@result);
+return @result;
+end 
+
+declare @result1 int;
+exec @result1=addnums 10,45
+print 'The sum is '+Convert(varchar(20),@result1);
