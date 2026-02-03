@@ -266,4 +266,4 @@ select @name1=studname from studentdata where studid=@studid1;
 print @name1;
 end
 
-exec selectstud 101
+exec selectstud 101 
