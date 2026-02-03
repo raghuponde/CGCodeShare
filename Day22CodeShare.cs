@@ -162,7 +162,7 @@ declare @diff int;
 exec calculator 100,34,@sum output,@diff output 
 print 'The sum is '+Convert(varchar(20),@sum)
 print 'The diff is '+Convert(varchar(20),@diff)
-
+-- can be written like this also 
 alter procedure calculator (@num1 int ,@num2 int,@addresult int output ,@substractresult
 int output)
 as
