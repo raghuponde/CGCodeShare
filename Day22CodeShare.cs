@@ -197,3 +197,14 @@ declare @x varchar(30)
 set @x='india is doing well'
 print @x;
 end
+
+-- write a sp for finding x to the power of y 
+create procedure findPower(@x int, @y int )
+as
+begin
+declare @result int;
+set @result = power(@x,@y);
+print @result;
+end
+
+exec findpower 12,3
