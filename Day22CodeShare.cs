@@ -208,3 +208,28 @@ print @result;
 end
 
 exec findpower 12,3
+
+
+ create table studentdata(studid int primary key ,studname varchar(50))
+-- sp for insert 
+create proc insertstud (@studid1 int ,@studname1 varchar(50))
+as
+begin 
+insert into studentdata values(@studid1,@studname1);
+end 
+
+exec insertstud 102,'suresh'
+
+select * from studentdata 
+
+-- sp for udpate 
+create proc updatestud (@studid1 int ,@studname1 varchar(50))
+as
+begin 
+update  studentdata set studname=@studname1 where studid=@studid1;
+end 
+
+exec updatestud 102,'kiran'
+
+select * from studentdata 
+
