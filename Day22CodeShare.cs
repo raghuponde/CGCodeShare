@@ -233,3 +233,13 @@ exec updatestud 102,'kiran'
 
 select * from studentdata 
 
+-- sp for delete
+create proc deletestud (@studid1 int)
+as
+begin 
+delete  studentdata  where studid=@studid1;
+end 
+
+exec deletestud 102
+
+select * from studentdata 
