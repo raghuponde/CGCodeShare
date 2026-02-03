@@ -163,3 +163,17 @@ exec calculator 100,34,@sum output,@diff output
 print 'The sum is '+Convert(varchar(20),@sum)
 print 'The diff is '+Convert(varchar(20),@diff)
 
+alter procedure calculator (@num1 int ,@num2 int,@addresult int output ,@substractresult
+int output)
+as
+begin 
+set @addresult=@num1 + @num2;
+set @substractresult=@num1-@num2;
+
+end 
+
+declare @sum int ;
+declare @diff int;
+exec calculator 100,34,@sum output,@diff output 
+print 'The sum is '+Convert(varchar(20),@sum)
+print 'The diff is '+Convert(varchar(20),@diff)
