@@ -87,3 +87,13 @@ end
 
 exec printdata
 
+-- if  u want to modify the above procedure 
+
+alter procedure printdata 
+as 
+begin 
+declare @x varchar(30)
+set @x='india is doing well'
+print 'hello world'
+print @x;
+end 
