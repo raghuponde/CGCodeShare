@@ -76,8 +76,7 @@ To execute a stored procedure :
 -----------------------------------
 exec <procedure_name> (paramters list)
 
-
- create procedure printdata 
+create procedure printdata 
 as 
 begin 
 declare @x varchar(30)
@@ -97,3 +96,8 @@ set @x='india is doing well'
 print 'hello world'
 print @x;
 end 
+
+-- u can check using object explorerr in programability section 
+-- default name space is dbo means database owner 
+-- if u dont give namesapce in db it gets stored in dbo
+
