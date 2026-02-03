@@ -177,3 +177,23 @@ declare @diff int;
 exec calculator 100,34,@sum output,@diff output 
 print 'The sum is '+Convert(varchar(20),@sum)
 print 'The diff is '+Convert(varchar(20),@diff)
+
+
+
+ alter procedure printdata with encryption
+as 
+begin 
+declare @x varchar(30)
+set @x='india is doing well'
+print @x;
+end 
+
+sp_helptext printdata
+
+alter procedure printdata 
+as 
+begin 
+declare @x varchar(30)
+set @x='india is doing well'
+print @x;
+end
