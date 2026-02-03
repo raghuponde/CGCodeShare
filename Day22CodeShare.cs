@@ -101,3 +101,15 @@ end
 -- default name space is dbo means database owner 
 -- if u dont give namesapce in db it gets stored in dbo
 
+-- another way to check 
+sp_helptext printdata 
+
+-- to add two numbers write a sp
+create procedure addnums (@num1 int,@num2 int)
+as begin 
+declare @result int;
+set @result=@num1 +@num2;
+print 'The sum is '+Convert(varchar(20),@result);
+end 
+
+exec addnums 20,34
