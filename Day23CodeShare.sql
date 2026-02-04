@@ -185,3 +185,31 @@ select * from <function_name>(parameters_list)
     
 -- Example on inline table valued function 
 _______________________________________________
+
+create table employee_info(
+     ID          int,
+     name        varchar (10),
+     salary      int,
+     start_date  datetime,
+     city       varchar (10),
+     region      char (1))
+
+insert into employee_info
+               values (1,  'Jason', 40420,  '02/01/94', 'New York', 'W')
+ insert into employee_info 
+               values (2,  'Robert',14420,  '01/02/95', 'Vancouver','N')
+ insert into employee_info 
+               values (3,  'Celia', 24020,  '12/03/96', 'Toronto',  'W')
+
+select * from employee_info
+
+
+--write an inline table valued function to find employees in particular
+--region 
+
+
+
+
+
+
+
