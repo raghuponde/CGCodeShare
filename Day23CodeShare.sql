@@ -438,5 +438,18 @@ d1.dname='SALES'
 select e.ename from empl e inner join dept1 d 
 on e.deptno=d.deptno where e.job='CLERK' and d.dname='SALES';
 
+-- give me all the employees who are working as clerk job but not
+--working in dept sales 
+
+select e1.ename from empl e1 join dept1 d1 on d1.deptno=e1.deptno where 
+e1.job='CLERK'
+except
+select e1.ename from empl e1 join dept1 d1 on d1.deptno=e1.deptno where 
+d1.dname='SALES'
+
+-- without except
+select e.ename from empl e inner join dept1 d 
+on e.deptno=d.deptno where e.job='CLERK' and not d.dname='SALES';
+
 
 
