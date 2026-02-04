@@ -307,5 +307,29 @@ where region=@region
 return;
 end
 
+-- i can write the code like this also but this function is returning
+-- table so i cant print message in else that is why i am using table and 
+-- putting message in table and returningn it even it is faalse
+alter function listemp2(@region char)
+returns @table Table
+(
+ID int not null,
+name varchar(50),
+city varchar(50),
+reigon char
+)
+as begin
+if exists(select ID,name,city,region from employee_info where region=@region)
+insert into @table(ID,name,city,reigon)
 
+select ID,name,City,region from employee_info 
+where region=@region
+else
+print 'no employees found'
+return;
+end
+
+--this error i am getting 
+Msg 443, Level 16, State 14, Procedure listemp2, Line 16 [Batch Start Line 172]
+Invalid use of a side-effecting operator 'PRINT' within a function.
 
