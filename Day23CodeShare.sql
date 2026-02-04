@@ -59,7 +59,8 @@ end
 
 select dbo.multiply(23,56)
 -- this function i want to apply to some other table values 
--- i am going to northwind database products tables
+-- i am going to northwind database products tables means shifting totally to northwind and from there 
+    -- calling a function in CG okay 
 
 /****** Script for SelectTopNRows command from SSMS  ******/
 SELECT TOP (1000) [ProductID]
