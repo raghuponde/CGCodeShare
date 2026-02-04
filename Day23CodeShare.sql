@@ -262,6 +262,33 @@ _______________________________________________
 -- multi line table valued functions
 
 
+-- same question answer but doing using multi line table valued function 
+-- try to catch the difference by checking earlier code 
+alter function listemp2(@region char)
+returns @table Table
+(
+ID int not null,
+name varchar(50),
+city varchar(50),
+reigon char,
+message varchar(100)-- adding a message to column of table
+)
+as begin
+if exists(select ID,name,city,region from employee_info where region=@region)
+begin
+insert into @table(ID,name,city,reigon,message)
+select ID,name,City,region,'region found' from employee_info 
+where region=@region
+end
+else
+begin
+-- if no rows are found 
+insert into @table(ID,name,city,reigon,message)values(0,'no data','no data','n','No values are there for this region')
+end
+return;
+end
+
+select * from dbo.listemp2('W')
 
 
 
