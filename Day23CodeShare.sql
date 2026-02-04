@@ -333,3 +333,82 @@ end
 Msg 443, Level 16, State 14, Procedure listemp2, Line 16 [Batch Start Line 172]
 Invalid use of a side-effecting operator 'PRINT' within a function.
 
+SET OPERATORS
+-------------
+In SQL Server, set operators like UNION, INTERSECT, and EXCEPT or Minus (the SQL Server equivalent of MINUS in other databases like Oracle) are used to combine the results of two or more queries. These set operators return distinct results from the queries involved.
+
+1. UNION
+Combines the result sets of two or more queries and removes duplicates.
+Returns distinct values from both result sets.
+2. INTERSECT
+Returns only the rows that are common in both result sets.
+3. EXCEPT (Equivalent to MINUS in other databases)
+Returns the rows from the first query that are not present in the second query.
+
+Rules for Using Set Operators:
+
+The number of columns and their data types must be the same in both queries.
+The order of the columns must be the same.
+Example Scenario:
+Let's work with two tables, Employees_A and Employees_B, which contain some employee records.
+
+-- Table: Employees_A
+CREATE TABLE Employees_A (
+    employee_id INT,
+    first_name NVARCHAR(50),
+    last_name NVARCHAR(50)
+);
+
+INSERT INTO Employees_A (employee_id, first_name, last_name)
+VALUES (1, 'John', 'Doe'),
+       (2, 'Jane', 'Smith'),
+       (3, 'Alice', 'Johnson');
+
+-- Table: Employees_B
+CREATE TABLE Employees_B (
+    employee_id INT,
+    first_name NVARCHAR(50),
+    last_name NVARCHAR(50)
+);
+
+INSERT INTO Employees_B (employee_id, first_name, last_name)
+VALUES (2, 'Jane', 'Smith'),
+       (3, 'Alice', 'Johnson'),
+       (4, 'Bob', 'Brown');
+
+
+-- Get all distinct employees from both tables
+SELECT employee_id, first_name, last_name FROM Employees_A
+UNION
+SELECT employee_id, first_name, last_name FROM Employees_B;
+
+
+-- Get the employees that are present in both tables
+SELECT employee_id, first_name, last_name FROM Employees_A
+INTERSECT
+SELECT employee_id, first_name, last_name FROM Employees_B;
+
+
+
+-- Get employees that are present in Employees_A but not in Employees_B
+SELECT employee_id, first_name, last_name FROM Employees_A
+EXCEPT
+SELECT employee_id, first_name, last_name FROM Employees_B;
+
+
+-- Combine UNION, INTERSECT, and EXCEPT in one query
+-- Step 1: Find all employees from both tables using UNION
+-- Step 2: Find common employees using INTERSECT
+-- Step 3: Find employees that are only in Employees_A but not in Employees_B using EXCEPT
+SELECT employee_id, first_name, last_name FROM Employees_A
+UNION
+SELECT employee_id, first_name, last_name FROM Employees_B
+INTERSECT
+SELECT employee_id, first_name, last_name FROM Employees_A
+EXCEPT
+SELECT employee_id, first_name, last_name FROM Employees_B;
+
+
+
+
+
