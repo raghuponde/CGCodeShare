@@ -415,5 +415,13 @@ select * from empl
 
 -- give me all the employees who are working as clerk job or working in dept sales 
 
+- give me all the employees who are working as clerk job or working in dept sales 
+
+select e1.ename from empl e1 join dept1 d1 on d1.deptno=e1.deptno where 
+e1.job='CLERK'
+union
+select e1.ename from empl e1 join dept1 d1 on d1.deptno=e1.deptno where 
+d1.dname='SALES'
+
 
 
