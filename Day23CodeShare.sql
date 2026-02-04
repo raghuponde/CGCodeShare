@@ -214,7 +214,15 @@ return select * from employee_info where region=@region
 select * from listemp('N');
 -- written as per syntax 
 
+-- if i try to put begin and end here it will give error 
+alter function listemp (@region char)
+returns table 
+as
+begin
+return select * from employee_info where region=@region
+end 
 
+select * from listemp('N');
 
 
 
