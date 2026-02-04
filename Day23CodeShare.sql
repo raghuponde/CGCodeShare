@@ -58,3 +58,22 @@ return @x * @y;
 end 
 
 select dbo.multiply(23,56)
+-- this function i want to apply to some other table values 
+-- i am going to northwind database products tables
+
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP (1000) [ProductID]
+      ,[ProductName]
+      ,[SupplierID]
+      ,[CategoryID]
+      ,[QuantityPerUnit]
+      ,[UnitPrice]
+      ,[UnitsInStock]
+      ,[UnitsOnOrder]
+      ,[ReorderLevel]
+      ,[Discontinued]
+  FROM [NorthWind].[dbo].[Products]
+
+  select ProductName+' doing business of Rs:'+Convert(varchar(30),
+  CG.dbo.multiply(UnitPrice,UnitsInStock)) as totalsale
+  from Products 
