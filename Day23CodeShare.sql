@@ -92,5 +92,30 @@ insert into orders values(105,'2014-08-01','c02')
 
 select * from orders;
 --write a function to find last or latest  order ordered by the given customer ..
+ create function fn_lastorder(@cust varchar(10))
+returns datetime
+as begin
+    declare @lastdate datetime
+    select @lastdate = max(orderdate)
+    from orders
+    where whichcustomer = @cust
+
+    return @lastdate
+end
+
+select dbo.fn_lastorder('c01') as lastorderdate
+select dbo.fn_lastorder('c02') as lastorderdate
+--second type
+CREATE FUNCTION findlatestorder(@custid VARCHAR(30))
+RETURNS DATETIME
+AS
+BEGIN
+    RETURN (
+        select max(orderdate)
+        from orders
+        where @custid = whichcustomer
+    )
+END
+GO 
 
 
