@@ -224,6 +224,42 @@ end
 
 select * from listemp('N');
 
+--now i want to create multi line table valued where i will chosee my table and my columns
+
+
+MultiLine Table valued function:
+------------------------------------
+A multiLine table valued function uses multiple statements
+to build the table that is returned to the calling statement.
+The function body contains Begin and end block
+which hold a series of Transact-SQl statements to build and
+ insert rows into a temperory table.The temperory table is returned in resultset and is created based on specification mentioned  in function.The major difference in the way that you define a multi-statement, table-valued function from the previous example is that you must declare the table that you will be 
+returning.
+syntax:
+create function <function_name> (parameters-list)
+returns @table Table (list_of_column_names)
+as
+begin 
+insert @table 
+--------
+-----
+end 
+
+-- multiline table valued function means here begin and end will come 
+-- means it will return a table only but how many columns i will decide to 
+-- project ..how many columns i have to project that i will decide and 
+-- i will only not just retun table but i can return some extra code also 
+-- or i can display some exta code also so begin and end is ther in 
+-- multi line table valued function 
+
+
+ Example on multiline table valued function 
+_______________________________________________
+
+--write a multi line table valued function which will return employees in region
+
+
+-- multi line table valued functions
 
 
 
