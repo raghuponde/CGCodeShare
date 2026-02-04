@@ -290,5 +290,22 @@ end
 
 select * from dbo.listemp2('W')
 
+--- making it simple 
+
+alter function listemp2(@region char)
+returns @table Table
+(
+ID int not null,
+name varchar(50),
+city varchar(50),
+reigon char
+)
+as begin
+insert into @table(ID,name,city,reigon)
+select ID,name,City,region from employee_info 
+where region=@region
+return;
+end
+
 
 
