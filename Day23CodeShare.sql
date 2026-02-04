@@ -118,8 +118,19 @@ BEGIN
 END
 GO 
 
---Example 3 on scalar function 
---__________________________________
+--third type 
+create function fn_lastorder2(@cust varchar(10))
+returns datetime
+as begin
+    declare @lastdate datetime
+    select Top 1 @lastdate = orderdate
+    from orders
+    where whichcustomer = @cust order by orderdate desc;
+
+    return @lastdate
+end
+
+select dbo.fn_lastorder2('c01') as lastorderdate
 
 create table Books(
 title_id varchar(10),
@@ -130,9 +141,6 @@ insert into Books values('b0102',300,79)
 insert into Books values('b0103',700,85)
 select * from Books
 
-
-Q) write a function on this table which will give me no of books sold
-based on id value u provide to the function ?
 
 --Q) write a function on this table which will give me no of books sold
 --based on id value u provide to the function ?
@@ -147,4 +155,5 @@ return @quantity;
 end 
 
 select dbo.copies_sold('b0101')
+
 
