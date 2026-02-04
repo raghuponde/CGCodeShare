@@ -30,6 +30,8 @@ return ;
 ------
 end
 
+
+
 execution : select <function_name> from <table_name>
 
 Scalar function:
@@ -48,4 +50,11 @@ BEGIN
     RETURN (data_value)
 END
 
+create function multiply(@x int ,@y int)
+returns int
+as
+begin
+return @x * @y;
+end 
 
+select dbo.multiply(23,56)
