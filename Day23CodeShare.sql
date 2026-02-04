@@ -413,9 +413,7 @@ SELECT employee_id, first_name, last_name FROM Employees_B;
 select * from dept1
 select * from empl 
 
--- give me all the employees who are working as clerk job or working in dept sales 
-
-- give me all the employees who are working as clerk job or working in dept sales 
+--- give me all the employees who are working as clerk job or working in dept sales 
 
 select e1.ename from empl e1 join dept1 d1 on d1.deptno=e1.deptno where 
 e1.job='CLERK'
@@ -423,5 +421,9 @@ union
 select e1.ename from empl e1 join dept1 d1 on d1.deptno=e1.deptno where 
 d1.dname='SALES'
 
+-- without union 
+
+select e.ename from empl e inner join dept1 d 
+on e.deptno=d.deptno where e.job='CLERK' or d.dname='SALES';
 
 
