@@ -410,5 +410,10 @@ SELECT employee_id, first_name, last_name FROM Employees_B;
 
 
 
+select * from dept1
+select * from empl 
+
+-- give me all the employees who are working as clerk job or working in dept sales 
+
 
 
