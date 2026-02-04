@@ -157,3 +157,31 @@ end
 select dbo.copies_sold('b0101')
 
 
+Table valued functions:
+-------------------------
+A table valued function returns a table
+ as an output,which can be derived as a part of 
+select statement.Table valued function return 
+the output as a table data  datatype.
+The Table data type is special data type used to store 
+set of rows,which returns the result set of the table valued function
+
+Inline table valued function:
+-------------------------------
+In-line UDFs return a single row or multiple 
+rows and can contain a single SELECT statement. 
+Because in-line UDFs are limited to a single SELECT,
+ They cant contain much logic.An inline function does not contain function body within begin and end statement
+
+syntax:
+--------
+create function <function_name>(parameters_list)
+returns table as
+return (<any select command which will give me resultset>)
+
+procedure of execution(to call inline table function) :
+-------------------------------------------------------
+select * from <function_name>(parameters_list)
+    
+-- Example on inline table valued function 
+_______________________________________________
