@@ -206,6 +206,14 @@ select * from employee_info
 
 --write an inline table valued function to find employees in particular
 --region 
+create function listemp (@region char)
+returns table 
+as
+return select * from employee_info where region=@region
+
+select * from listemp('N');
+-- written as per syntax 
+
 
 
 
