@@ -96,7 +96,7 @@ select * from orders;
 returns datetime
 as begin
     declare @lastdate datetime
-    select @lastdate = max(orderdate)
+    select @lastdate = max(orderdate)  
     from orders
     where whichcustomer = @cust
 
