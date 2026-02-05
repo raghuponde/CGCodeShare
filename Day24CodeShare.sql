@@ -280,3 +280,53 @@ from employees23;
 select EmpID,Name,Department,Salary ,dense_rank() over(partition by department order by salary desc) as Rownum 
 from employees23;
 
+Indexes:
+----------
+when indexes are applied on the table the data retrival of the table will be fast 
+and when ever i am inserting the values in the table it will be inserted by following the index rules 
+
+we have two type of indexes 
+
+--->clustered index 
+--->non clustered index 
+
+clustered index is nothing the primay key only once i implement clustered index or primary key whole rows will be sorted as per the index only  it will be sorted 
+for a table u can apply at a time only one clustere index or primary 
+
+once it is applied again i cannot becasue everthing is arranged in physical order 
+
+Non clustered  index can be applied more than once to different columns .
+
+In clustered index i wil reach the data directly 
+
+In non clstered index i will reach the leaf node or the link from i can reach the data .
+
+eg: In the book i will have index in the front page and then index at the last page index in the front page means direclty i will reach the data and appnedix which is given on last pages of book i will reach data partially in pages 
+
+create table depmgrdet(did char(3),dname varchar(10),mid char(3))
+insert into depmgrdet values('d03','production','e02')
+insert into depmgrdet values('d02','marketing',null)
+select * from depmgrdet
+create nonclustered index ix_depmgrdet on depmgrdet(did)
+select * from depmgrdet
+--can create another clustred index on another column
+create clustered index ix_empmgrdet on empmgrdet(ename) 
+insert into empmgrdet values('e05','parag','e02')
+insert into empmgrdet values('e04','smith','e05')
+select * from empmgrdet
+insert into depmgrdet values('d04','advt','e03')
+insert into depmgrdet values('d05','sale','e03')
+insert into depmgrdet values('d08','advt','e03')
+insert into depmgrdet values('d07','sale','e03')
+select * from depmgrdet
+--can create non clustred index on same column
+create nonclustered index ix_empmgrdet on empmgrdet(eid)
+--can create more than one non clustred index
+create nonclustered index ix_empmgrdetname on empmgrdet(ename)
+--can create clusterd index if not exist on table if non clustred index exist
+create clustered index ix_depmgrdetid on depmgrdet(did)
+
+select * from depdet
+create nonclustered index ix_deptncid on depdet(depid)
+create clustered index ix_deptcid on depdet(depid)
+create clustered index ix_deptcname on depdet(dname)
