@@ -17,3 +17,9 @@ BEGIN CATCH
 
 END CATCH
 
+create table dbo.TestUsers(ID int primary key ,
+name varchar(50))
+
+insert into dbo.TestUsers values(1,'Alice')
+
+
