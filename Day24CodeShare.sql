@@ -1,12 +1,8 @@
---general example 
-
+-- divide by zero violation error 
 BEGIN TRY
-
     SELECT 1/0 AS Error
-
 END TRY
 BEGIN CATCH
-
     SELECT
         ERROR_NUMBER() AS ErrorNumber,
         ERROR_STATE() AS ErrorState,
@@ -14,9 +10,8 @@ BEGIN CATCH
         ERROR_LINE() AS ErrorLine,
         ERROR_PROCEDURE() AS ErrorProcedure,
         ERROR_MESSAGE() AS ErrorMessage
-
 END CATCH
-
+--example 2 primary key violation error 
 create table dbo.TestUsers(ID int primary key ,
 name varchar(50))
 
@@ -31,11 +26,9 @@ Error_number() as ErrorNumber ,
 ERROR_SEVERITY() as ErrorSeverity,
 error_state() as ErrorState,
 ERROR_MESSAGE() as ErrorMessage,
-Error_Line() as Errorline
+Error_Line() as Errorline,
+ERROR_PROCEDURE() AS ErrorProcedure
 end catch
-
-
-
 
 
 
