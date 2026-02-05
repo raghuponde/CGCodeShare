@@ -22,4 +22,20 @@ name varchar(50))
 
 insert into dbo.TestUsers values(1,'Alice')
 
+begin try
+insert into dbo.TestUsers values(1,'Bob')
+end try 
+begin catch 
+select
+Error_number() as ErrorNumber ,
+ERROR_SEVERITY() as ErrorSeverity,
+error_state() as ErrorState,
+ERROR_MESSAGE() as ErrorMessage,
+Error_Line() as Errorline
+end catch
+
+
+
+
+
 
