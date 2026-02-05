@@ -196,4 +196,23 @@ exec InsertCustomerOrder 'mahesh',128.34
 select * from customers ;
 select * from Orders1;
 
+--Suposse i want to raise my own erros with my own severity numbers in the sql server then i will use RaiseError method for it 
+
+Begin try
+declare @age int =125;
+if @age < 18 
+RAISERROR('User must be atleast 18',16,5);
+if @age > 120
+RaisError('User age is unrealistic high',16,6);
+if @age  is null
+RaisError('Age cannot be null',16,7);
+end try 
+begin catch 
+select 
+ ERROR_NUMBER() AS ErrorNumber,
+        ERROR_STATE()  AS ErrorState,   -- will be 5, 6, or 7
+        ERROR_MESSAGE() AS ErrorMessage
+end catch 
+
+
 
