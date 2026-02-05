@@ -1,4 +1,5 @@
 -- divide by zero violation error 
+
 BEGIN TRY
     SELECT 1/0 AS Error
 END TRY
@@ -214,5 +215,28 @@ select
         ERROR_MESSAGE() AS ErrorMessage
 end catch 
 
+CREATE TABLE Employees23 (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Department VARCHAR(50),
+    Salary INT
+);
+
+-- Insert sample data
+INSERT INTO Employees23 (EmpID, Name, Department, Salary)
+VALUES 
+(1, 'Alice', 'HR', 60000),
+(2, 'Bob', 'IT', 55000),
+(3, 'Charlie', 'HR', 70000),
+(4, 'David', 'IT', 60000),
+(5, 'Eva', 'Finance', 75000),
+(6, 'Frank', 'Finance', 62000),
+(7, 'Grace', 'IT', 55000),
+(8, 'Hannah', 'HR', 50000);
+
+
+Task:
+--We want to find all employees whose salary is greater than the average salary of their 
+--respective department.
 
 
