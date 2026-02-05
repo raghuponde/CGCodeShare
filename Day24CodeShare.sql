@@ -86,3 +86,114 @@ BEGIN CATCH
         ERROR_MESSAGE() AS ErrorMessage;
 END CATCH;
 
+-- Create Customers table
+CREATE TABLE Customers
+(
+    CustomerID INT IDENTITY(1,1) PRIMARY KEY,
+    CustomerName NVARCHAR(100)
+);
+
+-- Create Orders table with a foreign key reference to Customers
+CREATE TABLE Orders1
+(
+    OrderID INT IDENTITY(1,1) PRIMARY KEY,
+    CustomerID INT,
+    OrderAmount DECIMAL(10, 2),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+CREATE PROCEDURE InsertCustomerOrder
+    @CustomerName NVARCHAR(100),
+    @OrderAmount DECIMAL(10, 2)
+AS
+BEGIN
+    BEGIN TRY
+        -- Start transaction
+        BEGIN TRANSACTION;
+
+        -- Insert into Customers table
+        INSERT INTO Customers (CustomerName)
+        VALUES (@CustomerName);
+
+        -- Simulate error by inserting an invalid CustomerID into Orders (e.g., 0, which does not exist)
+        INSERT INTO Orders (CustomerID, OrderAmount)
+        VALUES (1, @OrderAmount);
+
+        -- If no error, commit transaction
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Rollback the transaction if an error occurs
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        -- Error handling: Output error details using functions
+        PRINT 'An error occurred during the transaction';
+
+        PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR(10));
+        PRINT 'Error Message: ' + ERROR_MESSAGE();
+        PRINT 'Error Severity: ' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
+        PRINT 'Error State: ' + CAST(ERROR_STATE() AS NVARCHAR(10));
+        PRINT 'Error Procedure: ' + ISNULL(ERROR_PROCEDURE(), 'N/A');
+        PRINT 'Error Line: ' + CAST(ERROR_LINE() AS NVARCHAR(10));
+
+        -- Optionally, re-throw the error
+        -- THROW;
+    END CATCH
+END
+
+exec InsertCustomerOrder 'ravi',123.34
+
+
+select * from customers ;
+select * from Orders1;
+
+--now alter the sp using putting 0 like  this below 
+
+alter PROCEDURE InsertCustomerOrder
+    @CustomerName NVARCHAR(100),
+    @OrderAmount DECIMAL(10, 2)
+AS
+BEGIN
+    BEGIN TRY
+        -- Start transaction
+        BEGIN TRANSACTION;
+
+        -- Insert into Customers table
+        INSERT INTO Customers (CustomerName)
+        VALUES (@CustomerName);
+
+        -- Simulate error by inserting an invalid CustomerID into Orders (e.g., 0, which does not exist)
+        INSERT INTO Orders1 (CustomerID, OrderAmount)
+        VALUES (0, @OrderAmount);
+
+        -- If no error, commit transaction
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        -- Rollback the transaction if an error occurs
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        -- Error handling: Output error details using functions
+        PRINT 'An error occurred during the transaction';
+
+        PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR(10));
+        PRINT 'Error Message: ' + ERROR_MESSAGE();
+        PRINT 'Error Severity: ' + CAST(ERROR_SEVERITY() AS NVARCHAR(10));
+        PRINT 'Error State: ' + CAST(ERROR_STATE() AS NVARCHAR(10));
+        PRINT 'Error Procedure: ' + ISNULL(ERROR_PROCEDURE(), 'N/A');
+        PRINT 'Error Line: ' + CAST(ERROR_LINE() AS NVARCHAR(10));
+
+        -- Optionally, re-throw the error
+        -- THROW;
+    END CATCH
+END
+exec InsertCustomerOrder 'mahesh',128.34
+
+
+select * from customers ;
+select * from Orders1;
+
+
