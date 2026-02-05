@@ -30,5 +30,20 @@ Error_Line() as Errorline,
 ERROR_PROCEDURE() AS ErrorProcedure
 end catch
 
+--example 3 
+--conversion error 
+begin try 
+declare @val int ;
+set @val=convert(int,'abc')
+end try 
+begin catch 
+select 
+Error_number() as ErrorNumber ,
+ERROR_SEVERITY() as ErrorSeverity,
+error_state() as ErrorState,
+ERROR_MESSAGE() as ErrorMessage,
+Error_Line() as Errorline,
+ERROR_PROCEDURE() AS ErrorProcedure
+end catch 
 
 
