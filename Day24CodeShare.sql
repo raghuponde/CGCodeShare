@@ -322,7 +322,7 @@ insert into depmgrdet values('d07','sale','e03')
 select * from depmgrdet
 
 
-
+ 
 --can create non clustred index on same column
 create nonclustered index ix_empmgrdet on empmgrdet(eid)
 --can create more than one non clustred index
