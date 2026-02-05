@@ -271,4 +271,12 @@ VALUES (10, 'Jack', 'HR', 60000);
 and after adding these changes fire the below commands
 
 
+select EmpID,Name,Department,Salary ,row_number() over(partition by department order by salary desc) as Rownum 
+from employees23;
+
+select EmpID,Name,Department,Salary ,rank() over(partition by department order by salary desc) as Rownum 
+from employees23;
+
+select EmpID,Name,Department,Salary ,dense_rank() over(partition by department order by salary desc) as Rownum 
+from employees23;
 
