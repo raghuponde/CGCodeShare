@@ -309,8 +309,9 @@ insert into depmgrdet values('d02','marketing',null)
 select * from depmgrdet
 create nonclustered index ix_depmgrdet on depmgrdet(did)
 select * from depmgrdet
---can create another clustred index on another column
-create clustered index ix_empmgrdet on empmgrdet(ename) 
+-can create another clustred index on another column
+create table empmgrdet (empid varchar(30),empname varchar(30),mgr varchar(30))
+create clustered index ix_empmgrdet on empmgrdet(empid) 
 insert into empmgrdet values('e05','parag','e02')
 insert into empmgrdet values('e04','smith','e05')
 select * from empmgrdet
@@ -319,6 +320,9 @@ insert into depmgrdet values('d05','sale','e03')
 insert into depmgrdet values('d08','advt','e03')
 insert into depmgrdet values('d07','sale','e03')
 select * from depmgrdet
+
+
+
 --can create non clustred index on same column
 create nonclustered index ix_empmgrdet on empmgrdet(eid)
 --can create more than one non clustred index
