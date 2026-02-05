@@ -238,5 +238,21 @@ VALUES
 Task:
 --We want to find all employees whose salary is greater than the average salary of their 
 --respective department.
+--We want to find all employees whose salary is greater than the average salary of their 
+--respective department.
+-- using co related subquery 
+select e.EmpID,e.Name,e.Department, e.Salary from Employees23 e
+where e.Salary > (select AVG(Salary) from Employees23 where Department=e.Department)
+--using join 
+
+select e.empid, e.name,e.department, e.salary
+from employees23 e
+join
+(
+    select department, avg(salary) as avgsalary
+    from employees23
+    group by department
+) d on e.department = d.department where e.salary > d.avgsalary;
+
 
 
