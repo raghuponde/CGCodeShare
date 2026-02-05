@@ -254,5 +254,21 @@ join
     group by department
 ) d on e.department = d.department where e.salary > d.avgsalary;
 
+Now for the same above table add these chnages 
+
+UPDATE Employees23
+SET Salary = 55000
+WHERE Name IN ('Bob', 'Grace');
+
+-- Add one more IT employee with 55000 to make it three
+INSERT INTO Employees23 (EmpID, Name, Department, Salary)
+VALUES (9, 'Ivy', 'IT', 55000);
+
+-- Add one HR employee with the same salary as Alice (60000)
+INSERT INTO Employees23 (EmpID, Name, Department, Salary)
+VALUES (10, 'Jack', 'HR', 60000);
+
+and after adding these changes fire the below commands
+
 
 
