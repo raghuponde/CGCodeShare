@@ -46,4 +46,43 @@ Error_Line() as Errorline,
 ERROR_PROCEDURE() AS ErrorProcedure
 end catch 
 
+--exaple 4 
+--------------
+CREATE TABLE dbo.TableA (Id INT PRIMARY KEY, Val INT);
+CREATE TABLE dbo.TableB (Id INT PRIMARY KEY, Val INT);
+
+INSERT INTO dbo.TableA VALUES (1, 100);
+INSERT INTO dbo.TableB VALUES (1, 200);
+
+BEGIN TRY
+    BEGIN TRANSACTION;
+    UPDATE dbo.TableA SET Val = Val + 10 WHERE Id = 1;
+    WAITFOR DELAY '00:00:10';  -- hold lock on TableA
+    UPDATE dbo.TableB SET Val = Val + 10 WHERE Id = 1;
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    SELECT
+        ERROR_NUMBER() AS ErrorNumber,      -- 1205 if deadlocked
+        ERROR_SEVERITY() AS ErrorSeverity,
+        ERROR_STATE() AS ErrorState,
+        ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
+
+-- in another tab 
+
+BEGIN TRY
+    BEGIN TRANSACTION;
+    UPDATE dbo.TableB SET Val = Val + 20 WHERE Id = 1;
+    WAITFOR DELAY '00:00:10';  -- hold lock on TableB
+    UPDATE dbo.TableA SET Val = Val + 20 WHERE Id = 1;
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    SELECT
+        ERROR_NUMBER() AS ErrorNumber,      -- 1205 if deadlocked
+        ERROR_SEVERITY() AS ErrorSeverity,
+        ERROR_STATE() AS ErrorState,
+        ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
 
