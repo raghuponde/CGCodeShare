@@ -313,7 +313,7 @@ select * from depmgrdet
 create table empmgrdet (empid varchar(30),empname varchar(30),mgr varchar(30))
 create clustered index ix_empmgrdet on empmgrdet(empid) 
 insert into empmgrdet values('e05','parag','e02')
-insert into empmgrdet values('e04','smith','e05')
+insert into empmgrdet values('e04','smith','e05') 
 select * from empmgrdet
 insert into depmgrdet values('d04','advt','e03')
 insert into depmgrdet values('d05','sale','e03')
