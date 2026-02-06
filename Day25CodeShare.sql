@@ -1,6 +1,6 @@
 
 -Views demo 
---______________
+______________
 --views mainly used for security reasons see i have created a table some parts of information 
 --i dont want my junior or subordinate to see so i will created a view for him and second 
 --reason is i had written a complex query involving joins and i want to store it for 
@@ -41,3 +41,13 @@
 --Orders (OrderID, CustomerID, OrderDate, Freight)
 
 --Create a view:
+
+select * from Customers;
+select * from Orders;
+
+create view vw_CustomerOrderView as 
+select c.CustomerID,c.CompanyName,c.City ,
+o.OrderID,o.OrderDate,o.Freight from Customers c 
+inner join Orders o on c.CustomerID=o.CustomerID;
+
+select * from vw_CustomerOrderView
