@@ -51,3 +51,35 @@ o.OrderID,o.OrderDate,o.Freight from Customers c
 inner join Orders o on c.CustomerID=o.CustomerID;
 
 select * from vw_CustomerOrderView
+
+
+
+--2. View with Orders + Order Details + Products
+--Tables:
+
+--Orders
+
+--Order Details (note the space; in T‑SQL you must quote it: [Order Details])
+
+--Products
+
+CREATE VIEW vw_OrderLineItems AS
+SELECT
+    o.OrderID,
+    o.OrderDate,
+    c.CompanyName AS CustomerName,
+    p.ProductName,
+    od.Quantity,
+    od.UnitPrice,
+    od.Quantity * od.UnitPrice AS LineTotal
+FROM Orders o
+INNER JOIN Customers c ON o.CustomerID = c.CustomerID
+INNER JOIN [Order Details] od ON o.OrderID = od.OrderID
+INNER JOIN Products p ON od.ProductID = p.ProductID;
+
+
+
+SELECT OrderID, ProductName, LineTotal
+FROM vw_OrderLineItems
+WHERE CustomerName = 'Alfreds Futterkiste';
+
