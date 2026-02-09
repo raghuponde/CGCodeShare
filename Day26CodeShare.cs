@@ -63,7 +63,28 @@ namespace TimeComplexity
                 arr[i] = temp;
             }
         }
+ public static void CompareSortingEfficiency(int[] data )
+ {
+     var bublesort = data;
+     var seelctionsort = data;
+     var insertsort = data;
+     var stopwatch = Stopwatch.StartNew();
+     BubbleSort(bublesort);
+     stopwatch.Stop();
+     Console.WriteLine($"Bubble sort Time :{stopwatch.ElapsedMilliseconds} ");
 
+     stopwatch = Stopwatch.StartNew();
+     SelectionSort(seelctionsort);
+     stopwatch.Stop();
+     Console.WriteLine($"selection  sort Time :{stopwatch.ElapsedMilliseconds} ");
+
+     stopwatch = Stopwatch.StartNew();
+     InsertionSort(seelctionsort);
+     stopwatch.Stop();
+     Console.WriteLine($"Insertion  sort Time :{stopwatch.ElapsedMilliseconds} ");
+
+ }
+       
           public static int[] GenerateRandomArray(int size)
           {
               Random rand = new Random();
