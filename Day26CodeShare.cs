@@ -63,6 +63,12 @@ namespace TimeComplexity
                 arr[i] = temp;
             }
         }
+
+          public static int[] GenerateRandomArray(int size)
+          {
+              Random rand = new Random();
+              return Enumerable.Range(1,size).OrderBy(x => rand.Next()).ToArray();
+          }
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");
