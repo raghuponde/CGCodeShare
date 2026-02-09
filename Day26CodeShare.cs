@@ -150,6 +150,24 @@ namespace iterative_and_recursiesemo
                 calculateRecursiveTree(n - 1);
             }
         }
+        void FunctionA(int n)
+        {
+            if (n > 0)
+            {
+                Console.WriteLine("A: " + n);
+                FunctionB(n - 1);
+            }
+        }
+
+        void FunctionB(int n)
+        {
+            if (n > 0)
+            {
+                Console.WriteLine("B: " + n);
+                FunctionA(n-1);
+            }
+        }
+
         static void Main(string[] args)
         {
             Program p = new Program();
@@ -162,6 +180,10 @@ namespace iterative_and_recursiesemo
 
                Console.WriteLine("Recursive tree approach:");
                 p.calculateRecursiveTree(5);
+            Console.WriteLine("Mutual recursion approach:");
+
+               p.FunctionA(5);
+               p.FunctionB(5);
             Console.ReadLine();
         }
     }
