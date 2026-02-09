@@ -105,3 +105,38 @@ namespace TimeComplexity
         }
     }
 }
+Iterative and recursive 
+--------------------------
+namespace iterative_and_recursiesemo
+{
+    internal class Program
+    {
+        public void calculateIterative(int n)
+        {
+            while(n>0)
+            {
+                int k = n * n;
+                Console.WriteLine(k);
+                n = n - 1;
+            }
+        }
+        public void calculateRecursive(int n)
+        {
+            if(n>0)
+            {
+                int k = n * n;
+                Console.WriteLine(k);
+                calculateRecursive(n-1);
+            }
+        }
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+                Console.WriteLine("Iterative approach:");
+                p.calculateIterative(5);
+                Console.WriteLine("Recursive approach:");
+                p.calculateRecursive(5);
+           Console.ReadLine();
+        }
+    }
+}
