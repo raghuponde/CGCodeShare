@@ -399,9 +399,9 @@ namespace LinkedList
     }
 }
 
-modify this code :
+updated  this code :
 -----------------
-    namespace LinkedList
+namespace LinkedList
 {
     public class Node
     {
@@ -531,23 +531,30 @@ modify this code :
         }
         public int removeLast()
         {
-            if(isEmpty())
+            if (isEmpty())
             {
-                Console.WriteLine("List is empty ");
+                Console.WriteLine("List is empty");
                 return -1;
             }
-            
-            Node p = head;
-            int i = 1;
-            while(i < size-1)
+
+            int e = tail.element;
+            if (size == 1)
             {
-                p = p.next;
-                i = i + 1;
+                head = null;
+                tail = null;
             }
-            tail = p;
-            p = p.next;
-            int e = p.element;
-            tail.next = null;
+            else
+            {
+                Node p = head;
+                while (p.next != tail)
+                {
+                    p = p.next;
+                }
+
+                p.next = null;
+                tail = p;
+            }
+
             size = size - 1;
             return e;
         }
@@ -578,4 +585,3 @@ modify this code :
         }
     }
 }
-
