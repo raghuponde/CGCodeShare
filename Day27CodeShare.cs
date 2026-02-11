@@ -1,4 +1,3 @@
-
 namespace LinkedList
 {
     public class Node
@@ -55,6 +54,7 @@ namespace LinkedList
                 p=p.next;
 
             }
+            Console.WriteLine();
 
         }
         public void addFirst(int e)
@@ -73,19 +73,44 @@ namespace LinkedList
             }
             size = size + 1;
         }
+
+        public void AddAny(int e,int position)
+        {
+            if(position< 0 || position > size)
+            {
+                Console.WriteLine("Invalid postion");
+                return;
+            }
+            
+            Node newest = new Node(e,null);
+            
+            Node p = head;
+            int i = 1;
+            while(i < position -1)
+            {
+                p = p.next;
+                i = i + 1;
+            }
+            newest.next = p.next;
+            p.next = newest;
+            size = size + 1;
+        }
         static void Main(string[] args)
         {
             Program l=new Program();
-            l.addLast(10);
-            l.addLast(20);
-            l.addLast(13);
+            //l.addLast(10);
+            //l.addLast(20);
+            //l.addLast(13);
             Console.WriteLine("\nSize: " + l.length());
-            l.addLast(67);
-            l.addLast(8);
+            //l.addLast(67);
+            //l.addLast(8);
+            //l.Display();
+            Console.WriteLine("\nSize: " + l.length());
+            //l.addFirst(100);
+            //l.Display();
+            l.AddAny(39,0);
             l.Display();
             Console.WriteLine("\nSize: " + l.length());
-            l.addFirst(100);
-            l.Display();
             Console.ReadLine();
         }
     }
