@@ -753,7 +753,7 @@ namespace LinkedList
             }
             Node p = head;
             int i = 1;
-            while(i<pos-1)
+            while(i<pos-1) 
             {
                 p = p.next;
                 i = i + 1;
