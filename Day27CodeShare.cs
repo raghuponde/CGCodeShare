@@ -23,6 +23,40 @@ namespace LinkedList
             tail = null;
             size = 0;
         }
+        public int length()
+        {
+           return size;
+        }
+        public bool isEmpty()
+        {
+            return size == 0;
+        }
+
+        public void addLast(int e)
+        {
+            Node newest = new Node(e, null);
+            if(isEmpty())
+            {
+                head=newest;
+            }
+            else
+            {
+                   tail.next=newest;
+            }
+            tail=newest;
+            size=size+1;
+        }
+        public void Display()
+        {
+            Node p = head;
+            while (p!=null)
+            {
+                Console.Write(p.element+"----> ");
+                p=p.next;
+
+            }
+
+        }
         static void Main(string[] args)
         {
             
