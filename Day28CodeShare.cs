@@ -260,6 +260,45 @@ imagein i had commented the user defined class
         }
     }
 }
-Then i have to write rhe code as above here anomutout class is coming
+Then i have to write rhe code as above here anonymous  class is coming
 
 
+namespace LinqToFilesDemo
+{
+
+    //public class MyFileInfo
+    //{
+    //    public string Name { get; set; }
+    //    public long  length { get; set; }
+    //    public DateTime CreationTime { get; set; }
+    //}
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var files =  new DirectoryInfo(@"C:\Windows").GetFiles();
+            var query = from file in files
+                        where file.Length > 10000
+                        orderby file.Length
+                        select file;
+       // here above query i can display all the proeprties if i write like this ...we cannot project more than one column in using above syntax 
+            //so we have to follow ...select new syntax 
+
+            
+                        //select new // here anonmyouse class 
+                        //{
+                        //    Name = file.Name,
+                        //    length = file.Length,
+                        //    CreationTime=file.CreationTime
+                        //};
+
+
+            foreach(var file1 in query)
+            {
+                Console.WriteLine($"The {file1.Name} constains {file1.Length} and was creeated at {file1.CreationTime}");
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
