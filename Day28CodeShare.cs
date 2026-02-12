@@ -1,4 +1,3 @@
-
 namespace StacksUsingArrays
 {
     class StackArray
@@ -33,8 +32,9 @@ namespace StacksUsingArrays
                 return;
 
             }
-            data[top] = e;
             top = top + 1;
+            data[top] = e;
+            
         }
         public int pop()
         {
@@ -44,7 +44,7 @@ namespace StacksUsingArrays
                 return -1;
             }
             int e= data[top];
-            top = top - 1;
+            top = top-1 ;
             return e;
 
         }
@@ -70,7 +70,22 @@ namespace StacksUsingArrays
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+           StackArray s = new StackArray(10);
+            s.push(10);
+            s.push(20);
+            s.display();
+            Console.WriteLine($"Size: {s.length()}")    ;
+            Console.WriteLine($"Eelement poped: {s.pop()}")    ;
+            Console.WriteLine($"Is empty:{s.isEmpty()} ");
+            Console.WriteLine($"Eelement poped: {s.pop()}");
+            Console.WriteLine($"Is empty:{s.isEmpty()} ");
+            s.push(23);
+            s.push(45);
+            s.display();
+            Console.WriteLine($"Eelement toped: {s.peek()}");
+            s.display();
+            Console.ReadLine();
+
         }
     }
 }
