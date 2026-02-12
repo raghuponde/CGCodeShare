@@ -152,12 +152,34 @@ namespace QueueUsingArrays
                 return e;
             }
         }
+        public void display()
+        {
+           for(int i=front;i<rear;i++)
+            {
+                   Console.Write(data[i] + " ");
+            }
+            Console.WriteLine();
+        }
     }
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            QueuesArray q = new QueuesArray(10);
+            q.enqueue(10);
+            q.enqueue(20);
+            q.display();
+            Console.WriteLine($"Size of queue is {q.length()}") ;
+            Console.WriteLine($"element removed : {q.dequeue()}")   ;
+            Console.WriteLine($"Is empty :{q.isEmpty()}");
+            Console.WriteLine($"element removed : {q.dequeue()}");
+            Console.WriteLine($"Is empty :{q.isEmpty()}");
+            q.enqueue(34);
+            q.enqueue(56);
+            q.display();
+            Console.WriteLine($"Size of queue is {q.length()}");
+
         }
     }
 }
