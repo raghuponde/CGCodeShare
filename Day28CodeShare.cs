@@ -89,3 +89,46 @@ namespace StacksUsingArrays
         }
     }
 }
+
+
+------------------
+    namespace QueueUsingArrays
+{
+
+    class QueuesArray
+    {
+        int[] data;
+        int front;
+        int rear;
+        int size;
+
+        public QueuesArray(int n)
+        {
+              data = new int[n];
+            front = 0;
+            rear = 0;
+            size = 0;
+        }
+
+        public int length()
+        {
+            return size;
+        }
+        public bool isEmpty()
+        {
+            return size == 0;
+        }
+        public bool isFull()
+        {
+            return size == data.Length;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
+
