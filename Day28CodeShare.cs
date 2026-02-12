@@ -92,7 +92,7 @@ namespace StacksUsingArrays
 
 
 ------------------
-    namespace QueueUsingArrays
+namespace QueueUsingArrays
 {
 
     class QueuesArray
@@ -122,6 +122,36 @@ namespace StacksUsingArrays
         {
             return size == data.Length;
         }
+        public void enqueue(int e)
+        {
+            if(isFull())
+            {
+                Console.WriteLine("Queue is full");
+                return;
+            }
+            else
+            {
+                data[rear] = e;
+                rear = (rear + 1);
+                size = size + 1;
+
+            }
+        }
+        public int dequeue()
+        {
+            if (isEmpty())
+            {
+                Console.WriteLine("Queue is empty");
+                return -1;
+            }
+            else
+            {
+                int e = data[front];
+                front = (front + 1);
+                size = size - 1;
+                return e;
+            }
+        }
     }
     internal class Program
     {
@@ -131,4 +161,3 @@ namespace StacksUsingArrays
         }
     }
 }
-
