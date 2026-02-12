@@ -323,6 +323,28 @@ INSERT INTO Employees (Name, Department, Salary) VALUES
 
 Now open one windows application here in the bracket (.Net framework) should be there for windows form app 
 
+give name as LinqToSql Demo 
+
+┌──────────────────────────────────────────────────────────────┐
+│ Employee Management – LINQ to SQL                            │
+├──────────────────────────────────────────────────────────────┤
+│ DataGridView (dgvEmployees)                                  │
+│ ┌─────────────────────────────────────────────────────────┐ │
+│ │ Id | Name       | Department | Salary     |             │ │
+│ │----|------------|------------|------------|             │ │
+│ │ 1  | John Doe   | IT         | 60000.00   |             │ │
+│ │ 2  | Jane Smith | HR         | 55000.00   |             │ │
+│ │ 3  | Bob Johnson| IT         | 50000.00   |             │ │
+│ └─────────────────────────────────────────────────────────┘ │
+├──────────────────────────────────────────────────────────────┤
+│ ID:          [txtId]     (readonly)                          │
+│ Name:        [txtName]                                      │
+│ Department:  [txtDept]                                      │
+│ Salary:      [txtSalary]                                    │
+├──────────────────────────────────────────────────────────────┤
+│ [Load]  [Add]     [Update]  [Delete]  [Clear]                │
+└──────────────────────────────────────────────────────────────┘
+
 
 
 
