@@ -221,3 +221,45 @@ namespace LinqToFilesDemo
         }
     }
 }
+
+
+imagein i had commented the user defined class
+
+    namespace LinqToFilesDemo
+{
+
+    //public class MyFileInfo
+    //{
+    //    public string Name { get; set; }
+    //    public long  length { get; set; }
+    //    public DateTime CreationTime { get; set; }
+    //}
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var files =  new DirectoryInfo(@"C:\Windows").GetFiles();
+            var query = from file in files
+                        where file.Length > 10000
+                        orderby file.Length
+
+                        select new // here anonmyouse class 
+                        {
+                            Name = file.Name,
+                            length = file.Length,
+                            CreationTime=file.CreationTime
+                        };
+
+
+            foreach(var file1 in query)
+            {
+                Console.WriteLine($"The {file1.Name} constains {file1.length} and was creeated at {file1.CreationTime}");
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
+Then i have to write rhe code as above here anomutout class is coming
+
+
