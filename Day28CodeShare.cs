@@ -18,7 +18,7 @@ namespace StacksUsingArrays
         }
         public bool isEmpty()
         {
-            return top == 0;
+            return top==-1;
         }   
         public bool isFull()
         {
@@ -49,6 +49,22 @@ namespace StacksUsingArrays
 
         }
 
+        public int peek()
+        {
+            if(isEmpty())
+            {
+                Console.WriteLine("Stack is empty");
+                return -1;
+            }
+            return data[top];
+        }
+        public void display()
+        {
+            for(int i=top;i>=0;i--)
+            {
+                Console.WriteLine(data[i]);
+            }
+        }   
     }
     internal class Program
     {
