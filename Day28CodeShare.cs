@@ -200,20 +200,24 @@ namespace LinqToFilesDemo
     {
         static void Main(string[] args)
         {
-           var files=from file in new DirectoryInfo(@"D:\Windows").GetFiles()
-                        where file.Length > 10
-                        orderby file.Length descending
+            var files =  new DirectoryInfo(@"C:\Windows").GetFiles();
+            var query = from file in files
+                        where file.Length > 10000
+                        orderby file.Length
                         select new MyFileInfo
                         {
                             Name = file.Name,
                             length = file.Length,
-                            CreationTime = file.CreationTime
+                            CreationTime=file.CreationTime
                         };
-            foreach(var file in files)
+
+
+            foreach(var file1 in query)
             {
-                Console.WriteLine($"{file.Name} {file.length} {file.CreationTime}");
+                Console.WriteLine($"The {file1.Name} constains {file1.length} and was creeated at {file1.CreationTime}");
+
             }
+            Console.ReadLine();
         }
     }
 }
-
