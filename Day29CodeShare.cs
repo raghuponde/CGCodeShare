@@ -209,3 +209,59 @@ BEGIN
     WHERE Id = @Id;
 END
 GO
+
+Open Employee.dbml.
+
+Server Explorer → expand Stored Procedures → drag all 4 SPs (sp_GetEmployees, etc.) onto the designer surface.
+
+Right-click Employees entity → Configure Behavior.
+
+Insert: Customize → select sp_InsertEmployee → map params (Name→@Name, etc.).
+
+Update: Customize → sp_UpdateEmployee → map all params.
+
+Delete: Customize → sp_DeleteEmployee → map @Id.
+
+Save (Ctrl+S). This generates LINQ methods like InsertEmployee(params)
+
+and in code just change like this 
+
+ private void LoadEmployees()
+ {
+     dataGridView1.DataSource = db.sp_GetEmployees().ToList();
+ }
+ 
+ the stored procedure which u have created okay 
+ 
+ 
+How it Works
+
+LINQ calls SPs automatically via O/R Designer mapping: InsertOnSubmit → sp_InsertEmployee, etc.
+
+Read explicitly calls GetEmployees() SP.
+
+Run SQL Profiler to verify: all CRUD hits your SPs, not dynamic SQL.
+
+code for selected grid view changes here 
+
+ private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+ {
+     if (!int.TryParse(dataGridView1.CurrentRow?.Cells[0].Value?.ToString(), out var id))
+         return;
+
+     var result = db.sp_GetEmployeeById(id);  // Calls sp_GetEmployeeById SP!
+     var emp = result.FirstOrDefault();
+     if (emp != null)
+     {
+         textBox1.Text = emp.Id.ToString();// getting errors 
+         textBox2.Text = emp.Name;
+         textBox3.Text = emp.Department;
+         textBox4.Text = emp.Salary.ToString();
+     }
+     else
+     {
+         ClearFields();  // helper method
+     }
+ }
+ 
+ 
