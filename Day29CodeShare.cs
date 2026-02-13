@@ -76,3 +76,22 @@ namespace LnqToSqlDemo
         }
     }
 }
+
+
+
+next code 
+----------
+   private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+   {
+       if (dataGridView1.CurrentRow == null) return;
+
+       var emp = dataGridView1.CurrentRow.DataBoundItem as Employee;
+
+       if (emp == null) return;
+
+       textBox1.Text = emp.Id.ToString();
+       textBox2.Text = emp.Name;
+       textBox3.Text = emp.Department;
+       textBox4.Text = emp.Salary.ToString();
+
+   }
