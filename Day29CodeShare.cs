@@ -54,11 +54,11 @@ namespace LnqToSqlDemo
                 MessageBox.Show("Dept is required");
                 return;
             }
-            if (string.IsNullOrEmpty(textBox4.Text))
-            {
-                MessageBox.Show("Salary is required");
-                return;
-            }
+            //if (string.IsNullOrEmpty(textBox4.Text))
+            //{
+            //    MessageBox.Show("Salary is required");
+            //    return;
+            //}
             var emp = new Employee
             {
                 Name = textBox2.Text,
@@ -67,6 +67,10 @@ namespace LnqToSqlDemo
 
 
             };
+            db.Employees.InsertOnSubmit(emp);
+            db.SubmitChanges();
+            LoadEmployees();
+            clearfields();
 
 
         }
