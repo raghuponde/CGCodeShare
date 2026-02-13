@@ -95,3 +95,28 @@ next code
        textBox4.Text = emp.Salary.ToString();
 
    }
+next code
+---------
+private void button3_Click(object sender, EventArgs e)//update code 
+{
+    if(!int.TryParse(textBox1.Text,out var id))
+    {
+        MessageBox.Show("select and employee to update");
+        return;
+    }
+
+    var emp = db.Employees.SingleOrDefault(x => x.Id == id);
+    if(emp==null)
+    {
+        MessageBox.Show("Employee not found");
+        return;
+    }
+    emp.Name = textBox2.Text;
+    emp.Department = textBox3.Text;
+    emp.Salary = decimal.TryParse(textBox4.Text, out var s) ? s : emp.Salary;
+
+    db.SubmitChanges();//generates update 
+    LoadEmployees();
+    clearfields();
+
+}
