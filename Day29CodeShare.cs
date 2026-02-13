@@ -120,3 +120,36 @@ private void button3_Click(object sender, EventArgs e)//update code
     clearfields();
 
 }
+
+next code 
+----------
+ private void button4_Click(object sender, EventArgs e)// deelete code 
+ {
+     if (!int.TryParse(textBox1.Text, out var id))
+     {
+         MessageBox.Show("select an employee to delete");
+         return;
+     }
+     var emp = db.Employees.SingleOrDefault(x => x.Id == id);
+     if(emp==null)
+     {
+         MessageBox.Show("Employee not found");
+         return;
+     }
+
+     if (MessageBox.Show("delete this employee?", "confirm", 
+         MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+     {
+         return;
+     }
+     else
+     {
+         db.Employees.DeleteOnSubmit(emp);
+         db.SubmitChanges();
+         LoadEmployees();
+         clearfields();
+     }
+
+
+ }
+
