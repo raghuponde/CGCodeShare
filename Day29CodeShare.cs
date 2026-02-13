@@ -62,7 +62,7 @@ namespace LnqToSqlDemo
             var emp = new Employee
             {
                 Name = textBox2.Text,
-                Department = textBox3.Text,
+                Department = textBox3.Text, 
                 Salary=decimal.TryParse(textBox4.Text,out var s)?s:0
 
 
