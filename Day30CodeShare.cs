@@ -95,3 +95,9 @@ namespace ArthematicOpsandAnother
 
     }
 }
+
+Now add one test project 
+i am adding NUNIt test project to test the abve code whih i had written i need to add dll refercne of above into the test project
+
+
+
