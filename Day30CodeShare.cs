@@ -364,7 +364,7 @@ namespace ArthematicOpsAndOtherTests
         {
             _calculator.Divide(10, 0);
         }
-
+ 
         [DataTestMethod]
         [DataRow("", 0)] // Empty password
         [DataRow("12345", 1)] // Digits only
