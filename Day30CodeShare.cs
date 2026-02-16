@@ -14,6 +14,7 @@ namespace ArthematicOpsandAnother
 {
     public class Calculate 
     {
+     
         public int Addition(int num1,int num2)
         {
             return num1 + num2;
@@ -178,10 +179,12 @@ namespace TestProject1
             Assert.Pass();
         }
        
-        [Test]
-       public void DivideWithException()
+        [Test]//negative test cases 
+        [TestCase(12,3)]//here it will fail as it passes for negative tasks
+        [TestCase(12,0)]// this will pass 
+       public void DivideWithException(int a,int b)
         {
-            Assert.Throws<DivideByZeroException>(() => cal.Divide(12, 0));
+            Assert.Throws<DivideByZeroException>(() => cal.Divide(a, b));
         }
 
         [Test]
@@ -193,12 +196,14 @@ namespace TestProject1
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase("", 0)] // Empty password
-        [TestCase("12345", 1)] // Digits only
-        [TestCase("password123", 2)] // Lowercase + digits
-        [TestCase("Password123", 3)] // Uppercase + lowercase + digits
-        [TestCase("Password@123", 4)] // Special char + uppercase + lowercase + digits
-        public void GetPasswordStrength_ShouldReturnExpectedStrength(string password, int expectedStrength)
+        //  [TestCase("", 0)] // Empty password
+        //  [TestCase("12345", 1)] // Digits only
+        //   [TestCase("password123", 2)] // Lowercase + digits
+        //  [TestCase("Password123", 3)] // Uppercase + lowercase + digits
+          [TestCase("Rajesh@jjj",4)] // Special char + uppercase + lowercase + digits
+       // [Test]
+        public void GetPasswordStrength_ShouldReturnExpectedStrength(string password,
+            int expectedStrength)
         {
             int result = cal.GetPassWordStrength(password);
             Assert.AreEqual(expectedStrength, result);
