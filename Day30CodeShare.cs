@@ -52,7 +52,46 @@ namespace ArthematicOpsandAnother
 
         }
 
+        public int GetPassWordStrength(string password)
+        {
+            if(string.IsNullOrEmpty(password))
+            {
+                return 0;
+            }
+            int result = 0;
+            if(password.Length > 8)
+            {
+                result = result + 1;
+            }
+            if(password.Any(char.IsUpper))
+            {
+                result = result + 1;
+            }
+
+            if (password.Any(char.IsLower))
+            {
+                result = result + 1;
+            }
+
+            string specialchars = @"%!@#$%^&*()?/>.<,:;'\|}]{[_~`+=-" + "\"";
+            char[] specarrray = specialchars.ToCharArray();
+            foreach (char c in specarrray)
+            {
+                if (password.Contains(c))
+                {
+                    result = result + 1;
+                }
+
+            }
+
+            if (password.Any(char.IsDigit))
+            {
+                result = result + 1;
+            }
+
+            return result;
+        }
+
 
     }
 }
-
