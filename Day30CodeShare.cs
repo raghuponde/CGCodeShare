@@ -113,17 +113,35 @@ namespace TestProject1
         }
 
         [Test]
-        public void Addition()
+
+        [TestCase(15,20)]
+        [TestCase(20, 20)]
+
+        public void Addition(int x,int y)
         {
             //arrange 
-            int actual=30;
+            int actual;
             int expected=40;
             //act 
-            actual = cal.Addition(10,20);
+            actual = cal.Addition(x,y);
             //assert
             Assert.AreEqual(expected, actual);
             Assert.Pass();
         }
+        [TestCase(20, 15)]
+        [TestCase(20, 20)]
+
+        public void Substraction(int x, int y)
+        {
+            //arrange 
+            int actual;
+            int expected = 0;
+            //act 
+            actual = cal.substract(x, y);
+            //assert
+            Assert.AreEqual(expected, actual);
+            Assert.Pass();
+        }
+
     }
 }
-
