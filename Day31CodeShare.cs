@@ -48,6 +48,7 @@ Create the failing test before writing the BankAccount class. The test will fail
 
 
 
+using Moq;
 namespace MockTesting
 {
 
@@ -73,8 +74,11 @@ namespace MockTesting
         [TestMethod]
         public void testmethod1()
         {
+            Mock<checkEmployee> chk = new Mock<checkEmployee>();
+            chk.Setup(x => x.checkemp()).Returns(true);
 
+            processEmployee objprocess = new processEmployee();
+            Assert.AreEqual(objprocess.insertEmployee(chk.Object), 1);
         }
     }
 }
-
