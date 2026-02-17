@@ -45,3 +45,36 @@ Create the failing test before writing the BankAccount class. The test will fail
 
     }
 }
+
+
+
+namespace MockTesting
+{
+
+    public class checkEmployee
+    {
+        public virtual Boolean checkemp()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class processEmployee
+    {
+        public int insertEmployee(checkEmployee emp)
+        {
+            return 1;
+        }
+    }
+
+    [TestClass]
+    public class MockTesting
+    {
+        [TestMethod]
+        public void testmethod1()
+        {
+
+        }
+    }
+}
+
