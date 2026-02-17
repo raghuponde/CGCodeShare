@@ -76,7 +76,7 @@ namespace MockTesting
         public int insertEmployee2(checkEmployee emp)
         {
             
-            emp.substract(4, 3);
+             emp.substract(4, 3);
             return 1;
         }
     }
