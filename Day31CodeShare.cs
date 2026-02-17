@@ -16,7 +16,7 @@ Create the failing test before writing the BankAccount class. The test will fail
   namespace TDDDemo
 {
     [TestFixture]
-    public class BankAccountTests
+    public class BankAccountTests 
     {
         [Test]
         public void Deposit_shouldIncrease()
