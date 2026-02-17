@@ -178,3 +178,74 @@ namespace MockTesting
         }
     }
 }
+
+Here are examples of creating complex test methods that handle multiple scenarios (positive, negative, and edge cases) for NUnit, MSTest, and XUnit using C#. We will test a Calculator class that performs basic arithmetic. Each test method will cover different scenarios: positive, negative, and edge cases.
+
+1. NUnit Example: Complex Test Cases
+
+Step 1: Create the Calculator Class
+
+public class Calculator
+{
+    public int Divide(int numerator, int denominator)
+    {
+        if (denominator == 0)
+        {
+            throw new DivideByZeroException("Denominator cannot be zero.");
+        }
+        return numerator / denominator;
+    }
+}
+
+
+Step 2: Create Test Class with Different Scenarios
+
+using NUnit.Framework;
+using System;
+
+namespace NUnitTestDemo
+{
+    [TestFixture]
+    public class CalculatorTests
+    {
+        private Calculator _calculator;
+
+        [SetUp]
+        public void Setup()
+        {
+            _calculator = new Calculator();
+        }
+
+        // Positive test case: normal division
+        [Test]
+        public void Divide_ShouldReturnCorrectResult_WhenInputsAreValid()
+        {
+            var result = _calculator.Divide(10, 2);
+            Assert.AreEqual(5, result);
+        }
+
+        // Negative test case: dividing by zero
+        [Test]
+        public void Divide_ShouldThrowDivideByZeroException_WhenDenominatorIsZero()
+        {
+            Assert.Throws<DivideByZeroException>(() => _calculator.Divide(10, 0));
+        }
+
+        // Edge case: division resulting in a fraction (rounding down)
+        [Test]
+        public void Divide_ShouldRoundDown_WhenResultIsFraction()
+        {
+            var result = _calculator.Divide(5, 2);
+            Assert.AreEqual(2, result); // Integer division, rounds down
+        }
+
+        // Edge case: very large numbers
+        [Test]
+        public void Divide_ShouldHandleLargeNumbers()
+        {
+            var result = _calculator.Divide(int.MaxValue, 1);
+            Assert.AreEqual(int.MaxValue, result);
+        }
+    }
+}
+
