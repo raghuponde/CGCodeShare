@@ -97,3 +97,84 @@ namespace MockTesting
         }
     }
 }
+suppose i want to write a test case without Mock class 
+
+    [TestMethod]
+  public void testmethod2()
+  {
+      checkEmployee chk1 = new checkEmployee();
+      int k = chk1.substract(4, 1);
+      int expected = 3;
+      Assert.AreEqual(k, expected);
+
+  }
+
+this test case will fail for all value becasue he has not written the code or logic only i am testing somethig for which logic is not implemented 
+so in those cases forefully i will make the method pass using mockeing 
+
+Final code 
+-----------
+
+using Moq;
+namespace MockTesting
+{
+
+    public class checkEmployee
+    {
+        public virtual Boolean checkemp()
+        {
+            throw new NotImplementedException();
+        }
+
+        public virtual int substract(int a, int b)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class processEmployee
+    {
+        public bool insertEmployee(checkEmployee emp)
+        {
+            emp.checkemp();
+           
+            return true;
+        }
+        public int insertEmployee2(checkEmployee emp)
+        {
+            
+            emp.substract(4, 3);
+            return 3;
+        }
+    }
+
+    [TestClass]
+    public class MockTesting
+    {
+        [TestMethod]
+        public void testmethod1()
+        {
+            Mock<checkEmployee> chk = new Mock<checkEmployee>();
+            chk.Setup(x => x.checkemp()).Returns(false);
+            chk.Setup(x => x.substract(5,3)).Returns(8);
+            processEmployee objprocess = new processEmployee();
+            Assert.AreEqual(objprocess.insertEmployee(chk.Object), true);
+            Assert.AreEqual(objprocess.insertEmployee2(chk.Object), 3);
+            // without mock i want to make my test case pass
+
+           
+
+
+        }
+
+        [TestMethod]
+        public void testmethod2()
+        {
+            checkEmployee chk1 = new checkEmployee();
+            int k = chk1.substract(4, 1);
+            int expected = 3;
+            Assert.AreEqual(k, expected);
+
+        }
+    }
+}
