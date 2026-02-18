@@ -28,3 +28,7 @@ namespace IEnumerableDemo
         }
     }
 }
+
+in the above i want to implment filtering means i want to get emplyees which hired befoe 2005
+
+    
