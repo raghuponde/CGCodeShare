@@ -624,4 +624,65 @@ namespace NavigationproeprtiesinClassesdemo
     }
 }
 
+updated code 
+--------------
+namespace NavigationproeprtiesinClassesdemo
+{
+   public  class Customer
+    {
+        public int CustomerID { set; get; }
+        public string FirstName { get; set; }
 
+        public string LastName { set; get; }
+
+        public string EmailAdress { set; get; }
+
+        public List<Invoice> InvoiceList { set; get; } = new List<Invoice>();
+    }
+   public class Invoice
+    {
+        public int InvoiceID { set; get; }
+        public int CustomerID { set; get; }
+
+        public DateTime InvoiceDate { set; get; }
+
+        public DateTime DueDate { get; set; }
+
+        public bool? IsPaid { set; get; }
+
+        public Decimal Amount { set; get; }
+
+        public Customer Customer { set; get; }
+    }
+
+    public class Repository
+    {
+        public static List<Invoice> RetriveInvoices(int customerid)
+        {
+            List<Invoice> inv_list = new List<Invoice>
+            {
+
+            };
+
+            List<Invoice> filteredlist = inv_list.Where(i => i.CustomerID == customerid).ToList();
+            return filteredlist;
+        }
+        public static List<Customer> custretrive()
+        {
+            List<Customer> custlist = new List<Customer>()
+            {
+                new Customer {CustomerID=101,FirstName="mahesh",LastName="kumar" ,
+                 EmailAdress="mahesh@gmaillcom",InvoiceList=RetriveInvoices(101)}
+            };
+            return custlist;
+        }
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
