@@ -334,3 +334,31 @@ namespace IEnumerableDemo
     }
 }
 
+Most .NET built-in collection classes implement IEnumerable<T> (or non-generic IEnumerable) by default, enabling direct foreach usage without any implementation on your part.
+
+Common Built-in Classes with IEnumerable
+These work directly with foreach out-of-the-box:
+
+
+Arrays: int[], string[], object[]
+Collections: List<T>, Dictionary<TKey,TValue>, HashSet<T>
+Queues: Queue<T>, ConcurrentQueue<T>
+Stacks: Stack<T>
+Linked Lists: LinkedList<T>
+Others: ObservableCollection<T>, SortedList<TKey,TValue>
+Strings: string (as char sequence)
+
+
+// All these work directly with foreach - no implementation needed
+
+int[] numbers = {1, 2, 3};
+foreach (int n in numbers) Console.WriteLine(n);  // Works!
+
+List<string> names = new List<string> {"Alice", "Bob"};
+foreach (string name in names) Console.WriteLine(name);  // Works!
+
+Dictionary<int, string> dict = new Dictionary<int, string> {{1, "One"}};
+foreach (var kvp in dict) Console.WriteLine($"{kvp.Key}: {kvp.Value}");  // Works!
+
+string text = "Hello";
+foreach (char c in text) Console.WriteLine(c);  // Works! (chars)
