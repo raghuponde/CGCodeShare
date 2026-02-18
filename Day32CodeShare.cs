@@ -584,3 +584,44 @@ namespace IEnumerableDemo2
 }
 
 
+Now next program on navigartion proeprties 
+
+namespace NavigationproeprtiesinClassesdemo
+{
+    class customer
+    {
+        public int CustomerID { set; get; }
+        public string FirstName { get; set; }
+
+        public string LastName { set; get; }
+
+        public string EmailAdress { set; get; }
+
+        public List<Invoice> InvoiceList { set; get; } = new List<Invoice>();
+    }
+    class Invoice
+    {
+        public int InvoiceID { set; get; }
+        public int CustomerID { set; get; }
+
+        public DateTime InvoiceDate { set; get; }
+
+        public DateTime DueDate { get; set; }
+
+        public bool? IsPaid { set; get; }
+
+        public Decimal Amount { set; get; }
+
+
+        public customer Customer { set; get; }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
+}
+
+
