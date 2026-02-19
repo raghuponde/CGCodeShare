@@ -17,7 +17,7 @@ namespace NavigationDemoInLinq
     public class Invoice
     {
         public int InvoiceID { set; get; }
-        public int CustomerID { set; get; }
+        public int CustomerID { set; get; } 
 
         public DateTime InvoiceDate { set; get; }
 
