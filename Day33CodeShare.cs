@@ -7,7 +7,7 @@ namespace NavigationDemoInLinq
     {
         public int CustomerID { set; get; }
         public string FirstName { get; set; }
-
+ 
         public string LastName { set; get; }
 
         public string EmailAdress { set; get; }
