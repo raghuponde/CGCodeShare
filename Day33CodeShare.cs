@@ -109,6 +109,19 @@ namespace NavigationDemoInLinq
                     Console.WriteLine($"{invitem.InvoiceID} --{invitem.CustomerID}");
                 }
             }
+
+            Console.WriteLine("===unpaid invocies ==========");
+            foreach(Customer c in custlist)
+            {
+                foreach(Invoice inv in c.InvoiceList)
+                {
+                    if(inv.IsPaid==false)
+                    {
+                        Console.WriteLine($" Invoice with {inv.InvoiceID} is in due {inv.DueDate} of about " +
+                            $"{inv.Amount} from {inv.CustomerID}");
+                    }
+                }
+            }
         }
     }
 }
