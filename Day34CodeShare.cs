@@ -1,4 +1,3 @@
-
 using NavigationDemoInLinq;
 
 namespace NavigationDemoInLinq
@@ -118,19 +117,28 @@ namespace NavigationDemoInLinq
                     Console.WriteLine($"{invitem.InvoiceID} --{invitem.Customer.FirstName}");
                 }
             }
+            Console.WriteLine("\n List of customers with thier invocies using selectmany ");
+            Console.WriteLine("==========================================================");
+            var allcustomerinvoices = custlist
+     .SelectMany(cust => cust.InvoiceList,
+          (cust, inv) => new { Customer = cust, Invoice = inv });
 
-            Console.WriteLine("\n List of customers with thier invocies using selectmany method syntax  ");
-            Console.WriteLine("=========================================================================");
-            var allcustomerinvoices = custlist.SelectMany(cust => cust.InvoiceList, (cust, inv) => new
-            { Customer = cust, Invoice = inv });
+            int? lastCustomerId = null;
 
-            foreach(var item in allcustomerinvoices)
+            foreach (var item in allcustomerinvoices)
             {
-                Console.WriteLine($"{item.Customer.FirstName} {item.Customer.LastName}  has raised " +
-                   $" {custlist.Count(c=>c.InvoiceList.Contains(item.Invoice))} invoices ");
-                Console.WriteLine("----------------------------------------------");
-                Console.WriteLine($"{item.Invoice.InvoiceID} --{item.Customer.FirstName}");
+                // Print customer header only once
+                if (lastCustomerId != item.Customer.CustomerID)
+                {
+                    Console.WriteLine($"{item.Customer.FirstName} {item.Customer.LastName} has raised " +
+                        $"{item.Customer.InvoiceList.Count} invoices");
 
+                    Console.WriteLine("----------------------------------------------");
+
+                    lastCustomerId = item.Customer.CustomerID;
+                }
+
+                Console.WriteLine($"{item.Invoice.InvoiceID} --- {item.Customer.FirstName}");
             }
 
 
@@ -148,9 +156,18 @@ namespace NavigationDemoInLinq
                 }
             }
 
-           
-           
-           
+            Console.WriteLine("===unpaid invocies using selectmany==========");
+            var unpaidinvoices = custlist.SelectMany(c => c.InvoiceList).Where(inv => inv.IsPaid == false);
+
+            foreach( var inv in unpaidinvoices)
+            {
+                Console.WriteLine($" Invoice with {inv.InvoiceID} is in due " +
+                          $"{inv.DueDate} of about " +
+                          $"{inv.Amount} from {inv.Customer.FirstName}");
+            }
+
+          
+
         }
     }
 }
