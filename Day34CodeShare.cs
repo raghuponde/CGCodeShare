@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic;
 using NavigationDemoInLinq;
 
 namespace NavigationDemoInLinq
@@ -166,8 +167,20 @@ namespace NavigationDemoInLinq
                           $"{inv.Amount} from {inv.Customer.FirstName}");
             }
 
-          
+            Console.WriteLine("==========inner join(method syntax) ===================");
+            var customers = Repository.custretrive();
+            var invoices = customers.SelectMany(c => c.InvoiceList).ToList();
 
+            var innerjoin = customers.Join(invoices, c => c.CustomerID, i => i.CustomerID, 
+                (c, i) => new {c.FirstName,c.LastName,i.InvoiceID,i.DueDate,i.IsPaid });
+
+            foreach(var item in innerjoin)
+            {
+                Console.WriteLine($"Customer :{item.FirstName}  {item.LastName} ," +
+                    $"Invoice :{item.InvoiceID} is due :" +
+                    $"{item.DueDate:yyyy-MM-dd}, paid:{item.IsPaid}");
+            }
+            
         }
     }
 }
