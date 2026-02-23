@@ -1,4 +1,3 @@
-
 namespace TreeDemo
 {
 
@@ -38,6 +37,18 @@ namespace TreeDemo
                     temproot = temproot.right;
 
             }
+            Node n = new Node(e, null, null);
+            if (root != null)
+            {
+                if (e < temp.element)
+                    temp.left = n;
+                else
+                    temp.right = n;
+            }
+            else
+            {
+                root = n;
+            }
         }
     }
 
@@ -45,7 +56,7 @@ namespace TreeDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+           
         }
     }
 }
