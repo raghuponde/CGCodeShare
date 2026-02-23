@@ -17,12 +17,20 @@ namespace TreeDemo
 
     class BinarySearchTree
     {
-        Node root;
+        public Node root;
         public BinarySearchTree()
         {
             root = null;
         }
-
+        public void inorder(Node temproot)
+        {
+            if (temproot != null)
+            {
+                inorder(temproot.left);
+                Console.Write(temproot.element + " ");
+                inorder(temproot.right);
+            }
+        }
         public void insert(Node temproot,int e)
         {
             Node temp = null;
@@ -56,7 +64,20 @@ namespace TreeDemo
     {
         static void Main(string[] args)
         {
-           
+            BinarySearchTree B = new BinarySearchTree();
+            B.insert(B.root, 50);
+            B.insert(B.root, 50);
+            B.insert(B.root, 30);
+            B.insert(B.root, 80);
+            B.insert(B.root, 10);
+            B.insert(B.root, 40);
+            B.insert(B.root, 60);
+            B.insert(B.root, 90);
+            Console.WriteLine("Inorder Traversal");
+            B.inorder(B.root);
+            Console.WriteLine();
+            Console.ReadLine();
+
         }
     }
 }
