@@ -281,7 +281,7 @@ namespace CodeFirstEFDemo.Data
             // Seed Courses (with AuthorId)
             modelBuilder.Entity<Course>().HasData(
                 new Course { Id = 1, Title = "C# Basics", Description = "Intro to C#",  level = CourseLevel.Beginner, AuthorId = 1 },
-                new Course { Id = 2, Title = "Advanced .NET", Description = "Deep dive into .NET",  level = CourseLevel.Average, AuthorId = 1 },
+                new Course { Id = 2, Title = "Advanced .NET", Description = "Deep dive into .NET",  level = CourseLevel.Average, AuthorId = 1 },  
                 new Course { Id = 3, Title = "Azure Fundamentals", Description = "Cloud basics",  level = CourseLevel.Beginner, AuthorId = 2 }
             );
 
