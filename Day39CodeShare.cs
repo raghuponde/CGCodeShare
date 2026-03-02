@@ -113,4 +113,13 @@ var electronics = new Category { Name = "Electronics" };
 context.Categories.Add(electronics);
 await context.SaveChangesAsync();
 
+context.Products.AddRange(
+    new Product { Name = "laptop", Price = 999.78M, category =electronics },
+     new Product { Name = "Mouse", Price = 678.78M, category = electronics }
+);
 
+await context.SaveChangesAsync();
+
+run this much code at a time so earleir values delete it ....
+
+  
