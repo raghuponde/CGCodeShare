@@ -77,5 +77,13 @@ namespace CodeFirstEFDemo.Data
     }
 }
 
+step4 :
+---------
+  once buuild the solution 
 
+step 5 :
+----------
+  go to package manager console and add migration and update database 
+
+  
     
