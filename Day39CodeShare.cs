@@ -122,4 +122,72 @@ await context.SaveChangesAsync();
 
 run this much code at a time so earleir values delete it ....
 
-  
+  I want to add some more classes 
+  --------------------------------
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CodeFirstEFDemo.Models
+{
+     class Course
+    {
+        public int Id { set; get; }
+        public string Title { set; get; }
+
+        public string Description { set; get; }
+
+        public CourseLevel level { set; get; }
+
+        public List<Student> Students { set; get; }
+
+        public Author Author { set; get; }
+
+        public int AuthorId { set; get; }
+    }
+
+    public enum CourseLevel
+    {
+        Beginner =1,
+        Average=2,
+        Diffcult=3
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CodeFirstEFDemo.Models
+{
+     class Student
+    {
+        public int Id { set; get; }
+        public string Name { set; get; }
+
+        public List<Course> Courses { set; get; }
+    }
+}
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CodeFirstEFDemo.Models
+{
+     class Author
+    {
+        public int Id { set; get; }
+
+        public string Name { set; get; }
+
+        public List<Course> Courses { set; get; }
+    }
+}
+
