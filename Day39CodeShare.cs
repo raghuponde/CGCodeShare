@@ -50,4 +50,6 @@ namespace CodeFirstEFDemo.Models
     }
 }
 
-
+step 3 :
+----------
+  add one folder Data in proejct and in that add one class AppDbContext  
