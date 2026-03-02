@@ -227,6 +227,8 @@ namespace CodeFirstEFDemo.Data
 
 now add migration again by going into 
 
+  Tools-->Nugget package manager --->package manager console 
+
   PM> add-migration 'added 3more tables'
 Build started...
 Build succeeded.
