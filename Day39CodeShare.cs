@@ -97,3 +97,20 @@ No store type was specified for the decimal property 'Price' on entity type 'Pro
 Applying migration '20260302043738_dbcreated'.
 Done.
 PM> 
+
+Main method code 
+--------------------
+using CodeFirstEFDemo.Data;
+using CodeFirstEFDemo.Models;
+using Microsoft.VisualBasic;
+
+var context = new AppDbContext();
+
+// create category 
+
+var electronics = new Category { Name = "Electronics" };
+
+context.Categories.Add(electronics);
+await context.SaveChangesAsync();
+
+
