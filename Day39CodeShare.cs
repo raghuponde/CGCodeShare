@@ -52,4 +52,30 @@ namespace CodeFirstEFDemo.Models
 
 step 3 :
 ----------
-  add one folder Data in proejct and in that add one class AppDbContext  
+  add one folder Data in proejct and in that add one class AppDbContext 
+
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CodeFirstEFDemo.Models;
+
+namespace CodeFirstEFDemo.Data
+{
+    class AppDbContext:DbContext
+    {
+        public DbSet<Category> Categories { set; get; }
+        public DbSet<Product> Products { set; get; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=LAPTOP-4G8BHPK9\\SQLEXPRESS;Database=cgefdb1;" +
+                "Trusted_Connection=True;TrustServerCertificate=True;");
+        }
+    }
+}
+
+
+    
