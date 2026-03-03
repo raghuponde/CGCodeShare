@@ -319,8 +319,18 @@ IProductRepository obj = new ProductRepository(context);
 
 //await obj.DeleteAsync(7);
 IProductRepository obj2 = new ProductRepository2(context);
-var newProd = new Product { Name = "Tablet", Price = 233.45M,
-    CategoryId = 3 };
-await obj2.AddAsync(newProd);
+//var newProd = new Product { Name = "Tablet", Price = 233.45M,
+//    CategoryId = 3 };
+//await obj2.AddAsync(newProd);
+
+//var toupdate = await obj2.GetByIdAsync(9);
+//if(toupdate!=null)
+//{
+//    toupdate.Price = 888.7M;
+//    toupdate.Name = "IPhone";
+//}
+//context.SaveChangesAsync();
+
+await obj2.DeleteAsync(9);
 
 
