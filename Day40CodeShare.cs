@@ -210,9 +210,11 @@ namespace CodeFirstEFDemo
         {
             _context = context;
         }
-        public Task<Product> AddAsync(Product product)
+        public async Task<Product> AddAsync(Product product)
         {
-            throw new NotImplementedException();
+            var result = await _context.Products.FromSqlRaw($"EXEC InsertProduct" +
+                $" {product.Name},{product.Price},{product.CategoryId}").ToListAsync();
+            return result.First();
         }
 
        
@@ -244,4 +246,3 @@ namespace CodeFirstEFDemo
         }
     }
 }
-
