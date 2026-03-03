@@ -10,3 +10,5 @@ inside the project all one interface like this
     Task DeleteAsync(int id);
     Task<List<Product>> GetByCategoryAsync(int categoryId);
 }
+
+Now add one class in the project with the name ProductRepository and implement above interface here 
