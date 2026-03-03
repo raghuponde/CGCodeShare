@@ -323,14 +323,15 @@ IProductRepository obj2 = new ProductRepository2(context);
 //    CategoryId = 3 };
 //await obj2.AddAsync(newProd);
 
-//var toupdate = await obj2.GetByIdAsync(9);
-//if(toupdate!=null)
-//{
-//    toupdate.Price = 888.7M;
-//    toupdate.Name = "IPhone";
-//}
-//context.SaveChangesAsync();
+var toupdate = await obj2.GetByIdAsync(8);
+if (toupdate != null)
+{
+    toupdate.Price = 888.7M;
+    toupdate.Name = "IPhone";
+}
+await obj2.UpdateAsync(toupdate);
 
-await obj2.DeleteAsync(9);
+
+//await obj2.DeleteAsync(9);
 
 
