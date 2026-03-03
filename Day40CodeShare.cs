@@ -120,20 +120,28 @@ using Microsoft.VisualBasic;
 //}
 var  context = new AppDbContext();
 
-var newProduct = new Product
-{ Name = "smartphone", Price = 6888.56M, CategoryId = 3 };
+//var newProduct = new Product
+//{ Name = "smartphone", Price = 6888.56M, CategoryId = 3 };
 IProductRepository obj = new ProductRepository(context);
-await obj.AddAsync(newProduct);
+//await obj.AddAsync(newProduct);
 
-var toupdate = await obj.GetByIdAsync(newProduct.Id);
-if(toupdate!=null)
-{
-    toupdate.Price = 777.67M;
-    toupdate.Name = "normalphone";
-   await  obj.UpdateAsync(toupdate);
-    Console.WriteLine($"Updated : {toupdate.Name}--{toupdate.Price}");
-}
+//var toupdate = await obj.GetByIdAsync(newProduct.Id);
+//if(toupdate!=null)
+//{
+//    toupdate.Price = 777.67M;
+//    toupdate.Name = "normalphone";
+//   await  obj.UpdateAsync(toupdate);
+//    Console.WriteLine($"Updated : {toupdate.Name}--{toupdate.Price}");
+//}
 
+//var producttofetch = await obj.GetByIdAsync(7);
 
+//if (producttofetch != null)
+//{
+//    producttofetch.Price = 555.67M;
+//    producttofetch.Name = "normalphone2";
+//    await obj.UpdateAsync(producttofetch);
+//    Console.WriteLine($"Updated : {producttofetch.Name}--{producttofetch.Price}");
+//}
 
-
+await obj.DeleteAsync(7);
