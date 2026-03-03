@@ -189,4 +189,4 @@ AS
 BEGIN
     DELETE FROM Products WHERE Id = @Id;
 END
-
+Next go to project and add one class ProductRepository2 and implement same interface again 
