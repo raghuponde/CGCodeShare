@@ -175,3 +175,34 @@ Live Server add this extension also in vs code by going into extesnion section
 </body>
 
 </html>
+-----------------------------------------lis demo 5 ---------------------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li type="circle">Flowers
+            <ul>
+                <li type="disc">Daffodils</li>
+                <li type="disc">Rose</li>
+                <li type="disc">Lilly</li>
+            </ul>
+        </li>
+        <li type="circle">Fruits
+            <ul>
+                <li type="square">Apple</li>
+                <li type="square">Banana</li>
+                <li type="square">grapes</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+</html>
+    
