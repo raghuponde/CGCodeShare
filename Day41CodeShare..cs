@@ -407,6 +407,9 @@ colspan: to merge columns in table
 </html>
 
     ----------------------------------final code row span--------------------------
+
+    note here when ever i say row span it means that row will occupy two rows and in one row already name is there so for third column i have to create another row seperate 
+    and to maintain spacing i need to ....use col span as well so check by using not putting colspan and see the deisng and then use it so this is the final desingn
     <!DOCTYPE html>
 <html lang="en">
 
