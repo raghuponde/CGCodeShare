@@ -259,9 +259,12 @@ colspan: to merge columns in table
     <title>Document</title>
 </head>
 <body>
-    <table border="2" width="80%" cellpadding="3" cellspacing="3" bgcolor="lightyellow">
+    <table border="2" width="80%" cellpadding="8" cellspacing="3" bgcolor="lightyellow">
      
       <caption>Student table </caption>
+      <!--cell padding means inside cell the content is how much it is far away from border -->
+      <!--cell spacing  means in between two cells borders what is the distance is measued 
+      in cell spacing -->
      <tr>
         <th>StudentID</th>
         <th>StudentName </th>
@@ -287,5 +290,3 @@ colspan: to merge columns in table
     </table>
 </body>
 </html>
-
-    
