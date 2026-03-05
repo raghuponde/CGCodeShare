@@ -109,3 +109,36 @@ Live Server add this extension also in vs code by going into extesnion section
 </body>
 
 </html>
+-----------------list demo 3-----------
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+        <li>Flowers
+            <ol>
+                <li type=A>Daffodils</li>
+                <li type=A>Rose</li>
+                <li type=A>Lilly</li>
+            </ol>
+        </li>
+        <li>Fruits
+            <ol>
+                <li type=i>Apple</li>
+                <li type=i>Banana</li>
+                <li type=i>grapes</li>
+            </ol>
+        </li>
+    </ol>
+</body>
+
+</html>
+---------------------------------------list demo 4------------------
+
+    
