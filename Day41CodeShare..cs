@@ -233,4 +233,24 @@ Live Server add this extension also in vs code by going into extesnion section
     </pre>
 </body>
 </html>
+-------------------------------using tables --------------------------
+
+    Using Tables 
+-------------
+Apart from grouping the related data into lists,there is another way to control the display of text on a web page using tables.We can use tables to display data in tabular format completely in the form of rows and columns.
+Table  tags and  properties :
+----------------------------
+<tr>  tag is used for starting a new row 
+<th> tag is referred as heading of the table 
+<td> refers to table data and it determines number of columns in the table
+<caption> tag is used to give some title to the table
+border :This property provides lining between elements 
+cellspacing:refers to spacing between the cells
+cellpadding: refers to space between borders of table cells
+width : refers to spreading table according to the percentage mentioned
+rowspan : to merge rows in table
+colspan: to merge columns in table
+
+
+
     
