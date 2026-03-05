@@ -290,3 +290,9 @@ colspan: to merge columns in table
     </table>
 </body>
 </html>
+
+-------------------merging columns using colspan --------------------
+
+    
+
+
