@@ -1407,8 +1407,8 @@ check the browser to include script code.
 
         function add1() {
             var total;
-            var first = parseFloat(document.getElementsByName("first").value);
-            var second = parseFloat(document.getElementByName("second").value);
+            var first = parseFloat(document.getElementsByName("first")[0].value);
+            var second = parseFloat(document.getElementsByName("second")[0].value);
             total = first + second;
             alert('the total is' + total);
 
@@ -1420,7 +1420,7 @@ check the browser to include script code.
 2nd number :<input type="text" id="text2" name="second" placeholder="enter 2nd  number " />
 
 
-<input type="button" value="sum" onclick="add1()" />
+<input type="button" value="sum" onclick=add1() />
 
     </pre>
 </body>
