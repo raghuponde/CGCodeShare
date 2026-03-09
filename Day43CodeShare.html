@@ -93,4 +93,62 @@ changes done
 
 do some chanegs based on your requirement and see the effect 
 
+open a new document form1.html 
+
+Forms 
+--------
+Advantages of form :
+____________________
+---->Collecting names,addresses,telephone numbers,e-mail address and other information to register users for  a service or an event 
+
+---->Gathering infromation for the purchase of an item,for example if i want to purchase book on internet we have fill all relevant information
+
+---->Collecting feedback from the website .
+
+---->providing a search tool for the website ,so sites which are having varied information typically provide users with search box to enable them to locate information faster.
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Demo</title>
+</head>
+
+<body>
+    <h1>Forms Demo</h1>
+    <h2>Our First Form</h2>
+
+    <form action="/tacos">
+        <p>
+            <label for="username">Enter a Username:</label>
+            <input id="username" type="text" placeholder="username" name="username">
+        </p>
+        <p>
+            <label for="password">Enter a Password:</label>
+            <input type="password" placeholder="password" id="password" name="password">
+        </p>
+        <p>
+            <label for="color">Enter a Color:</label>
+            <input type="color" id="color" name="color">
+        </p>
+        <p>
+            <!-- Alternative way to label an input (less common) -->
+            <label>
+                Enter a Number:
+                <input type="number" placeholder="enter a number" name="num" min="1" max="1000">
+            </label>
+        </p>
+        <!-- this button doesn't submit the form b/c of the "type" attribute -->
+        <button type="button">Regular button (won't submit)</button>
+        <!-- This button submits the form! -->
+        <button>Submit!!!</button>
+        <!-- So does this one: -->
+        <input type="submit" value="Click Me!">
+    </form>
+    <hr>
+    <!-- Outside of a form, no default behavior -->
+    <button>Not Inside Form</button>
 
