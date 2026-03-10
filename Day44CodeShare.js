@@ -252,3 +252,11 @@ console.log(names);
 
 var filtered = numbers.filter(x => x > 3);
 console.log(filtered);
+
+now add one file Arraysinjs.html and in body paste this code 
+----------------------------------------------------------
+ <p id="demo" style="background:rgb(177, 113, 35);width:90%;height:100px;
+                font-size:large;font-weight:900px ;">
+    
+    </p>
+
