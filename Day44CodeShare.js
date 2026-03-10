@@ -533,8 +533,25 @@ bootswatch.com is another site for taking code into desing
         </div>
 
     </div>
+
+    <div id="row3" class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="background-color: burlywood;">
+            <span>row3 col1</span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="background-color: rgb(154, 135, 222);">
+            <span>row3 col2</span>
+            <div id="row4" class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8" style="background-color: navajowhite;">
+                    row4 col1
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4" style="background-color: rgb(200, 21, 30);">
+                    row4 col2
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </body>
 
 </html>
-
-
