@@ -260,3 +260,44 @@ now add one file Arraysinjs.html and in body paste this code
     
     </p>
 
+final code(still code will be written)
+--------------
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="demo" style="background:rgb(177, 113, 35);width:90%;height:100px;
+                    font-size:large;font-weight:900px ;">
+
+    </p>
+    <script>
+        //difference between var,let and const 
+        var kk = "hai";
+        kk = "hi"// can reassign
+        {
+            var kk = "hello";
+        }
+        console.log(kk);
+
+    let kk1 = "hai";
+    kk1="hi"// can reassign
+     {
+        let kk1="hello"
+     }
+    console.log(kk1);
+
+     const kk2="hai";
+     kk2="hi";// u cannot assign here const value in run time it will give error 
+     console.log(kk2);
+
+
+    </script>
+</body>
+
+</html>
