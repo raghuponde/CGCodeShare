@@ -1,6 +1,6 @@
 
 put this code in the body of html 
-
+ 
 <form action="/cgi-bin/test.cgi" name="myForm"  
           onsubmit="return(validate());">
  <table cellspacing="2" cellpadding="2" border="1">
