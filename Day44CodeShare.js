@@ -305,43 +305,101 @@ final code(still code will be written)
         let firstcar = cars[0];
 
         document.getElementById("demo").innerHTML = firstcar;
-        
+
         //no elements in array
 
-        let length=cars.length;
+        let length = cars.length;
 
-       document.getElementById("demo").innerHTML =length;
+        document.getElementById("demo").innerHTML = length;
 
-       // last car
+        // last car
 
-       let lastcar=cars[cars.length-1]
+        let lastcar = cars[cars.length - 1]
 
-       document.getElementById("demo").innerHTML = lastcar;
-        
-       //loop over the array and put it i p tag 
+        document.getElementById("demo").innerHTML = lastcar;
+
+        //loop over the array and put it i p tag 
 
         var str = "";
-            for (var i = 0; i < cars.length; i++) {
-                str = str + (i + 1) + ":" + cars[i] + "<br/>";
-            }
-            document.getElementById("demo").innerHTML = str;
+        for (var i = 0; i < cars.length; i++) {
+            str = str + (i + 1) + ":" + cars[i] + "<br/>";
+        }
+        document.getElementById("demo").innerHTML = str;
 
         // using for each loop 
 
-        cars.forEach((item,index,array)=>{console.log(index+1)+"----->"+item});
+        cars.forEach((item, index, array) => { console.log(index + 1) + "----->" + item });
 
         // removing last car 
 
-        let lastcar1=cars.pop();
+        let lastcar1 = cars.pop();
 
-    document.getElementById("demo").innerHTML = lastcar1;
+        document.getElementById("demo").innerHTML = lastcar1;
 
-    // adding at the last 
+        // adding at the last 
 
-    let lastcar2=cars.push("AUDI");
+        let lastcar2 = cars.push("AUDI");
 
-    document.getElementById("demo").innerHTML = cars;
-       
+        document.getElementById("demo").innerHTML = cars;
+
+        //remoing first car
+
+        let firstcar1 = cars.shift();
+        document.getElementById("demo").innerHTML = firstcar1;
+
+        //adding at the begining 
+        let newfirstcar = cars.unshift("TOYATO");
+        document.getElementById("demo").innerHTML = cars;
+
+        let bikes = ["Gixxer", "Yamaha", "Apache"];
+
+        let vahicles = cars.concat(bikes);
+
+        document.getElementById("demo").innerHTML = vahicles;
+
+        // printing using map function in js
+
+        // Use map to create an HTML list
+        document.getElementById("demo").innerHTML = cars.map(car => `<li>${car}</li>`).join('');
+
+        let num1 = [2, 3, 4, 5, 6];
+        let num2 = num1.map(x => x * 2);
+        document.getElementById("demo").innerHTML = num2;
+        //or
+        function multiply(value) {
+            return value * 3;
+        }
+
+        let num3 = num1.map(multiply);
+        document.getElementById("demo").innerHTML = num3;
+
+        let num4 = num1.filter(x => x > 4);
+        document.getElementById("demo").innerHTML = num4;
+
+        //or
+
+        function comp(value) {
+            return value > 4;
+        }
+
+        let num5 = num1.filter(comp);
+
+        document.getElementById("demo").innerHTML = num5;
+
+        //reduce will reduce the array to single value 
+
+        function sum(total, value) {
+            return total + value;
+        }
+
+        let num6 = num1.reduce(sum);
+        document.getElementById("demo").innerHTML = num6;
+        //or
+
+        let num7 = num1.reduce((total, value) => total + value);
+
+        document.getElementById("demo").innerHTML = num7;
+
     </script>
 </body>
 
