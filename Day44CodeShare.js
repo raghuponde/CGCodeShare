@@ -262,7 +262,7 @@ now add one file Arraysinjs.html and in body paste this code
 
 final code(still code will be written)
 --------------
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -285,18 +285,48 @@ final code(still code will be written)
         }
         console.log(kk);
 
-    let kk1 = "hai";
-    kk1="hi"// can reassign
-     {
-        let kk1="hello"
-     }
-    console.log(kk1);
+        let kk1 = "hai";
+        kk1 = "hi"// can reassign
+        {
+            let kk1 = "hello"
+        }
+        console.log(kk1);
 
-     const kk2="hai";
-     kk2="hi";// u cannot assign here const value in run time it will give error 
-     console.log(kk2);
+        const kk2 = "hai";
+        // kk2 = "hi";// u cannot assign here const value in run time it will give error 
+        console.log(kk2);
 
+        let cars = ["BMW", "Hyndai", "TATA", "Skoda"];
 
+        document.getElementById("demo").innerHTML = cars;
+
+        // first car 
+
+        let firstcar = cars[0];
+
+        document.getElementById("demo").innerHTML = firstcar;
+        
+        //no elements in array
+
+        let length=cars.length;
+
+       document.getElementById("demo").innerHTML =length;
+
+       // last car
+
+       let lastcar=cars[cars.length-1]
+
+       document.getElementById("demo").innerHTML = lastcar;
+        
+       //loop over the array and put it i p tag 
+
+        var str = "";
+            for (var i = 0; i < cars.length; i++) {
+                str = str + (i + 1) + ":" + cars[i] + "<br/>";
+            }
+            document.getElementById("demo").innerHTML = str;
+
+       
     </script>
 </body>
 
