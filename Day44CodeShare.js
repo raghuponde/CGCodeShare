@@ -145,5 +145,22 @@ in youtube :
 
 https://www.youtube.com/watch?v=nlGF-zh0fsg
 
- 
+ in the body paste this 
+
+ <form>
+        <table>
+            <tr>
+                <td>
+                    <input type="text" placeholder="email" id="text" />
+                </td>
+                <td>
+                    <div id="result">
+    
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <br /><br />
+        <button onclick="validate()" type="button">Submit</button>
+    </form>
     
