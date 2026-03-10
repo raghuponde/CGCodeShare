@@ -500,6 +500,41 @@ some code will come try to analize it and replace that code with  your desing co
 bootswatch.com is another site for taking code into desing 
 
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="row1" class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6" style="background-color: yellow;">
+            <span>row1 col1 </span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6" style="background-color:pink">
+            <span>row1 col2 </span>
+        </div>
+
+    </div>
+
+    <div id="row2" class="row">
+        <div class="col-lg-2 col-md-8 col-sm-6" style="background-color: aqua;">
+            <span>row2 col1</span>
+        </div>
+        <div class="col-lg-8 col-md-3 col-sm-1" style="background-color: fuchsia;">
+            <span>row2 col2</span>
+        </div>
+        <div class="col-lg-2 col-md-1 col-sm-5" style="background-color: palegreen;">
+            <span>row2 col3 </span>
+        </div>
+
+    </div>
+</body>
+
+</html>
 
 
