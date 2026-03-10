@@ -326,6 +326,21 @@ final code(still code will be written)
             }
             document.getElementById("demo").innerHTML = str;
 
+        // using for each loop 
+
+        cars.forEach((item,index,array)=>{console.log(index+1)+"----->"+item});
+
+        // removing last car 
+
+        let lastcar1=cars.pop();
+
+    document.getElementById("demo").innerHTML = lastcar1;
+
+    // adding at the last 
+
+    let lastcar2=cars.push("AUDI");
+
+    document.getElementById("demo").innerHTML = cars;
        
     </script>
 </body>
