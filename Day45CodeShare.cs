@@ -73,3 +73,38 @@ Now open a asp.net core mvc web applciation C# All platforms and web and select 
 template 
 
 go to home controller add some methods in home controller like this 
+
+
+ <style>
+	table {
+		border-collapse: collapse;
+		width: 50%;
+	}
+
+	table, th, td {
+		border: 2px solid black;
+	}
+
+	th, td {
+		padding: 8px;
+		text-align: left;
+	}
+</style>
+
+<table>
+	<thead>
+		<tr>
+			<th>EmployeeID</th>
+			<th>EmpName</th>
+			<th>Salary</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
