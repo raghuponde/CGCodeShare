@@ -38,4 +38,25 @@ First add a model class Dog here
             </div>
         </nav>
 
-  
+  create post code 
+  -----------------
+   if (ModelState.IsValid)
+            {
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    var imageName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                    var path = Path.Combine(_environment.WebRootPath, "images", imageName);
+
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        imageFile.CopyTo(stream);
+                    }
+
+                    d.ImagePath = "/images/" + imageName;
+                }
+
+                dogs.Add(d);
+                return RedirectToAction("Index");
+            }
+
+            return View(d);
