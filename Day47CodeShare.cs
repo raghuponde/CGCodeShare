@@ -11,3 +11,31 @@ so check program dog on this example ..
 
 
 First add a model class Dog here 
+
+ <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DogMgtAPP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" asp-controller="Dog" asp-action="Index">DogApp</a>
+                        <div class="collapse navbar-collapse">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Dog" asp-action="Create">Create Dog</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form class="d-flex" asp-controller="Dog" asp-action="Index" method="get">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search by name" aria-label="Search" />
+                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    </form>
+                </nav>
+            </div>
+        </nav>
+
+  
