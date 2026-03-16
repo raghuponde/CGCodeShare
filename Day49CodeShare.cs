@@ -13,9 +13,97 @@ DbFirst approach of Entity Framework in asp.net core mvc
 
 
 --->then in package manager console fire this command 
- Scaffold-DbContext 'Data Source=LAPTOP-4G8BHPK9\SQLEXPRESS;initial catalog=NorthWind;Integrated Security=true;TrustServerCertificate=True;' Microsoft.EntityFrameWorkCore.SqlServer -OutputDir Models -Context NorthWindContext -Force
+ Scaffold-DbContext 'Data Source=LAPTOP-4G8BHPK9\SQLEXPRESS;initial catalog=NorthWind;Integrated Security=true;TrustServerCertificate=True;' 
+ Microsoft.EntityFrameWorkCore.SqlServer -OutputDir Models -Context NorthWindContext -Force
 
 
 change above as per your server and as per your db okay 
 
 so in models all classes will be generated 
+
+frist add in models folder 
+
+namespace DBFirstEFinAsp.netcoreDemo.Models
+{
+    public class SpainCustomerViewModel
+    {
+        public string Cid { get; set; }
+        public string Cname { get; set; }
+        public string Comname { get; set; }
+    }
+}
+
+next 
+using Microsoft.AspNetCore.Mvc;
+using DBFirstEFinAsp.netcoreDemo.Models;
+
+namespace DBFirstEFinAsp.netcoreDemo.Controllers
+{
+
+   
+    public class NorthWiindController : Controller
+    {
+        public IActionResult SpainCustomers()
+        {
+            NorthWindContext cnt = new NorthWindContext();
+            var spainCustomers = cnt.Customers
+    .Where(x => x.Country == "Spain")
+    .Select(x => new SpainCustomerViewModel
+    {
+        Cid = x.CustomerId,
+        Cname = x.ContactName,
+        Comname = x.CompanyName
+    })
+    .ToList();
+
+
+            return View(spainCustomers);
+                
+        }
+    }
+}
+next generate view using Cusotmer model only and go to view chnage as per SpainCustomerViewModel
+
+@model IEnumerable<DBFirstEFinAsp.netcoreDemo.Models.SpainCustomerViewModel>
+
+@{
+    ViewData["Title"] = "SpainCustomers";
+}
+
+<h1>SpainCustomers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cname);
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cname)
+            </td>
+                    </tr>
+}
+    </tbody>
+</table>
+
