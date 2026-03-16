@@ -14,7 +14,7 @@ DbFirst approach of Entity Framework in asp.net core mvc
 
 --->then in package manager console fire this command 
  Scaffold-DbContext 'Data Source=LAPTOP-4G8BHPK9\SQLEXPRESS;initial catalog=NorthWind;Integrated Security=true;TrustServerCertificate=True;' 
- Microsoft.EntityFrameWorkCore.SqlServer -OutputDir Models -Context NorthWindContext -Force
+ Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context NorthWindContext -Force
 
 
 change above as per your server and as per your db okay 
