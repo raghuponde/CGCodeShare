@@ -1,5 +1,5 @@
 
-DbFirst approach of Entity Framework in asp.net core mvc 
+DbFirst approach of Entity Framework in asp.net core mvc  
 *********************************************************
 
 --->First Open mvc core app with 8.0 version 
