@@ -107,3 +107,27 @@ next generate view using Cusotmer model only and go to view chnage as per SpainC
     </tbody>
 </table>
 
+next 
+
+ public IActionResult searchCustomer(string contactname)
+ {
+     NorthWindContext cnt = new NorthWindContext();
+     var searchcustomer = from customer in cnt.Customers
+                          where customer.ContactName == contactname
+                          select new Customer
+                          {
+                              ContactName=customer.ContactName,
+                              ContactTitle=customer.ContactTitle,
+                              CompanyName=customer.CompanyName
+
+                          };
+     var searchcustomer2 = cnt.Customers.Where(x => x.
+     ContactName == contactname)
+         .Select(x => new Customer { ContactName=x.ContactName,
+             ContactTitle=x.ContactTitle,CompanyName=x.CompanyName
+         });
+     var query1 = searchcustomer.Single();// can also use searchcustomer2
+     var query2 = searchcustomer2.Single();
+     return View(query1);// or query2 can be used 
+
+ }
