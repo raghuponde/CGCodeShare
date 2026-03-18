@@ -61,5 +61,28 @@ Add one class with the name ProdCat in Models folder
 }
 else
 {
-    
+    <div class="row">
+        <div class="col-lg-12">
+            <table id="prodlist" width="80%" cellpadding="5" cellspacing="5"
+            class="table-striped table-hover">
+           <thead>
+               <tr>
+                   <th style="padding:15px" >Prodname</th>
+                   <th style="padding:15px">categaoryname</th>
+               </tr>
+           </thead>
+           <tbody>
+               @foreach(var prod in Model)
+                    {
+                        <tr>
+                            <td style="padding:15px">@prod.prodname</td>
+                            <td style="padding:15px">@prod.catname</td>
+                        </tr>
+                    }
+
+           </tbody>
+        
+            </table>
+        </div>
+    </div>
 }
