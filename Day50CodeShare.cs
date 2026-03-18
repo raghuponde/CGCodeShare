@@ -191,3 +191,38 @@ namespace Layout_SectionsExample.Models
 
     }
 }
+
+dept controller code 
+------------------------
+ List<Department> deptlist = new List<Department>()
+            {
+                new Department{DeptID=10,DeptName="Sales"},
+                new Department{DeptID=20,DeptName="HR"},
+                new Department{DeptID=30,DeptName="Software"}
+            };
+
+        public IActionResult Index()
+        {
+            return View(deptlist);
+        }
+
+emp controller code
+---------------------
+ List<Employee> emplist = new List<Employee>()
+              {
+
+                  new Employee{EmployeeID=101,EmpName="ravi",salary=23000},
+
+                  new Employee{EmployeeID=102,EmpName="sita",salary=43000},
+
+                  new Employee{EmployeeID=103,EmpName="mahesh",salary=53000},
+
+                  new Employee{EmployeeID=104,EmpName="radhika",salary=22000},
+
+
+              };
+
+        public IActionResult Index()
+        {
+            return View(emplist);
+        }
