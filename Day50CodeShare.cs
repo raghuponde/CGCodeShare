@@ -166,3 +166,28 @@ else
         </div>
     </div>
 }
+
+namespace Layout_SectionsExample.Models
+{
+    public class Department
+    {
+
+        public int DeptID { set; get; }
+        public string? DeptName { set; get; }
+
+    }
+}
+
+
+namespace Layout_SectionsExample.Models
+{
+    public class Employee
+    {
+
+        public int EmployeeID { set; get; }
+        public string? EmpName { set; get; }
+
+        public int salary { set; get; }
+
+    }
+}
