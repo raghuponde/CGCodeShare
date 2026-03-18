@@ -229,9 +229,6 @@ emp controller code
 
 
 --------------my layout ---------
-    @{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
