@@ -387,5 +387,20 @@ and view for it
 
 next add create get and post methods 
 
-
+[HttpGet]
+public IActionResult Create()
+{
+    return View();
+}
+[HttpPost]
+public IActionResult Create(Employee employee)
+{
+    if(ModelState.IsValid)
+    {
+        _context.employees.Add(employee);
+        _context.SaveChanges();
+        return RedirectToAction("displayemp");
+    }
+    return View(employee);
+}
 
