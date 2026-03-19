@@ -785,3 +785,12 @@ namespace CodeFirstEFInAsp.netcoreDemo.Controllers
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
 
+ public IActionResult CreateProduct(int? customerId=null)
+ {
+     var cid = customerId ?? 0;
+     ViewBag.CustomerId = cid;
+     ViewBag.CustomerList = new SelectList(_context.Customers,
+         "CustomerID", "CustomerName", cid);
+     return View();
+
+ }
