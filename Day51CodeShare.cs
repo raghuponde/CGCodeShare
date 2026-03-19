@@ -284,5 +284,104 @@ Now add some values in employees tabe like this
 | 3  | Sita      | Dinakar  | dinakar@yahoo.com      | 32  |
 +----+-----------+----------+------------------------+-----+
 
+go to home controller 
+
+using System.Diagnostics;
+using CodeFirstEFInAsp.netcoreDemo.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CodeFirstEFInAsp.netcoreDemo.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
+        private readonly EventContext _context;
+
+        public HomeController(ILogger<HomeController> logger,
+            EventContext context)
+        {
+            _logger = logger;
+            _context = context;
+        }
+        public IActionResult displayemp()
+        {
+            var employees = _context.employees.ToList();
+            return View(employees);
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
+}
+
+
+and view for it 
+
+@model IEnumerable<CodeFirstEFInAsp.netcoreDemo.Models.Employee>
+
+@{
+    ViewData["Title"] = "displayemp";
+}
+
+<h1>displayemp</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
 
 
