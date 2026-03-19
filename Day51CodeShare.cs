@@ -587,7 +587,7 @@ edit action methd
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
+ 
  public IActionResult Delete(int id)
  {
      var employee = _context.employees.Find(id);
