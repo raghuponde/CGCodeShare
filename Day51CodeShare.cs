@@ -10,7 +10,7 @@ code first approach steps :
 be converted to db tables as i am using code first apprach 
 
 and now add followng classes in Models folder 
-
+ 
 Add Author,Course and Student classes into the
 Models folder and then define the proeprties in them which i provide here okay 
 
