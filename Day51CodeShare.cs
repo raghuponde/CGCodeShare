@@ -62,3 +62,28 @@ namespace CodeFirstEntityFrameworkDemo.Models
         public    List<Course> Courses { get; set; } 
     }
 }
+
+
+
+go to app settings and put comma and then
+paste this code and modify as per your system settinggs
+
+ "ConnectionStrings": {
+   "constring": "Data Source=LAPTOP-4G8BHPK9\\SQLEXPRESS;initial catalog=EventDB;Integrated Security=true;Encrypt=true;TrustServerCertificate=true;"
+ }
+ here it will look like this
+ 
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "constring": "Data Source=LAPTOP-4G8BHPK9\\SQLEXPRESS;initial catalog=EventDB;Integrated Security=true;Encrypt=true;TrustServerCertificate=true;"
+  }
+
+}
+
