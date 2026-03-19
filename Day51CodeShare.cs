@@ -385,3 +385,7 @@ and view for it
 </table>
 
 
+next add create get and post methods 
+
+
+
