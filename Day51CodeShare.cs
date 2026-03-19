@@ -659,4 +659,80 @@ edit action methd
         <a asp-action="displayemp">Back to List</a>
     </form>
 </div>
+------------------------
+using System.ComponentModel.DataAnnotations;
+
+namespace CodeFirstEFInAsp.netcoreDemo.Models
+{
+    public class Customer
+    {
+        public int CustomerID { set; get; }
+
+        [Required]
+        public string CustomerName { set; get; }
+
+        public ICollection<Product> Products { set; get; }
+    }
+}
+
+
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CodeFirstEFInAsp.netcoreDemo.Models
+{
+    public class Product
+    {
+        public int ProductID { get; set; }
+
+        [Required]
+        public string ProductName { set; get; }
+
+        [Display(Name ="who buyed")]
+        [ForeignKey("Customer")]
+        public int CustomerID { set; get; }
+
+       
+        public Customer Customer { set; get; }
+    }
+}
+
+
+adding in event context 
+
+using Microsoft.EntityFrameworkCore;
+
+namespace CodeFirstEFInAsp.netcoreDemo.Models
+{
+    public class EventContext: DbContext
+    {
+        public EventContext(DbContextOptions dbContextOptions):
+            base(dbContextOptions)
+        {
+            
+        }
+        public DbSet<Author> authors { set; get; }
+        public DbSet<Course> courses { set; get; }
+
+        public DbSet<Student> students { set; get; }
+
+        public DbSet<Author1> authors1 { set; get; }
+
+        public DbSet<Course1> courses1 { set; get; }
+
+        public DbSet<Employee> employees { set; get; }
+
+        public DbSet<UserDetail> userdetails { set; get; }
+
+        public DbSet<Customer> Customers { set; get; }
+
+        public DbSet<Product> Products { set; get; }
+    }
+}
+
+
+build the application 
+
+run migrations 
+
 
