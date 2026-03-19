@@ -241,4 +241,6 @@ namespace CodeFirstEFInAsp.netcoreDemo.Models
         public string Profile { get; set; }
     }
 }
+Now build the solution 
 
+and then add migrations 
