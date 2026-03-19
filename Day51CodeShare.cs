@@ -735,4 +735,37 @@ build the application
 
 run migrations 
 
+using CodeFirstEFInAsp.netcoreDemo.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CodeFirstEFInAsp.netcoreDemo.Controllers
+{
+    public class TransactionController : Controller
+    {
+        private readonly EventContext _context;
+        public TransactionController(EventContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult  CreateCustomer()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult CreateCustomer(Customer customer )
+        {
+            if(ModelState.IsValid)
+            {
+                _context.Customers.Add(customer);
+                _context.SaveChanges();
+                return Content("customer added");
+              //  return RedirectToAction("CreateProduct");
+            }
+            return View(customer);
+        }
+    }
+}
+
+
 
