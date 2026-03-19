@@ -865,7 +865,7 @@ namespace CodeFirstEFInAsp.netcoreDemo.Controllers
     {
         <small class="text-warning">Select a customer first</small>
     }
-</div>
+</div> 
 
 ----------write in controller ---------
      public IActionResult Summary(int customerId)
