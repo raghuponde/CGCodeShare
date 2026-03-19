@@ -588,3 +588,28 @@ edit action methd
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
+ public IActionResult Delete(int id)
+ {
+     var employee = _context.employees.Find(id);
+     if (employee == null)
+     {
+         return NotFound();
+     }
+     return View(employee);
+ }
+
+
+ // POST: Employee/Delete/5
+ [HttpPost, ActionName("Delete")]
+ [ValidateAntiForgeryToken]
+ public IActionResult DeleteConfirmed(int id)
+ {
+     var employee = _context.employees.Find(id);
+     if (employee != null)
+     {
+         _context.employees.Remove(employee);
+         _context.SaveChanges();
+     }
+     return RedirectToAction("dislayemp");
+ }
+
