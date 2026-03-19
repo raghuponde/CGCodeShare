@@ -87,6 +87,33 @@ paste this code and modify as per your system settinggs
 
 }
 
+context class also u need to create and in that u have to add all classes 
+   and set the path in app  settings file and 
+   also in program.cs file also inject the dependency 
+   
+   Now add one class like this EventContext which is master class which will 
+   hold all tables through this only i will call other classes and tables 
+
+   
+using Microsoft.EntityFrameworkCore;
+
+namespace CodeFirstEFInAsp.netcoreDemo.Models
+{
+    public class EventContext: DbContext
+    {
+        public EventContext(DbContextOptions dbContextOptions):
+            base(dbContextOptions)
+        {
+            
+        }
+        public DbSet<Author> authors { set; get; }
+        public DbSet<Course> courses { set; get; }
+
+        public DbSet<Student> students { set; get; }
+    }
+}
+
+
 
 now in program.cs i have to inject this dependency 
 
