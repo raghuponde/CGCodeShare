@@ -7,7 +7,7 @@ code first approach steps :
     Microsoft.EntityFrameworkCore.Tools
     
 2)creating classes in Models folder which will later will 
-be converted to db tables as i am using code first apprach 
+be converted to db tables as i am using code first apprach  
 
 and now add followng classes in Models folder 
  
