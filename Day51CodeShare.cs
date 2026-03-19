@@ -509,4 +509,29 @@ details view
     <a asp-action="displayemp">Back to List</a>
 </div>
 
-
+edit action methd 
+-----------------
+    public IActionResult Edit(int id)
+    {
+        var employee = _context.employees.Find(id);
+        if(employee==null)
+        {
+            return BadRequest();
+        }
+        return View(employee);
+    }
+    [HttpPost]
+    public IActionResult Edit(int id,Employee employee)
+    {
+        if(id!=employee.Id)
+        {
+            return BadRequest();
+        }
+        if(ModelState.IsValid)
+        {
+            _context.Update(employee);
+            _context.SaveChanges();
+            return RedirectToAction("displayemp");
+        }
+        return View(employee);
+    }
