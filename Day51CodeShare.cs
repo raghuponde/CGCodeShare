@@ -794,3 +794,24 @@ namespace CodeFirstEFInAsp.netcoreDemo.Controllers
      return View();
 
  }
+
+
+        [HttpPost]
+        public IActionResult CreateProduct(Product product)
+        {
+            ModelState.Clear();
+            ModelState.Remove(nameof(product.ProductID));
+            if(ModelState.IsValid)
+            {
+                _context.Products.Add(product);
+                _context.SaveChanges();
+                return RedirectToAction
+                    ("CreateProduct", new { customerId = product.CustomerID });
+            }
+            // preserving values 
+            ViewBag.customerId = product.CustomerID;
+            ViewBag.CustomerList = new SelectList(_context.Customers,
+               "CustomerID", "CustomerName",product.CustomerID);
+            return View(product);
+        }
+        
