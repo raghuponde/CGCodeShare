@@ -271,3 +271,18 @@ namespace CodeFirstEFInAsp.netcoreDemo.Models
 Now build the solution 
 
 and then add migrations 
+
+Now add some values in employees tabe like this 
+
+    fill some data in employees table from 
+
++----+-----------+----------+------------------------+-----+
+| Id | FirstName | LastName |         Email          | Age |
++----+-----------+----------+------------------------+-----+
+| 1  | Kiran     | shukla   | kiran@gmail.com        | 34  |
+| 2  | Mahesh    | Babu     | Mahesh@gmail.com       | 39  |
+| 3  | Sita      | Dinakar  | dinakar@yahoo.com      | 32  |
++----+-----------+----------+------------------------+-----+
+
+
+
