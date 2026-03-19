@@ -119,4 +119,6 @@ now in program.cs i have to inject this dependency
 
  builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring")));
 
+Now Build the solution once and start running the migrations 
+
 
