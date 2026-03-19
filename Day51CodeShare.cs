@@ -133,7 +133,7 @@ namespace CodeFirstEFInAsp.netcoreDemo.Models
 {
     public class Author1
     {
-        public string Id { set; get; }
+        public int Id { set; get; }
         public string Name { get; set; }
 
         public IList<Course1> Courses { set; get; }
