@@ -19,3 +19,46 @@ is master and course is child
 and between course and student many to many becauee one student can
 take many course and in each course there will be many studnets so here 
 junction table will be created with two one to many relationships okay 
+
+
+
+namespace CodeFirstEntityFrameworkDemo.Models
+{
+    public class Author
+    {
+        public int Id { get; set; } // it will create identity column
+        public string? AuthorName { set;get; }
+
+        public IList<Course> Courses { get; set; }
+    }
+}
+
+namespace CodeFirstEntityFrameworkDemo.Models
+{
+    public class Course
+    {
+
+        public int Id { get; set; } 
+       
+       public string? Title { get; set; }  
+
+        public string? CourseDescription { get; set; }  
+
+        public float? fullprice { get; set; }
+
+        public Author? Author { get; set; }
+
+        public List<Student> Students { get; set; } 
+
+    }
+}
+
+namespace CodeFirstEntityFrameworkDemo.Models
+{
+    public class Student
+    {
+        public int Id { get; set; }
+
+        public    List<Course> Courses { get; set; } 
+    }
+}
