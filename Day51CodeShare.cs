@@ -87,3 +87,9 @@ paste this code and modify as per your system settinggs
 
 }
 
+
+now in program.cs i have to inject this dependency 
+
+ builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring")));
+
+
