@@ -121,4 +121,13 @@ now in program.cs i have to inject this dependency
 
 Now Build the solution once and start running the migrations 
 
+Now i want to add some more classes into the same program but with annotations
+which will provide valdiation to me accordingly constraints will be imposed on the table from 
+ the classes 
+ 
+ so some classes i will be adding and again same commands i will be using 
+ 
+ so now add classes Author1 ,Course1 ,Employee ,UserDetail into the models folder 
+ 
+
 
