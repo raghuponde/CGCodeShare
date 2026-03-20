@@ -255,6 +255,286 @@ namespace CodeFirstEntityFrameworkDemo.Repositories
     }
 }
 
-then in 
+namespace CodeFirstEntityFrameworkDemo.Repositories
+{
+    public interface IPost
+    {
+
+        List<Post> GetPosts();
+
+        Post GetPostByID(int postid);
+
+        void InsertPost(Post post);
+
+        void DeletePost(int postid);
+
+        void UpdatePost(Post post);
+
+        void save();
+    }
+}
+
+so implementing above interface in class PostRespsotory and implemnted the code 
+
+using CodeFirstEFDEmo.Models;
+
+namespace CodeFirstEFDEmo.Repositories
+{
+    public class PostRepository : IPost
+    {
+        private EventContext context;
+
+        public PostRepository(EventContext cnt)
+        {
+            this.context = cnt;
+        }
+        public void DeletePost(int postid)
+        {
+            Post post=context.posts.Find(postid);
+            context.posts.Remove(post);
+        }
+
+        public Post GetPostByID(int postid)
+        {
+            return context.posts.Find(postid);
+        }
+
+        public List<Post> GetPosts()
+        {
+            return context.posts.ToList();
+        }
+
+        public void InsertPost(Post post)
+        {
+          context.posts.Add(post);
+        }
+
+        public void save()
+        {
+            context.SaveChanges();
+        }
+
+        public void UpdatePost(Post post)
+        {
+            context.Entry(post).State =
+                Microsoft.
+                EntityFrameworkCore.EntityState.Modified;
+        }
+    }
+}
+
+
+Now u need to register this interface and class in program.cs file 
+
+means injecting dependency
+
+   builder.Services.AddScoped<IPost, PostRepository>();
+
+   Now add one PostController with read and write actions 
+   
+   using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using CodeFirstEFDEmo.Repositories;
+using CodeFirstEFDEmo.Models;
+namespace CodeFirstEFDEmo.Controllers
+{
+    public class PostController : Controller
+    {
+        private readonly IPost _postRepository;
+        public PostController(IPost postRepository)
+        {
+            this._postRepository = postRepository;
+        }
+
+        // GET: PostController
+        public ActionResult Index()
+        {
+            var posts=_postRepository.GetPosts();
+            return View(posts);
+        }
+
+        // GET: PostController/Details/5
+        public ActionResult Details(int id)
+        {
+            return View();
+        }
+
+        // GET: PostController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: PostController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+             _postRepository.InsertPost(post);
+                _postRepository.save();
+            return RedirectToAction(nameof(Index));
+            }
+            return View(post);
+        }
+
+        // GET: PostController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            return View();
+        }
+
+        // POST: PostController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: PostController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: PostController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+    }
+}
+
+
+Final updated code of PostController 
+-------------------------------------
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using CodeFirstEFDEmo.Repositories;
+using CodeFirstEFDEmo.Models;
+using System.ComponentModel.DataAnnotations;
+namespace CodeFirstEFDEmo.Controllers
+{
+    public class PostController : Controller
+    {
+        private readonly IPost _postRepository;
+        public PostController(IPost postRepository)
+        {
+            this._postRepository = postRepository;
+        }
+
+        // GET: PostController
+        public ActionResult Index()
+        {
+            var posts=_postRepository.GetPosts();
+            return View(posts);
+        }
+
+        // GET: PostController/Details/5
+        public ActionResult Details(int id)
+        {
+         var post=_postRepository.GetPostByID(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return View(post);
+        }
+
+        // GET: PostController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: PostController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Post post)
+        {
+            if (ModelState.IsValid)
+            {
+             _postRepository.InsertPost(post);
+                _postRepository.save();
+            return RedirectToAction(nameof(Index));
+            }
+            return View(post);
+        }
+
+        // GET: PostController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var post = _postRepository.GetPostByID(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return View(post);
+        }
+
+        // POST: PostController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id,Post post)
+        {
+          if(id!=post.Id)
+            {
+                return NotFound();
+            }
+         else
+            {
+                _postRepository.UpdatePost(post);
+                _postRepository.save();
+                return RedirectToAction(nameof(Index));
+            }
+        }
+
+        // GET: PostController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            var post = _postRepository.GetPostByID(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+            return View(post);
+        }
+
+        // POST: PostController/Delete/5
+        [HttpPost,ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+       public ActionResult DeleteConfirmed(int id)
+        {
+            _postRepository.DeletePost(id);
+            _postRepository.save();
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}
+
+
+Views generated graphically so check the desing in your project or the project which i am giving it to u in mail you can 
+download that project and see all code and deign for your reference 
+
+
+
                     
 
