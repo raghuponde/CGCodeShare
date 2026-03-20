@@ -234,3 +234,27 @@ namespace CodeFirstEFInAsp.netcoreDemo.Models
         public DbSet<Post> posts { set; get; }
 
 build and run the migration 
+
+Add one foldler with the name Repsoitories in project and add one interface IPost and one class PostRepository like this 
+namespace CodeFirstEntityFrameworkDemo.Repositories
+{
+    public interface IPost
+    {
+
+        List<Post> GetPosts();
+
+        Post GetPostByID(int postid);
+
+        void InsertPost(Post post);
+
+        void DeletePost(int postid);
+
+        void UpdatePost(Post post);
+
+        void save();
+    }
+}
+
+then in 
+                    
+
