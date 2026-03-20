@@ -148,6 +148,41 @@ _card
     ViewData["Title"] = "displayemp";
 }
 
+
+
 <h1>displayemp</h1>
 @Html.Partial("_EmpCard",@Model)
+
+
+copy below method in home conroller 
+-------------------------------------
+       public ActionResult DisplayAllEmp()
+       {
+           List<Employee> emplist = new List<Employee>()
+           {
+               new Employee{EmpId=101,EmpName="raghavendra ponde",Email="raghuponde@yahoo.com"
+               ,Description="I am freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+   " freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+" freelance trainer etc an etcI am freelance trainer etc an etc" },
+
+               new Employee{EmpId=102,EmpName="suresh",Email="suresh@yahoo.com"
+               ,Description="I am freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+   " freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+" freelance trainer etc an etcI am freelance trainer etc an etc" },
+
+               new Employee{EmpId=103,EmpName="kiran",Email="kiran@yahoo.com"
+               ,Description="I am freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+   " freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+" freelance trainer etc an etcI am freelance trainer etc an etc" },
+
+               new Employee{EmpId=104,EmpName="mahesh",Email="mahesh@yahoo.com"
+               ,Description="I am freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+   " freelance trainer etc an etcI am freelance trainer etc an etcI am" +
+" freelance trainer etc an etcI am freelance trainer etc an etc" }
+
+           };
+
+
+           return View(emplist);
+       }
 
