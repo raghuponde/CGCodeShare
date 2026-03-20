@@ -513,7 +513,7 @@ namespace CodeFirstEFDEmo.Controllers
             var post = _postRepository.GetPostByID(id);
             if (post == null)
             {
-                return NotFound();
+                return NotFound(); 
             }
             return View(post);
         }
