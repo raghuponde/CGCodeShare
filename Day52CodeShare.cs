@@ -228,3 +228,9 @@ namespace CodeFirstEFInAsp.netcoreDemo.Models
         public string Body { set; get; }
     }
 }
+
+-----------
+
+        public DbSet<Post> posts { set; get; }
+
+build and run the migration 
