@@ -124,3 +124,30 @@ _card
         <p>@Model.Description</p>
     </div>
 </div>
+----------empcard----
+
+                    @model PartialViewCGDemo.Models.Employee
+
+<div class="row" style="border:solid 3px">
+
+    <div class="col-lg-6">
+        <h3>Name:@Model.EmpName</h3>
+        <p>ID:@Model.EmpId</p>
+        <p>Email:@Model.Email</p>
+    </div>
+    <div class="col-lg-6">
+        <h3>Description</h3>
+        <p>@Model.Description</p>
+    </div>
+</div>
+
+----------------view now changed to ----
+
+@model PartialViewCGDemo.Models.Employee
+@{
+    ViewData["Title"] = "displayemp";
+}
+
+<h1>displayemp</h1>
+@Html.Partial("_EmpCard",@Model)
+
