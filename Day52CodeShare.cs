@@ -186,3 +186,33 @@ copy below method in home conroller
            return View(emplist);
        }
 
+     Routing :
+----------
+Routing is pattern matching system
+Routing maps incoming request (from the browser) to a particular resources(controller or action mehod)
+
+domin.com/Home/About
+
+
+
+
+All those path to reach the resource is defined in Routhconfig table path is defined 
+
+so when ever any reauest comes i told first controller will take the request but it is not like that first routeconfig will take it and tell the controller to accept the request 
+
+routeconfig file is parsing the url and if resource is there means that view is there then it gives it othersie 
+404 error it will throw
+
+we define route for each action and all the routes are stored in routetable 
+each incoming request is mapped to this route table 
+
+and all this route table should be registedred in global.asax file 
+
+two types of routing mechaism is ther e
+
+---->tradational routing (we do it using routeconfig file ) 
+
+---->Attribute routing ( it is avaible from version MVC 5 it is avaiable ) i will do the things by puttng 
+  some attibute on top of the action method here i will not use routeconfig file ....
+                 
+
