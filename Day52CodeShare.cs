@@ -216,3 +216,15 @@ two types of routing mechaism is ther e
   some attibute on top of the action method here i will not use routeconfig file ....
                  
 
+namespace CodeFirstEFInAsp.netcoreDemo.Models
+{
+    public class Post
+    {
+        public int Id { set; get; }
+        public DateTime DatePublished { set; get; }
+
+        public string Title { set; get; }
+
+        public string Body { set; get; }
+    }
+}
