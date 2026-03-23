@@ -344,11 +344,25 @@ demo1.html
 <script src="https://code.jquery.com/jquery-3.7.1.min.js">
 </script>
 <script type="text/javascript" language="Javascript">
-    $(document).ready();
+    $(document).ready(
+        function () {
+            $("#newdiv").click(
+                function () {
+                    alert("you have clicked the div ")
+                }
+
+            )
+        }
+
+    )
 </script>
 
 <body>
-      <div  id="newdiv" >click on this to see a dialogue box </div>
+    <div id="newdiv">click on this to see a dialogue box </div>
 </body>
 
 </html>
+
+
+demo2.html 
+-----------
