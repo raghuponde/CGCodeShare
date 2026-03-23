@@ -284,4 +284,24 @@ updated codes verison 1
       return View();
   }
   
-  
+  from 1 to 3 
+    ----------
+    public IActionResult Index()
+{
+    TempData["myKey"] = "Data from Index method";
+    return View();
+}
+public IActionResult Index2()
+{
+    HttpContext.Session.Remove("myKey");
+    TempData.Peek("myKey");
+    //ViewBag.MyKey = TempData["myKey"];
+    //TempData.Keep("myKey");
+    return View();
+}
+public IActionResult Index3()
+{
+    ViewBag.Mykey = TempData["myKey"];
+    
+    return View();
+}
