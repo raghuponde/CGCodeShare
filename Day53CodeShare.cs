@@ -218,7 +218,7 @@ namespace StateMgtDemoinAsp.netcore.Controllers
                 ViewBag.UserName = username;
             }
             else
-            {
+            { 
                 return RedirectToAction("Login");
             }
           return View();
