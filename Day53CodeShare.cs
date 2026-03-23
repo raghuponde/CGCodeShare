@@ -234,3 +234,19 @@ namespace StateMgtDemoinAsp.netcore.Controllers
 
     }
 }
+
+now again try to run the program you will get the same effect over here 
+
+now let us go with temp data demo now which is again server side state management .
+
+Now remember that view bag and view data etc are not doing statemanagement they are for one single request and response 
+
+so make that thing clear 
+
+so for one subsquent request i need tempdata here when i want to send data from one action to another action method and it can be of different controller as well okay ..
+
+tempdata internally use session to store data .
+
+keep is used to send or to save data it wont read so if  want both means i have to use peek
+
+
