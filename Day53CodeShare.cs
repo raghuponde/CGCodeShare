@@ -29,3 +29,21 @@ In the Home conotorller
      ViewBag.AValue = $"A is currently :{a}";
      return View("Index");
  }
+
+go to Models folder add one class LoginViewModel 
+
+   using System.ComponentModel.DataAnnotations;
+
+namespace WebApplication22.Models
+{
+    public class LoginViewModel
+    {
+        [Required(ErrorMessage = "Username is required")]
+        public string Username { get; set; }
+
+        [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+    }
+}
+
