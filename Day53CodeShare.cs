@@ -264,3 +264,24 @@ go to home conroller and write like this
  {
      return View();
  }
+
+updated codes verison 1 
+  --------------------
+    public IActionResult Index()
+  {
+      TempData["myKey"] = "Data from Index method";
+      return View();
+  }
+  public IActionResult Index2()
+  {
+      ViewBag.MyKey = TempData["myKey"];
+      TempData.Keep("myKey");
+      return View();
+  }
+  public IActionResult Index3()
+  {
+      ViewBag.Mykey = TempData["myKey"];
+      return View();
+  }
+  
+  
