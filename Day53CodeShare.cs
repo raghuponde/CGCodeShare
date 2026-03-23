@@ -249,4 +249,18 @@ tempdata internally use session to store data .
 
 keep is used to send or to save data it wont read so if  want both means i have to use peek
 
+go to home conroller and write like this 
 
+   public IActionResult Index()
+ {
+     
+     return View();
+ }
+ public IActionResult Index2()
+ {
+     return View();
+ }
+ public IActionResult Index3()
+ {
+     return View();
+ }
