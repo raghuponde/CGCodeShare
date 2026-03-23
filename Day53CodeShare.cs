@@ -140,3 +140,21 @@ next add Welcome action methd and logout action methods
      Response.Cookies.Delete("UserName");
      return RedirectToAction("Login");
  }
+
+Now add welcome view now here empty page and put my desingin
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h1>Welcome</h1>
+
+@if (ViewBag.UserName != null)
+{
+    <h2>Welcome, @ViewBag.UserName!</h2>
+}
+<button type="button" class="btn btn-primary ">click me</button>
+<form asp-action="Logout" method="post">
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
