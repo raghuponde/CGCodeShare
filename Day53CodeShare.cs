@@ -46,4 +46,35 @@ namespace WebApplication22.Models
         public string Password { get; set; }
     }
 }
+Add one controlller with the name AccountController which is empty one of mvc type 
+
+using Microsoft.AspNetCore.Mvc;
+using StateMgtDemoinAsp.netcore.Models;
+
+namespace StateMgtDemoinAsp.netcore.Controllers
+{
+    public class AccountController : Controller
+    {
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var cookieOptions = new CookieOptions
+                {
+                    Expires = DateTime.Now.AddMinutes(1)// set cookie
+                };
+                Response.Cookies.Append("UserName", model.Username, cookieOptions);
+                return RedirectToAction("Welcome");
+            }
+            return View(model);
+        }
+
+    }
+}
 
