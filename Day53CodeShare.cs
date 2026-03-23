@@ -173,5 +173,5 @@ same codng i want to do using session here session is server side i need to set 
 
 
 
-
+   app.UseSession();  // Enable session middleware
 
