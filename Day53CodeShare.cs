@@ -119,5 +119,24 @@ add view for Login get method it is create with model LoginViewModel
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
-next add Welcome action methd 
+next add Welcome action methd and logout action methods 
+ public IActionResult Welcome()
+ {
+     if(Request.Cookies.ContainsKey("UserName"))
+     {
+         string username = Request.Cookies["UserName"];
+         ViewBag.UserName = username;
+     }
+     else
+     {
+         return RedirectToAction("Login");
+     }
+   return View();
+ }
 
+ [HttpPost]
+ public IActionResult Logout()
+ {
+     Response.Cookies.Delete("UserName");
+     return RedirectToAction("Login");
+ }
