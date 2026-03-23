@@ -309,7 +309,7 @@ public IActionResult Index3()
 paste this code in index4.cshtml 
 -----------------------------------
 public IActionresult 
-
+ 
 <button onclick="setData()">Set Data</button>
 <button onclick="getData()">Get Data</button>
 <p id="output"></p>
