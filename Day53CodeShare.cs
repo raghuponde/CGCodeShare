@@ -366,3 +366,6 @@ demo1.html
 
 demo2.html 
 -----------
+<p class="myclass">This is a paragraph.</p> 
+<p id="myid">This is second paragraph.</p>
+<p>This is third paragraph.</p> 
