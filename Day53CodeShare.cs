@@ -163,7 +163,14 @@ same codng i want to do using session here session is server side i need to set 
 
   go to program .cs and write this code 
 
-  
+   // Add session service with a timeout (set to 30 minutes here).
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(1); // Session timeout
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true; // Required for GDPR compliance
+            });
+
 
 
 
