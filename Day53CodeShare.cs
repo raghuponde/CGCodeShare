@@ -213,7 +213,7 @@ namespace StateMgtDemoinAsp.netcore.Controllers
             //    string username = Request.Cookies["UserName"];
             //    ViewBag.UserName = username;
             //}
-            if(String.IsNullOrEmpty(username))
+            if(!String.IsNullOrEmpty(username))
             {
                 ViewBag.UserName = username;
             }
