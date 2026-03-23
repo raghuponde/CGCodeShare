@@ -158,3 +158,13 @@ Now add welcome view now here empty page and put my desingin
     <button type="submit" class="btn btn-danger">Logout</button>
 </form>
 
+same codng i want to do using session here session is server side i need to set the session in the midddleware means program.cs file i need to set 
+  so same programming using session 
+
+  go to program .cs and write this code 
+
+  
+
+
+
+
