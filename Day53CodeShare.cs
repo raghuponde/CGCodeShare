@@ -444,3 +444,16 @@ body code
 </body>
 
 </html>
+
+Demo4.html
+----------
+body code :
+----------
+  add two images in your folder only 
+  <div> 
+        <img id="myimg" src="smileyhover.png"  width="300px" height="300px"
+         alt="Sample image" /> 
+    </div> 
+    
+    
+  put those images in same folder jquerydemos
