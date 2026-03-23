@@ -324,3 +324,31 @@ public IActionresult
         document.getElementById('output').innerText = data || 'No data found';
     }
 </script>
+
+JQuery 
+---------
+create one folder in Day53 with the name JqueryCodes and open jqueryCodes in vscode and add one html file there 
+with the name demo1.html and paste the below code over there 
+
+
+demo1.html
+---------
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js">
+</script>
+<script type="text/javascript" language="Javascript">
+    $(document).ready();
+</script>
+
+<body>
+      <div  id="newdiv" >click on this to see a dialogue box </div>
+</body>
+
+</html>
