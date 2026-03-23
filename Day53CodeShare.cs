@@ -305,3 +305,22 @@ public IActionResult Index3()
     
     return View();
 }
+
+paste this code in index4.cshtml 
+-----------------------------------
+public IActionresult 
+
+<button onclick="setData()">Set Data</button>
+<button onclick="getData()">Get Data</button>
+<p id="output"></p>
+
+<script>
+    function setData() {
+        localStorage.setItem('key', 'This is local storage data');
+    }
+
+    function getData() {
+        const data = localStorage.getItem('key');
+        document.getElementById('output').innerText = data || 'No data found';
+    }
+</script>
