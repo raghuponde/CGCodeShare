@@ -401,3 +401,13 @@ comlete code
 </body>
 
 </html>
+demo3.html
+-----------
+body code 
+----------
+<div> 
+ <em title="Bold and Brave">This is first paragraph.</em> 
+ <p id="myid">This is second paragraph.</p> 
+ <div id="divid">
+ </div>
+ </div> 
