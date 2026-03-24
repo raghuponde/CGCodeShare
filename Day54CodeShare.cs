@@ -131,8 +131,49 @@ so paste the below code like this for in the new file ajaxdemo1.html
 
     </script>
     <script type="text/javascript" language="javascript">
-        $(document).ready()
-        
+        $(document).ready(
+
+          function()
+          {
+           $.ajax({
+               url:"https://jsonplaceholder.typicode.com/users",
+               type:"GET",
+               success:function(data)
+               {
+                 
+               },
+               error:function()
+               {
+                alert("failed to retrive data ")
+               }
+
+
+
+
+           })
+
+
+
+
+
+
+
+
+
+          }
+
+
+
+
+
+
+
+
+
+
+
+        )
+
     </script>
 </head>
 
@@ -156,8 +197,3 @@ so paste the below code like this for in the new file ajaxdemo1.html
 </body>
 
 </html>
-
-
-
-
-
