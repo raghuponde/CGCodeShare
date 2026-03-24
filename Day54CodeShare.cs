@@ -570,8 +570,8 @@ adding post two varieties
        return Ok(emp);
    }
 
-put first methd 
---------------
+put first and second  methodd 
+------------------------------
  [HttpPut]
  public async Task<ActionResult<List<Employee>>> UpdateEmployee(Employee emp)
  {
@@ -586,4 +586,21 @@ put first methd
      employee.Age = emp.Age;
      await _context.SaveChangesAsync();
      return Ok(await _context.employees.ToListAsync());
+ }
+
+ [HttpPut]
+ [Route("put2")]
+ public async Task<ActionResult<Employee>> UpdateEmployee2(Employee emp)
+ {
+     var employee = await _context.employees.FindAsync(emp.Id);
+     if (employee == null)
+     {
+         return BadRequest("Employee not found ");
+     }
+     employee.FirstName = emp.FirstName;
+     employee.LastName = emp.LastName;
+     employee.Email = emp.Email;
+     employee.Age = emp.Age;
+     await _context.SaveChangesAsync();
+     return Ok(emp);
  }
