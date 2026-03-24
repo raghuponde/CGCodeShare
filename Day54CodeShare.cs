@@ -273,6 +273,12 @@ namespace WebApiInAsp.netcoreMvcDemo.Models
         public int Age { set; get; }
     }
 }
+Add dependencies 
+
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
+
 
 Next add EmpContext class also like this in Models folder only 
 
