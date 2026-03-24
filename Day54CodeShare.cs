@@ -552,5 +552,21 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
         }
     }
 }
-
+adding post two varieties 
+-----------------------------
+   [HttpPost]
+   public async Task<ActionResult<List<Employee>>> AddEmployee(Employee emp)
+   {
+      await  _context.employees.AddAsync(emp);
+       await _context.SaveChangesAsync();
+       return Ok(await _context.employees.ToListAsync());
+   }
+   [HttpPost]
+   [Route("emp_post2")]
+   public async Task<ActionResult<Employee>> AddEmployee2(Employee emp)
+   {
+       await _context.employees.AddAsync(emp);
+       await _context.SaveChangesAsync();
+       return Ok(emp);
+   }
 
