@@ -315,7 +315,7 @@ build the solution once
 
 then run migrations and see the tables there and add some dummy data into the employees table now 
 
-
+add some data graphically using right edit and add values into the employees table
 
     
 
