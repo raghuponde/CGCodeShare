@@ -281,6 +281,22 @@ Microsoft.EntityFrameworkCore.Tools
 
 
 Next add EmpContext class also like this in Models folder only 
+using Microsoft.EntityFrameworkCore;
+
+namespace WebApiInAsp.netcoreMvcDemo.Models
+{
+    public class EmpContext:DbContext
+    {
+        public EmpContext(DbContextOptions dbContextOptions) :
+            base(dbContextOptions)
+        {
+
+        }
+
+        public DbSet<Employee> employees { set; get; }
+
+    }
+}
 
 
 
