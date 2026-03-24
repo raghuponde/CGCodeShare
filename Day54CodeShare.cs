@@ -274,3 +274,9 @@ namespace WebApiInAsp.netcoreMvcDemo.Models
     }
 }
 
+Next add EmpContext class also like this in Models folder only 
+
+
+
+    
+
