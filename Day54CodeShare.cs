@@ -153,31 +153,9 @@ so paste the below code like this for in the new file ajaxdemo1.html
                         alert("failed to retrive data ")
                     }
 
-
-
-
                 })
 
-
-
-
-
-
-
-
-
             }
-
-
-
-
-
-
-
-
-
-
-
         )
 
     </script>
@@ -198,8 +176,71 @@ so paste the below code like this for in the new file ajaxdemo1.html
             <!-- Data will be loaded here -->
         </tbody>
     </table>
+</body>
+</html>
 
+using for loop
+-----------------
+same code using for loop when u are using for loop empty array is neded 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Ajax Table Example - with For Loop</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/users",
+                type: "GET",
+                success: function (data) {
+                    // Create an array to hold all the rows
+                    var tableRows = [];
+
+                    // Use a traditional for loop to iterate
+                    for (var i = 0; i < data.length; i++) {
+                        var user = data[i];
+                        var row = "<tr>";
+                        row += "<td>" + user.id + "</td>";
+                        row += "<td>" + user.name + "</td>";
+                        row += "<td>" + user.email + "</td>";
+                        row += "</tr>";
+
+                        // Push each row into the array
+                        tableRows.push(row);
+                    }
+
+                    // Join all rows into a single string and insert into table body
+                    $("#userTable tbody").html(tableRows.join(""));
+                },
+                error: function () {
+                    alert("Failed to retrieve data.");
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>User Data</h2>
+    <table border="1" id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be loaded here -->
+        </tbody>
+    </table>
 
 </body>
 
 </html>
+
+
