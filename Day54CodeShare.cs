@@ -570,3 +570,20 @@ adding post two varieties
        return Ok(emp);
    }
 
+put first methd 
+--------------
+ [HttpPut]
+ public async Task<ActionResult<List<Employee>>> UpdateEmployee(Employee emp)
+ {
+     var employee = await _context.employees.FindAsync(emp.Id);
+     if(employee==null)
+     {
+         return BadRequest("Employee not found ");
+     }
+     employee.FirstName = emp.FirstName;
+     employee.LastName = emp.LastName;
+     employee.Email = emp.Email;
+     employee.Age = emp.Age;
+     await _context.SaveChangesAsync();
+     return Ok(await _context.employees.ToListAsync());
+ }
