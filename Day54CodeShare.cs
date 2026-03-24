@@ -305,5 +305,17 @@ in app setting write like this
     "constring": "Data Source=LAPTOP-4G8BHPK9\\SQLEXPRESS;initial catalog=EmpCg;Integrated Security=true;Encrypt=true;TrustServerCertificate=true;"
   }
 
+ go to program.cs 
+  write like this afer frist line 
+
+      builder.Services.AddDbContext<EmpContext>
+     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring")));
+
+build the solution once 
+
+then run migrations and see the tables there and add some dummy data into the employees table now 
+
+
+
     
 
