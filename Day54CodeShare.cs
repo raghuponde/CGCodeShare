@@ -67,15 +67,26 @@ updated code
                 })
 
                 console.log("I want to iterate list")
-                $("li").each(function(index,element){
-                    alert((index+1)+ ": "+$(element).text())
+                $("li").each(function (index, element) {
+                    alert((index + 1) + ": " + $(element).text())
                 })
 
                 console.log("I want to iterate using reference")
 
-                $("li").each(function(index){
-                    alert((index+1)+":"$(this).text());
+                $("li").each(function (index) {
+                    alert((index + 1) + ":" + $(this).text());
                 })
+
+                console.log("iterating collection and puttin in div tage result ");
+
+                var results = "";
+                $.each(friends, function (index, value) {
+
+                    results += "<br/><li>" + value + "</li>"
+                })
+                $("#divresult").html(results);
+
+
 
             }
 
