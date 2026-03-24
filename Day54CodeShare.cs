@@ -366,3 +366,77 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
         }
     }
 }
+now to test the web api  I need some testing tools like postman or swagger 
+
+so in Program.cs i will configure swagger to test the web api 
+
+steps to configure 
+-------------------
+so I will install from packge manage console this command 
+
+Install-Package Swashbuckle.AspNetCore
+
+and do changes in program.cs like this 
+
+
+Program.cs 
+------------
+using CodeFirstEFDEmo.Models;
+using CodeFirstEFDEmo.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+namespace CodeFirstEFDEmo
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddScoped<IPost, PostRepository>();
+
+
+            builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring")));
+
+
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+
+            builder.Services.AddEndpointsApiExplorer(); // Required for Swagger
+            builder.Services.AddSwaggerGen();           // Adds Swagger support
+
+            var app = builder.Build();
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();  // ✅ Add this line
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+            // Configure the HTTP request pipeline.
+            if (!app.Environment.IsDevelopment())
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.Run();
+        }
+    }
+}
+
+
+
+
