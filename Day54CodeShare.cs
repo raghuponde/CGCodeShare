@@ -520,5 +520,8 @@ namespace WebApiInAsp.netcoreMvcDemo
     }
 }
 
+so now in actual programming of web api we use asynchronus methods so change the methods like this which i will 
+change and will paste one by one so make a note of it 
+
 
 
