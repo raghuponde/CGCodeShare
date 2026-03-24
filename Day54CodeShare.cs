@@ -620,3 +620,31 @@ put first and second  methodd
      await _context.SaveChangesAsync();
      return Ok(employee);
  }
+delete methods 
+
+ [HttpDelete("{id}")]
+ public async Task<ActionResult<List<Employee>>> DeleteEmployee(int id)
+ {
+     var employee = await _context.employees.FindAsync(id);
+     if(employee==null)
+     {
+         return BadRequest("Emloyee not foud");
+
+     }
+     _context.employees.Remove(employee);
+     await _context.SaveChangesAsync();
+     return Ok(await _context.employees.ToListAsync());
+ }
+ [HttpDelete("del2/{id}")]
+ public async Task<ActionResult<Employee>> DeleteEmployee2(int id)
+ {
+     var employee = await _context.employees.FindAsync(id);
+     if (employee == null)
+     {
+         return BadRequest("Emloyee not foud");
+
+     }
+     _context.employees.Remove(employee);
+     await _context.SaveChangesAsync();
+     return Ok(employee);
+ }
