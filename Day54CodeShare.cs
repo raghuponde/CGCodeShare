@@ -133,24 +133,30 @@ so paste the below code like this for in the new file ajaxdemo1.html
     <script type="text/javascript" language="javascript">
         $(document).ready(
 
-          function()
-          {
-           $.ajax({
-               url:"https://jsonplaceholder.typicode.com/users",
-               type:"GET",
-               success:function(data)
-               {
-                 
-               },
-               error:function()
-               {
-                alert("failed to retrive data ")
-               }
+            function () {
+                $.ajax({
+                    url: "https://jsonplaceholder.typicode.com/users",
+                    type: "GET",
+                    success: function (data) {
+                        var tablebody = ""
+                        $.each(data, function (index, user) {
+
+                            tablebody += "<tr>";
+                            tablebody += "<td>" + user.id + "</td>"
+                            tablebody += "<td>" + user.name + "</td>"
+                            tablebody += "<td>" + user.email + "</td>"
+                            tablebody += "</tr>"
+                        })
+                        $("#userTable tbody").html(tablebody);
+                    },
+                    error: function () {
+                        alert("failed to retrive data ")
+                    }
 
 
 
 
-           })
+                })
 
 
 
@@ -160,7 +166,7 @@ so paste the below code like this for in the new file ajaxdemo1.html
 
 
 
-          }
+            }
 
 
 
