@@ -336,3 +336,8 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
         }
     }
 }
+
+https://localhost:7230/api/Emp
+
+type this url u can see it 
+
