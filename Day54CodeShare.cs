@@ -572,7 +572,7 @@ adding post two varieties
 
 put first and second  methodd 
 ------------------------------
- [HttpPut]
+  [HttpPut]
  public async Task<ActionResult<List<Employee>>> UpdateEmployee(Employee emp)
  {
      var employee = await _context.employees.FindAsync(emp.Id);
@@ -602,9 +602,8 @@ put first and second  methodd
      employee.Email = emp.Email;
      employee.Age = emp.Age;
      await _context.SaveChangesAsync();
-     return Ok(emp);
+     return Ok(employee);
  }
-
  [HttpPut]
  [Route("put3")]
  public async Task<ActionResult<Employee>> UpdateEmployee3(Employee emp,int id)
