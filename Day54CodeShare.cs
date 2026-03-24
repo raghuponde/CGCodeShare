@@ -648,3 +648,17 @@ delete methods
      await _context.SaveChangesAsync();
      return Ok(employee);
  }
+
+last get method 
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Employee>> GetEmployeesById(int id)
+        {
+            var employee = await _context.employees.FindAsync(id);
+            if (employee == null)
+            {
+                return BadRequest("Emloyee not foud");
+
+            }
+            return Ok(employee);
+        }
