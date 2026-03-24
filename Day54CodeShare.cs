@@ -341,3 +341,28 @@ https://localhost:7230/api/Emp
 
 type this url u can see it 
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmpController : ControllerBase
+    {
+        private readonly EmpContext _context;
+        public EmpController(EmpContext context)
+        {
+            _context = context;
+        }
+        public List<Employee> getemployees()
+        {
+            return _context.employees.ToList();
+        }
+        public List<Employee> getemployees2()
+        {
+            return _context.employees.ToList();
+        }
+    }
+}
