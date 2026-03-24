@@ -243,4 +243,8 @@ same code using for loop when u are using for loop empty array is neded
 
 </html>
 
+web api demo 
+--------------
+create a new asp.net core mvc project now 
+
 
