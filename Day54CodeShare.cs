@@ -523,5 +523,34 @@ namespace WebApiInAsp.netcoreMvcDemo
 so now in actual programming of web api we use asynchronus methods so change the methods like this which i will 
 change and will paste one by one so make a note of it 
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmpController : ControllerBase
+    {
+        private readonly EmpContext _context;
+        public EmpController(EmpContext context)
+        {
+            _context = context;
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<Employee>>>  getemployees()
+        {
+            return Ok(await _context.employees.ToListAsync());
+        }
+        
+        [HttpGet("emp2")]
+        public List<Employee> getemployees2()
+        {
+            return _context.employees.ToList();
+        }
+    }
+}
 
 
