@@ -319,3 +319,20 @@ add some data graphically using right edit and add values into the employees tab
 
     Now add one Controller of web api template empty one addd it 
 
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmpController : ControllerBase
+    {
+        private readonly EmpContext _context;
+        public EmpController(EmpContext context)
+        {
+            _context = context;
+        }
+    }
+}
