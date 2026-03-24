@@ -116,3 +116,48 @@ updated code
 </body>
 
 </html>
+
+go to this url https://jsonplaceholder.typicode.com/users and check the data i need to read the data present at this url and display it  in table
+
+
+so paste the below code like this for in the new file ajaxdemo1.html 
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Ajax Table Example</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js">
+
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready()
+        
+    </script>
+</head>
+
+<body>
+
+    <h2>User Data</h2>
+    <table border="1" id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be loaded here -->
+        </tbody>
+    </table>
+
+
+</body>
+
+</html>
+
+
+
+
+
