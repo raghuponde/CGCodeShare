@@ -306,7 +306,7 @@ in app setting write like this
   }
 
  go to program.cs 
-  write like this afer frist line 
+  write like this afer frist line  
 
       builder.Services.AddDbContext<EmpContext>
      (options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring")));
@@ -317,5 +317,5 @@ then run migrations and see the tables there and add some dummy data into the em
 
 add some data graphically using right edit and add values into the employees table
 
-    
+    Now add one Controller of web api template empty one addd it 
 
