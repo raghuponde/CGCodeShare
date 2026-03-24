@@ -302,8 +302,7 @@ in app setting write like this
 
 ,
   "ConnectionStrings": {
-    "constring": "Data Source=LAPTOP-4G8BHPK9\\SQLEXPRESS;initial catalog=EmpCg;Integrated Security=true;Encrypt=true;
-        TrustServerCertificate=true;"
+    "constring": "Data Source=LAPTOP-4G8BHPK9\\SQLEXPRESS;initial catalog=EmpCg;Integrated Security=true;Encrypt=true;TrustServerCertificate=true;"
   }
 
     
