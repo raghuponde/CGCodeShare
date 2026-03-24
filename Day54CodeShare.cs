@@ -619,5 +619,5 @@ put first and second  methodd
      employee.Email = emp.Email;
      employee.Age = emp.Age;
      await _context.SaveChangesAsync();
-     return Ok(emp);
+     return Ok(employee);
  }
