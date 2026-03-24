@@ -604,3 +604,20 @@ put first and second  methodd
      await _context.SaveChangesAsync();
      return Ok(emp);
  }
+
+ [HttpPut]
+ [Route("put3")]
+ public async Task<ActionResult<Employee>> UpdateEmployee3(Employee emp,int id)
+ {
+     var employee = await _context.employees.FindAsync(id);
+     if (employee == null)
+     {
+         return BadRequest("Employee not found ");
+     }
+     employee.FirstName = emp.FirstName;
+     employee.LastName = emp.LastName;
+     employee.Email = emp.Email;
+     employee.Age = emp.Age;
+     await _context.SaveChangesAsync();
+     return Ok(emp);
+ }
