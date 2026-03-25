@@ -484,3 +484,4 @@ namespace WebApiInAsp.netcoreMvcDemo
     }
 }
 
+Now come to EmpController and change the code like this 
