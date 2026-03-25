@@ -99,3 +99,11 @@ updated codes
      await _context.SaveChangesAsync();
      return exsistng;
  }
+   public async Task<Employee?> DeleteEmployeeAsync(int id)
+   {
+       var employee = await _context.employees.FindAsync(id);
+       if (employee == null) return null;
+       _context.employees.Remove(employee);
+       await _context.SaveChangesAsync();
+       return employee;
+   }
