@@ -12,4 +12,20 @@ Prompt:
 so in the project only add the interface like this and also add class like this 
 
   
+In the project add IEmployee interface how right clik and select code template from asp.net core and give name as IEmployee
+
+using Microsoft.AspNetCore.Mvc;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo
+{
+    public interface IEmployee
+    {
+        Task<List<Employee>> GetAllEmployeesAsync();
+        Task<Employee?> GetEmployeeByIdAsync(int id);
+        Task<Employee> AddEmployeeAsync(Employee employee);
+        Task<Employee?> UpdateEmployeeAsync(Employee employee);
+        Task<Employee?> DeleteEmployeeAsync(int id);
+    }
+}
 
