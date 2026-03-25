@@ -369,3 +369,30 @@ udpated code in EmployeeService
          return employee;
      }
 
+  public async Task<Employee?> UpdateEmployeeAsync(Employee employee,IFormFile? image)
+  {
+      var exsistng = await _context.employees.FindAsync(employee.Id);
+      if(exsistng==null)
+      {
+          return null;
+      }
+      exsistng.FirstName = employee.FirstName;
+      exsistng.LastName = employee.LastName;
+      exsistng.Email = employee.Email;
+      exsistng.Age = employee.Age;
+
+      if (image != null && image.Length > 0)
+      {
+          var imageName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+          var imagePath = Path.Combine(_env.WebRootPath, "uploads", imageName);
+          Directory.CreateDirectory(Path.GetDirectoryName(imagePath)!);
+          using var stream = new FileStream(imagePath, FileMode.Create);
+          await image.CopyToAsync(stream);
+          employee.ImagePath = "/uploads/" + imageName;
+
+
+      }
+
+      await _context.SaveChangesAsync();
+      return exsistng;
+  }
