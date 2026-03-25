@@ -569,3 +569,25 @@ check the web api using swagger check whether image is going in uplaods folder o
 
 after this uplaods fodler and see whether it is adding automatiall uplaods folder or not if not added put comment to that code 
 
+update code chnage in Employeeservice 
+-----------------------------------------
+ var existing = await _context.employees.FindAsync(emp.Id);
+ if (existing == null) return null;
+
+ existing.FirstName = emp.FirstName;
+ existing.LastName = emp.LastName;
+ existing.Email = emp.Email;
+ existing.Age = emp.Age;
+
+ if (image != null && image.Length > 0)
+ {
+     DeleteImageFile(existing.ImagePath);
+     existing.ImagePath = SaveImageToUploads(image);
+ }
+
+ await _context.SaveChangesAsync();
+
+ if (!string.IsNullOrEmpty(existing.ImagePath))
+     existing.ImagePath = GetBaseUrl() + existing.ImagePath;
+
+ return existing;
