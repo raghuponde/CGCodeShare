@@ -65,3 +65,15 @@ namespace WebApiInAsp.netcoreMvcDemo
     }
 }
 
+updated codes 
+---------------
+ public async Task<List<Employee>> GetAllEmployeesAsync()
+ {
+     return await _context.employees.ToListAsync();
+ }
+
+ public async Task<Employee?> GetEmployeeByIdAsync(int id)
+ {
+     return await _context.employees.FindAsync(id);
+ }
+
