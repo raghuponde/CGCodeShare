@@ -268,3 +268,28 @@ Next task is register in program.cs
 
 builder.Services.AddScoped<IEmployee, EmployeeService>();
 
+
+Now run the program it shoudl execute same as earleir now 
+next prompt is
+Prompt :
+-----------
+so for the above program the model is like this so 
+i need Image Upload of employee and pagination code and validation code as well to be added give me complete code for it 
+
+
+
+To fully implement image upload, pagination, and validation in your ASP.NET Core Web API for the Employee model, I’ll provide a complete working example divided into:
+
+✅ Updated Employee Model with ImagePath
+
+✅ Interface IEmployee
+
+✅ Service EmployeeService with pagination and image upload
+
+✅ Controller EmployeeController with model validation and pagination
+
+✅ Configure File Upload Folder
+
+✅ Dependency Injection in Program.cs
+
+
