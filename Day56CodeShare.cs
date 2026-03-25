@@ -27,7 +27,8 @@ Go to Models folder and add this class
     public string? ImagePath { get; set; }
 }
 
-then use this class in EmpController remember DTO has to be used only in Controller dont use in EmployeeService and and again dont use in EmpController two two times and make the code complex so 
+then use this class in EmpController remember DTO has to be used only in Controller dont use in EmployeeService and and again dont use in EmpController two two times and make the code complex so i mean to say 
+use at one place either in service class or in controller 
 
 [HttpPut("{id}")]
 public async Task<ActionResult<Employee>> Update(
