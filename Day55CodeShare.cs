@@ -591,3 +591,21 @@ update code chnage in Employeeservice
      existing.ImagePath = GetBaseUrl() + existing.ImagePath;
 
  return existing;
+
+ also add one extra methd in EmployeeService
+
+   private string SaveImageToUploads(IFormFile image)
+  {
+      var imageName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+      var uploadPath = Path.Combine(_env.WebRootPath, "uploads");
+
+      if (!Directory.Exists(uploadPath))
+          Directory.CreateDirectory(uploadPath);
+
+      var fullPath = Path.Combine(uploadPath, imageName);
+      using var stream = new FileStream(fullPath, FileMode.Create);
+      image.CopyTo(stream);
+
+      return "/uploads/" + imageName;
+  }
+
