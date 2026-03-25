@@ -29,3 +29,39 @@ namespace WebApiInAsp.netcoreMvcDemo
     }
 }
 
+
+Then add inside the project only EmployeeService class like this which is implemeting above interface which looks like this 
+
+    using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo
+{
+    public class EmployeeService : IEmployee
+    {
+        public Task<Employee> AddEmployeeAsync(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Employee?> DeleteEmployeeAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Employee>> GetAllEmployeesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Employee?> GetEmployeeByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Employee?> UpdateEmployeeAsync(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
