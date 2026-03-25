@@ -339,7 +339,7 @@ namespace WebApiInAsp.netcoreMvcDemo
     }
 }
 
-udpated code in EmpController 
+udpated code in EmployeeService  
 -------------------------------
  public class EmployeeService : IEmployee
  {
