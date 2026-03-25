@@ -339,4 +339,33 @@ namespace WebApiInAsp.netcoreMvcDemo
     }
 }
 
+udpated code in EmpController 
+-------------------------------
+ public class EmployeeService : IEmployee
+ {
+     private readonly EmpContext _context;
+     private readonly IWebHostEnvironment _env;
+     public EmployeeService(EmpContext context,IWebHostEnvironment env)
+     {
+         _context = context;
+         _env = env;
+     }
+    // FileStream fs;
+     public async Task<Employee> AddEmployeeAsync(Employee employee,IFormFile image)
+     {
+         if(image!=null && image.Length > 0)
+         {
+             var imageName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+             var imagePath = Path.Combine(_env.WebRootPath, "uploads", imageName);
+             Directory.CreateDirectory(Path.GetDirectoryName(imagePath)!);
+            using  var stream = new FileStream(imagePath, FileMode.Create);
+             await image.CopyToAsync(stream);
+            employee.ImagePath = "/uploads/" + imageName;
+       
+             
+         }
+         await  _context.employees.AddAsync(employee);
+         await _context.SaveChangesAsync();
+         return employee;
+     }
 
