@@ -561,7 +561,7 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
 }
 
 add one fodler in wwwroot with the name uploads
-
+build the solution and then add migtrations 
 add-migration "imageadded"
 update-database 
 
