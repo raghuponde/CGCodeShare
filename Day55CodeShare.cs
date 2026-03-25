@@ -77,3 +77,12 @@ updated codes
      return await _context.employees.FindAsync(id);
  }
 
+ public async Task<Employee> AddEmployeeAsync(Employee employee)
+ {
+     await  _context.employees.AddAsync(employee);
+     await _context.SaveChangesAsync();
+     return employee;
+ }
+
+
+
