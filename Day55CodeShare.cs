@@ -107,3 +107,61 @@ updated codes
        await _context.SaveChangesAsync();
        return employee;
    }
+
+complete code is here 
+------------------------
+using Microsoft.EntityFrameworkCore;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo
+{
+    public class EmployeeService : IEmployee
+    {
+        private readonly EmpContext _context;
+        public EmployeeService(EmpContext context)
+        {
+            _context = context;
+        }
+        public async Task<Employee> AddEmployeeAsync(Employee employee)
+        {
+            await  _context.employees.AddAsync(employee);
+            await _context.SaveChangesAsync();
+            return employee;
+        }
+
+        public async Task<Employee?> DeleteEmployeeAsync(int id)
+        {
+            var employee = await _context.employees.FindAsync(id);
+            if (employee == null) return null;
+            _context.employees.Remove(employee);
+            await _context.SaveChangesAsync();
+            return employee;
+        }
+
+        public async Task<List<Employee>> GetAllEmployeesAsync()
+        {
+            return await _context.employees.ToListAsync();
+        }
+
+        public async Task<Employee?> GetEmployeeByIdAsync(int id)
+        {
+            return await _context.employees.FindAsync(id);
+        }
+
+        public async Task<Employee?> UpdateEmployeeAsync(Employee employee)
+        {
+            var exsistng = await _context.employees.FindAsync(employee.Id);
+            if(exsistng==null)
+            {
+                return null;
+            }
+            exsistng.FirstName = employee.FirstName;
+            exsistng.LastName = employee.LastName;
+            exsistng.Email = employee.Email;
+            exsistng.Age = employee.Age;
+            await _context.SaveChangesAsync();
+            return exsistng;
+        }
+    }
+}
+
