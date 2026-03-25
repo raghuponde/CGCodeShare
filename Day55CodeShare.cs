@@ -164,4 +164,41 @@ namespace WebApiInAsp.netcoreMvcDemo
         }
     }
 }
+Now come to EmpController now do the coding like this 
+
+    using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmpController : ControllerBase
+    {
+        private readonly IEmployee _employeeService;
+        public EmpController(IEmployee employeeService)
+        {
+            _employeeService = employeeService;
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<Employee>>>  GetAll()
+        {
+            return Ok(await _employeeService.GetAllEmployeesAsync());
+        }
+
+        [HttpGet("{id}")]
+       public async Task<ActionResult<Employee>> GetById(int id)
+        {
+            var employee = await _employeeService.GetEmployeeByIdAsync(id);
+            if (employee == null)
+                return NotFound("Employee not found");
+            return Ok(employee);
+        }
+         
+      
+    }
+}
+
 
