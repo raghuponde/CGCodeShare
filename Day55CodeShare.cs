@@ -592,7 +592,7 @@ update code chnage in Employeeservice
 
  return existing;
 
- also add one extra methd in EmployeeService
+ also add two extra methd in EmployeeService
 
    private string SaveImageToUploads(IFormFile image)
   {
@@ -607,5 +607,17 @@ update code chnage in Employeeservice
       image.CopyTo(stream);
 
       return "/uploads/" + imageName;
+  }
+
+    private void DeleteImageFile(string? imagePath)
+  {
+      if (string.IsNullOrEmpty(imagePath) || imagePath.Contains("default.jpg"))
+          return;
+
+      var fullPath = Path.Combine(_env.WebRootPath, imagePath.TrimStart('/').Replace('/', Path.DirectorySeparatorChar));
+      if (File.Exists(fullPath))
+      {
+          File.Delete(fullPath);
+      }
   }
 
