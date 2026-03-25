@@ -201,4 +201,64 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
     }
 }
 
+final code
+-----------
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApiInAsp.netcoreMvcDemo.Models;
+
+namespace WebApiInAsp.netcoreMvcDemo.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmpController : ControllerBase
+    {
+        private readonly IEmployee _employeeService;
+        public EmpController(IEmployee employeeService)
+        {
+            _employeeService = employeeService;
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<Employee>>>  GetAll()
+        {
+            return Ok(await _employeeService.GetAllEmployeesAsync());
+        }
+
+        [HttpGet("{id}")]
+       public async Task<ActionResult<Employee>> GetById(int id)
+        {
+            var employee = await _employeeService.GetEmployeeByIdAsync(id);
+            if (employee == null)
+                return NotFound("Employee not found");
+            return Ok(employee);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Employee>> Create(Employee employee)
+        {
+            var added = await _employeeService.AddEmployeeAsync(employee);
+            return Ok(added);
+        }
+        [HttpPut]
+        public async Task<ActionResult<Employee>> Update(Employee employee)
+        {
+            var updated = await _employeeService.UpdateEmployeeAsync(employee);
+            if (updated == null)
+                return NotFound("Employee not found to update");
+            return Ok(updated);
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Employee>> Delete(int id)
+        {
+            var deleted = await _employeeService.DeleteEmployeeAsync(id);
+            if (deleted == null)
+                return NotFound("Employee not foudn to delete");
+            return Ok(deleted);
+
+        }
+         
+      
+    }
+}
 
