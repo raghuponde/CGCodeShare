@@ -85,4 +85,17 @@ updated codes
  }
 
 
-
+ public async Task<Employee?> UpdateEmployeeAsync(Employee employee)
+ {
+     var exsistng = await _context.employees.FindAsync(employee.Id);
+     if(exsistng==null)
+     {
+         return null;
+     }
+     exsistng.FirstName = employee.FirstName;
+     exsistng.LastName = employee.LastName;
+     exsistng.Email = employee.Email;
+     exsistng.Age = employee.Age;
+     await _context.SaveChangesAsync();
+     return exsistng;
+ }
