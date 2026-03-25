@@ -262,3 +262,9 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
     }
 }
 
+Next task is register in program.cs 
+
+
+
+builder.Services.AddScoped<IEmployee, EmployeeService>();
+
