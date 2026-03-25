@@ -560,3 +560,12 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
     }
 }
 
+add one fodler in wwwroot with the name uploads
+
+add-migration "imageadded"
+update-database 
+
+check the web api using swagger check whether image is going in uplaods folder or not 
+
+after this uplaods fodler and see whether it is adding automatiall uplaods folder or not if not added put comment to that code 
+
