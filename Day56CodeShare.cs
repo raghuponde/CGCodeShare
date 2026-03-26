@@ -259,3 +259,17 @@ chnage this method in employeeservice
      return employees;
      
  }
+change here also 
+private void DeleteImageFile(string? imagePath)
+{
+    if (string.IsNullOrEmpty(imagePath)||imagePath.Contains("default.jpg"))// added here code 
+        return;
+
+    var fullPath = Path.Combine
+        (_env.WebRootPath, imagePath.TrimStart('/').Replace
+        ('/', Path.DirectorySeparatorChar));
+    if (File.Exists(fullPath))
+    {
+        File.Delete(fullPath);
+    }
+}
