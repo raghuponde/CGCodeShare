@@ -234,3 +234,13 @@ add it liek this
   var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpContextAccessor();
 
+add this method in employeeservice 
+
+   public string GetBaseUrl()
+   {
+       var httpContext = _httpContextAccessor.HttpContext;
+       if (httpContext == null) throw new InvalidOperationException("No HttpContext");
+       var request = httpContext.Request;
+       return $"{request.Scheme}://{request.Host}";
+   }
+
