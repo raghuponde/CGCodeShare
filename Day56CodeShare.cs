@@ -288,7 +288,7 @@ chnage here also
 
 
 next 
- public async Task<Employee> AddEmployeeAsync(Employee employee,IFormFile image)
+ public async Task<Employee> AddEmployeeAsync(Employee employee,IFormFile image) 
  {
      if(image!=null && image.Length > 0)
      {
@@ -304,4 +304,29 @@ next
      await _context.SaveChangesAsync();
      employee.ImagePath = GetBaseUrl() + employee.ImagePath;
      return employee;
+ }
+next change 
+ public async Task<Employee?> UpdateEmployeeAsync(Employee employee,IFormFile? image)
+ {
+     var existing = await _context.employees.FindAsync(employee.Id);
+     if (existing == null) return null;
+
+     existing.FirstName = employee.FirstName;
+     existing.LastName = employee.LastName;
+     existing.Email = employee.Email;
+     existing.Age = employee.Age;
+
+     if (image != null && image.Length > 0)
+     {
+         DeleteImageFile(existing.ImagePath);
+         existing.ImagePath = SaveImageToUploads(image);
+     }
+
+     await _context.SaveChangesAsync();
+
+     if (!string.IsNullOrEmpty(existing.ImagePath))
+         existing.ImagePath = GetBaseUrl() + existing.ImagePath;
+
+     return existing;
+
  }
