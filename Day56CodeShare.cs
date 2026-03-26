@@ -285,3 +285,23 @@ chnage here also
      }
      return emp;
  }
+
+
+next 
+ public async Task<Employee> AddEmployeeAsync(Employee employee,IFormFile image)
+ {
+     if(image!=null && image.Length > 0)
+     {
+         employee.ImagePath = SaveImageToUploads(image);
+   
+         
+     }
+     else
+     {
+         employee.ImagePath = "/uploads/default.jpg";
+     }
+         await _context.employees.AddAsync(employee);
+     await _context.SaveChangesAsync();
+     employee.ImagePath = GetBaseUrl() + employee.ImagePath;
+     return employee;
+ }
