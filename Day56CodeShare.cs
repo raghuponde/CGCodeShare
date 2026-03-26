@@ -243,4 +243,19 @@ add this method in employeeservice
        var request = httpContext.Request;
        return $"{request.Scheme}://{request.Host}";
    }
+chnage this method in employeeservice
+-----------------------------
+ public async Task<List<Employee>> GetAllEmployeesAsync(int pageNumber,int pageSize)
+ {
+     var employees = await _context.employees.
+         Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
+     string baseUrl = GetBaseUrl();
+     foreach(var e in employees)
+     {
+         e.ImagePath = string.IsNullOrEmpty(e.ImagePath) ?
+             baseUrl + "/uploads/default.jpg" : baseUrl + e.ImagePath;
+     }
+     return employees;
+     
+ }
