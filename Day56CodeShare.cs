@@ -273,3 +273,15 @@ private void DeleteImageFile(string? imagePath)
         File.Delete(fullPath);
     }
 }
+chnage here also 
+ public async Task<Employee?> GetEmployeeByIdAsync(int id)
+ {
+    var emp=  await _context.employees.FindAsync(id);
+     if (emp != null)
+     {
+         emp.ImagePath = string.IsNullOrEmpty(emp.ImagePath)
+             ? GetBaseUrl() + "/uploads/default.jpg"
+             : GetBaseUrl() + emp.ImagePath;
+     }
+     return emp;
+ }
