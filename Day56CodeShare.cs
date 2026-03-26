@@ -418,7 +418,7 @@ namespace WebApiInAsp.netcoreMvcDemo
             }
             return emp;
         }
-        private void DeleteImageFile(string? imagePath)
+        private void DeleteImageFile(string? imagePath) 
         {
             if (string.IsNullOrEmpty(imagePath)||imagePath.Contains("default.jpg"))
                 return;
