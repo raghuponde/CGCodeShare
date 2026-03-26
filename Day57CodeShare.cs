@@ -266,4 +266,79 @@ Here i  will get error means swagger will fail to laod then copy the url in anot
         
 so i had commented one now it will work and call excel export method but dont enter values in search okay as data is less ...
 
+Now to chatgpt give model and employeeservice code and Empcontroller code and app settng code and program.cs code and in solution file structure image and ask him that this is the code 
+i want to show the data from web api EmpController to MVC EmpController how to do that give me the EmpMVCController code for it and also give me views for it 
+so check it will give u code which looks diffcult and lot of configruration done so for this reason i am using jquery ajax here u can use javascript also but u have to ask chatgpt that 
+give me the code javascript for this like  that u have have to ask now i am aksing chatgpt that give me code in jquery ajax try to understand just give me the code means it will not give 
+full code what prompt i had written as per my requirement is like this below you have to imaging ur desing in your brain how u want it and then tell him like this i want it to chat gpt 
+
+
+
+MyPrompt 
+---------
+Now  I am expecting a MVC Controller with the name EmployeeUIController which will consume the above web api methods 
+and i want to use jquery ajax methods for this so in index view i want to call web api GetBasicEmployeeList and there only 
+a header with serach text box and button to filter the data i want 
+
+and with each data i want details link ,Edit link and delete link and when i click the links the details should be shown in the form of card like how i had done for DogMgtApp means in card header i want to see name and in card boy image of 300 pixels and other details u can provide same i want it in update view and delete view as well .
+
+ 
+For the current project i am using quartz/bootstrap as u can see i had kept that in layout file now 
+
+<link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/quartz/bootstrap.min.css" rel="stylesheet">
+
+Now i want header and footer and left side  i want navigation so and in betweeen i want child page data to be displayed 
+
+Take the below code and paste it in .html file and see how it looks 
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_MyLayout</title>
+</head>
+<body>
+    <style type="text/css">
+        .auto-style1 {
+            width: 373px;
+        }
+    </style>
+   
+    <table style="width:100%;">
+        <tr>
+            <td colspan="2" style="background-color: #66FFCC">&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="auto-style1" style="background-color: #FF3399">
+                <br />
+                <br />
+               
+             
+                    <ul>
+                        <li><a href="Emp/Index">EMployeeData </a></li>
+                        <li><a href="Dept/Index">DepartmentData </a></li>
+                    </ul>
+
+            
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </td>
+            <td>@RenderBody()</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color:yellow">&nbsp;</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+so i want this type of layout for my child pages but it should be of quartz/bootstrap so at the place of links 
+i want accordian controls when i click accordian1 i should see index page of Employee with its own header where only
+heading should be there Employee data and in header i want search filter for the employee 
 
