@@ -215,3 +215,22 @@ now  paste this desing
     </script>
 }
 
+Now add one default image which i have given in whats app into uploads folder and give name as default.jpg 
+
+In order to take full path of image means obsolute path add this into the code 
+
+ private readonly IHttpContextAccessor _httpContextAccessor;
+
+ public EmployeeService(EventContext context, IWebHostEnvironment env, IHttpContextAccessor httpContextAccessor)
+ {
+     _context = context;
+     _env = env;
+     _httpContextAccessor = httpContextAccessor;
+ }
+
+also in program.cs 
+add it liek this 
+
+  var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpContextAccessor();
+
