@@ -353,6 +353,11 @@ heading should be there Employee data and in header i want search filter for the
 so paste this code 
 index view 
 -----------
+
+@{
+    ViewData["Title"] = "Index";
+}
+
 <a href="/EmployeeUI/Create" class="btn btn-success mb-3">Add new Employee</a>
 
 <h3 class="mb-3">Employee Data</h3>
@@ -388,9 +393,9 @@ index view
 
     function loadEmployees(search = "") {
         $.ajax({
-            url: `/api/Employee/basic?page=${currentPage}&pageSize=${pageSize}&search=${search}`,
+            url:`/api/Emp/basic?page=${currentPage}&pageSize=${pageSize}&search=${search}`,
             type: "GET",
-            success: function (data) {
+            success: function(data) {
                 let rows = "";
                 if (data.length === 0) {
                     rows = "<tr><td colspan='5' class='text-center'>No records found</td></tr>";
@@ -452,6 +457,8 @@ index view
 </script>
 
 
+
+
 now in ui controller add further methods 
 
 using Microsoft.AspNetCore.Mvc;
@@ -494,7 +501,6 @@ for the above method generate razor viww withou model and add this codes below f
 
 create view 
 --------------
-
 @{
     ViewBag.Title = "Add New Employee";
 }
@@ -544,7 +550,7 @@ create view
             var formData = new FormData(this);
 
             $.ajax({
-                url: "/api/Employee",
+                url: "/api/Emp",
                 type: "POST",
                 data: formData,
                 processData: false,
@@ -560,6 +566,9 @@ create view
         });
     });
 </script>
+
+
+
 
 delete view 
 ------------
@@ -587,7 +596,7 @@ delete view
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
 
-        $.get(`/api/Employee/${id}`, function (emp) {
+        $.get(`/api/Emp/${id}`, function (emp) {
             $("#empImg").attr("src", emp.imagePath);
             $("#empName").text(emp.firstName + " " + emp.lastName);
             $("#empEmail").text(emp.email);
@@ -597,7 +606,7 @@ delete view
         $("#btnDelete").click(function () {
             if (confirm("Are you sure you want to delete this employee?")) {
                 $.ajax({
-                    url: `/api/Employee/${id}`,
+                    url: `/api/Emp/${id}`,
                     type: "DELETE",
                     success: function () {
                         alert("Employee deleted successfully.");
@@ -611,6 +620,7 @@ delete view
         });
     });
 </script>
+
 
 Details view 
 -----------
@@ -633,14 +643,15 @@ Details view
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
 
-        $.get(`/api/Employee/${id}`, function (emp) {
+        $.get(`/api/Emp/${id}`, function (emp) {
             $("#empName").text(emp.firstName + " " + emp.lastName);
             $("#empEmail").text(emp.email);
             $("#empAge").text(emp.age);
-            $("#empImg").attr("src", emp.imagePath);
+            $("#empImg").attr("src",emp.imagePath);
         });
     });
 </script>
+
 
 Edit view 
 ------------
@@ -693,7 +704,7 @@ Edit view
         const params = new URLSearchParams(window.location.search);
         const id = params.get("id");
 
-        $.get(`/api/Employee/${id}`, function (emp) {
+        $.get(`/api/Emp/${id}`, function (emp) {
             $("#empId").val(emp.id);
             $("#firstName").val(emp.firstName);
             $("#lastName").val(emp.lastName);
@@ -708,7 +719,7 @@ Edit view
             const id = $("#empId").val();
 
             $.ajax({
-                url: `/api/Employee/${id}`,
+                url: `/api/Emp/${id}`,
                 type: "PUT",
                 data: formData,
                 contentType: false,
@@ -725,6 +736,8 @@ Edit view
     });
 </script>
 
+
+  
 Export view 
 ----------
 @{
@@ -745,13 +758,14 @@ Export view
 
             // Create dynamic link and click to download
             let link = document.createElement('a');
-            link.href = `/api/Employee/export/excel?search=${encodeURIComponent(search)}`;
+            link.href = `/api/Emp/export/excel?search=${encodeURIComponent(search)}`;
             link.download = "Employees.xlsx";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         });
     });
-</script>
+</script>  
+
 
 
