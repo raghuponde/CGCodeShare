@@ -349,3 +349,4 @@ so i want this type of layout for my child pages but it should be of quartz/boot
 i want accordian controls when i click accordian1 i should see index page of Employee with its own header where only
 heading should be there Employee data and in header i want search filter for the employee 
 
+index view 
