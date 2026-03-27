@@ -293,48 +293,54 @@ Now i want header and footer and left side  i want navigation so and in betweeen
 Take the below code and paste it in .html file and see how it looks 
 
 <!DOCTYPE html>
-
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>_MyLayout</title>
+    <title>@ViewBag.Title - Employee UI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/quartz/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <style type="text/css">
-        .auto-style1 {
-            width: 373px;
-        }
-    </style>
-   
-    <table style="width:100%;">
-        <tr>
-            <td colspan="2" style="background-color: #66FFCC">&nbsp;</td>
-        </tr>
-        <tr>
-            <td class="auto-style1" style="background-color: #FF3399">
-                <br />
-                <br />
-               
-             
-                    <ul>
-                        <li><a href="Emp/Index">EMployeeData </a></li>
-                        <li><a href="Dept/Index">DepartmentData </a></li>
-                    </ul>
+    <header class="bg-primary text-white p-3">
+        <h2 class="text-center">Employee Management Dashboard</h2>
+    </header>
 
-            
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-                <br />
-            </td>
-            <td>@RenderBody()</td>
-        </tr>
-        <tr>
-            <td colspan="2" style="background-color:yellow">&nbsp;</td>
-        </tr>
-    </table>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-md-3 bg-light p-3">
+                <div class="accordion" id="sidebarAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEmp">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEmp" aria-expanded="true">
+                                Employee Management
+                            </button>
+                        </h2>
+                        <div id="collapseEmp" class="accordion-collapse collapse show" data-bs-parent="#sidebarAccordion">
+                            <div class="accordion-body">
+                                <a href="/EmployeeUI/Index" class="d-block mb-2" style="color:black">Employee Data</a>
+                            </div>
+                            <div class="accordion-body">
+                                <a href="/EmployeeUI/Export" class="d-block mb-2" style="color:black">Employee Export</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 mt-3">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-secondary text-white text-center p-2 mt-5">
+        <p>&copy; 2025 Employee UI App</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
