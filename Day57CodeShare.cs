@@ -154,37 +154,37 @@ Update Method in EmployeeService.cs
 Task<List<EmployeeBasicDto>> GetAllEmployeeBasicInfoAsync(int pageNumber, int pageSize, string? searchTerm);
 In Employee service 
 
-public async Task<List<EmployeeBasicDto>> GetAllEmployeeBasicInfoAsync(int pageNumber, int pageSize, string? searchTerm)
-{
-    var query = _context.employees.AsQueryable();
+  public async Task<List<EmployeeBasicDto>> GetAllEmployeeBasicInfoAsync(int pageNumber, int pageSize,
+       string? searchTerm)
+  {
+      var query = _context.employees.AsQueryable();
+      if(!string.IsNullOrEmpty(searchTerm))
+      {
+          query = query.Where(e => e.FirstName!.Contains(searchTerm) || e.LastName!.Contains(searchTerm) ||
+          e.Email!.Contains(searchTerm));
 
-    if (!string.IsNullOrEmpty(searchTerm))
-    {
-        query = query.Where(e => e.FirstName!.Contains(searchTerm) || 
-                                 e.LastName!.Contains(searchTerm) || 
-                                 e.Email!.Contains(searchTerm));
-    }
+      }
 
-    var employees = await query
-        .Skip((pageNumber - 1) * pageSize)
-        .Take(pageSize)
-        .ToListAsync();
+      var employees = await query
+          .Skip((pageNumber - 1) * pageSize)
+          .Take(pageSize)
+          .ToListAsync();
 
-    string baseUrl = GetBaseUrl();
+      string baseUrl = GetBaseUrl();
 
-    var result = employees.Select(e => new EmployeeBasicDto
-    {
-        FirstName = e.FirstName,
-        LastName = e.LastName,
-        Email = e.Email,
-        ImageUrl = string.IsNullOrEmpty(e.ImagePath)
-                    ? baseUrl + "/uploads/default.jpg"
-                    : baseUrl + e.ImagePath
-    }).ToList();
+      var basicList = employees.Select(e => new EmployeeBasicDto
+      {
+          Id = e.Id,
+          FirstName = e.FirstName,
+          LastName = e.LastName,
+          Email = e.Email,
+          ImageUrl = string.IsNullOrEmpty(e.ImagePath)
+              ? baseUrl + "/uploads/default.jpg"
+              : baseUrl + e.ImagePath
+      }).ToList();
 
-    return result;
-}
-
+      return basicList;
+  }
 ✅ 2. Add Filtering Endpoint to EmployeeController.cs
 
 [HttpGet("basic")]
