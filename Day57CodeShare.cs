@@ -84,7 +84,8 @@ method already like this
     return employees;
     
 }
-chnage this to projecting only few columns But dont remove this method from service just take the method from chatgpt by asking him this query okay 
+chnage this to projecting only few columns But dont remove this method from service just take the method from chatgpt 
+  by asking him this query okay 
 
 
 Create a DTO class first:
@@ -195,7 +196,7 @@ public async Task<ActionResult<List<EmployeeBasicDto>>> GetBasicEmployeeList(
 
 now install from package manger console the below command 
 
-Install-Package ClosedXML
+Install-Package ClosedXML // add this in package mamager console 
 Or via CLI:
 
 
