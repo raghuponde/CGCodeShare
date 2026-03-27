@@ -96,6 +96,7 @@ namespace CodeFirstEFDEmo.Models
 {
     public class EmployeeBasicDto
     {
+        public int Id   {set;get;}
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Email { get; set; }
@@ -490,6 +491,7 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
     }
 }
 for the above method generate razor viww withou model and add this codes below for each views as per requriment
+
 create view 
 --------------
 
