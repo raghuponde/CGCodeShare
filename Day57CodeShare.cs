@@ -489,5 +489,5 @@ namespace WebApiInAsp.netcoreMvcDemo.Controllers
         }
     }
 }
-
+for the above method generate razor viww withou model and add this codes below for each views as per requriment
 
