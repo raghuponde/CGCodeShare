@@ -85,4 +85,35 @@ namespace WebApiInAsp.netcoreMvcDemo.Models
   
 }
 
+step 5 :
+--------
+    Now in program.cs do the following changes 
+
+// For Entity Framework
+var configuration = builder.Configuration;
+    builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring"))); //after this add it okay 
+ // For Identity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+.AddEntityFrameworkStores<EventContext>()
+.AddDefaultTokenProviders();
+// adding basic authentication
+builder.Services.AddAuthentication(options =>
+{
+options.DefaultAuthenticateScheme =
+JwtBearerDefaults.AuthenticationScheme;
+options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
+
+
+step 6 
+--------
+    ---> Now run the migrations commands 
+
+       add-migration InitialCreate
+       update-database
+
+
+--->Now go to dabatabse and analaize the tables once okay these tables will be empty only okay only roles table will be filled 
+
 
