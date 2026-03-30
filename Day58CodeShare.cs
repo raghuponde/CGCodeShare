@@ -1,4 +1,15 @@
 
+For azure refer below video links any how i had done in class what i have to teach 
+
+    https://www.youtube.com/watch?v=5SC7D-RxNgo (important and easy one )
+
+https://www.youtube.com/watch?v=cIStcPXjxKI
+
+https://www.youtube.com/watch?v=8uKWbY0740A
+
+Post Lunch class :
+----------------
+
 Now open the project which we were doing yesterday  and add packages from nugget manager 
 
 step 1 :
