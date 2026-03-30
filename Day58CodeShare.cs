@@ -94,7 +94,7 @@ var configuration = builder.Configuration;
     builder.Services.AddDbContext<EventContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("constring"))); //after this add it okay 
  // For Identity
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-.AddEntityFrameworkStores<EventContext>()
+.AddEntityFrameworkStores<EmpContext>()
 .AddDefaultTokenProviders();
 // adding basic authentication
 builder.Services.AddAuthentication(options =>
