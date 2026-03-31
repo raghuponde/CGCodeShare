@@ -865,3 +865,599 @@ POST /api/Auth/login
 
 Both can be tested in Swagger UI or Postman.
 
+
+Azure storage Notes 
+----------------------
+create a new asp.net core mvc application with the name AzureBlobProject
+
+--->Now add dependencies in project Azure.Storage.Blobs of version 12.24.0 version add it 
+
+--->Go to portal of storage account which u  have created click containers left side dont select containers or any container and just go to access key and there copy the 
+connection string and put it that in app settings like this 
+
+     {
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+
+  "BlobConnection":""
+
+}
+
+and then in program.cs 
+
+builder.Services.AddSingleton(u => new BlobServiceClient(builder.Configuration.GetValue<string>("BlobConnection")));
+
+--->create a folder with the name Services and in that add interface  IContainerService and a class ContainerService  
+
+
+ namespace AzureBlobProject.Services
+{
+    public interface IContainerService
+    {
+
+        Task<List<string>> GetAllContainerAndBlobs();
+        Task<List<string>> GetAllContainer();
+        Task CreateContainer(string containerName);
+        Task DeleteContainer(string containerName);
+    }
+}
+
+
+     using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+
+namespace AzureBlobProject.Services
+{
+    public class ContainerService : IContainerService
+    {
+        private readonly BlobServiceClient _blobClient;
+        public ContainerService(BlobServiceClient blobClient)
+        {
+            _blobClient = blobClient;
+        }
+        public async Task CreateContainer(string containerName)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+            await blobContainerClient.CreateIfNotExistsAsync(PublicAccessType.BlobContainer);
+        }
+
+        public async Task DeleteContainer(string containerName)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+            await blobContainerClient.DeleteIfExistsAsync();
+        }
+
+        public async Task<List<string>> GetAllContainer()
+        {
+            List<string> containerName = new();
+
+            await foreach (BlobContainerItem blobContainerItem in _blobClient.GetBlobContainersAsync())
+            {
+                containerName.Add(blobContainerItem.Name);
+            }
+
+            return containerName;
+        }
+
+        public async Task<List<string>> GetAllContainerAndBlobs()
+        {
+            List<string> containerAndBlobName = new();
+            containerAndBlobName.Add("-----Account Name : " + _blobClient.AccountName + "-----");
+            containerAndBlobName.Add("---------------------------------------------------------------");
+
+            await foreach (BlobContainerItem blobContainerItem in _blobClient.GetBlobContainersAsync())
+            {
+                containerAndBlobName.Add("-----" + blobContainerItem.Name);
+                BlobContainerClient _blobContainer = _blobClient.GetBlobContainerClient(blobContainerItem.Name);
+
+                await foreach (BlobItem blobItem in _blobContainer.GetBlobsAsync())
+                {
+                    //get metadata
+
+                    var blobClient = _blobContainer.GetBlobClient(blobItem.Name);
+                    BlobProperties blobProperties = await blobClient.GetPropertiesAsync();
+                    string tempBlobToAdd = blobItem.Name;
+                    if (blobProperties.Metadata.ContainsKey("title"))
+                    {
+                        tempBlobToAdd += "(" + blobProperties.Metadata["title"] + ")";
+                    }
+
+                    containerAndBlobName.Add(">>" + tempBlobToAdd);
+                }
+                containerAndBlobName.Add("---------------------------------------------------------------");
+            }
+
+
+            return containerAndBlobName;
+        }
+    }
+}
+
+------->Again in program.cs file add this thing
+
+     // Add services to the container.
+     builder.Services.AddControllersWithViews();
+
+     builder.Services.AddSingleton(u => new BlobServiceClient(builder.Configuration.GetValue<string>("BlobConnection")));
+     builder.Services.AddSingleton<IContainerService, ContainerService>();// add this above code is already there 
+
+
+
+----->In Models folder add ContainerModel like this 
+
+     using System.ComponentModel.DataAnnotations;
+
+namespace AzureBlobProject.Models
+{
+    public class ContainerModel
+    {
+        [Required]
+        public string Name { get; set; }
+    }
+}
+
+------>Now create a ContainerController Empty one and add the below code there 
+
+
+using AzureBlobProject.Models;
+using AzureBlobProject.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AzureBlobProject.Controllers
+{
+    public class ContainerController : Controller
+    {
+        private readonly IContainerService _containerService;
+        public ContainerController(IContainerService containerService)
+        {
+            _containerService = containerService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            var allContainer = await _containerService.GetAllContainer();
+            return View(allContainer);
+        }
+
+        public async Task<IActionResult> Create()
+        {
+            return View(new ContainerModel());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(ContainerModel container)
+        {
+            await _containerService.CreateContainer(container.Name);
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Delete(string containerName)
+        {
+            await _containerService.DeleteContainer(containerName);
+            return RedirectToAction(nameof(Index));
+        }
+
+    }
+}
+Now add views for ContainerController like this 
+create totally an empty view one is Index.cshtml and another is Create one 
+
+so codes goes like this so while adding view razor view only but uncheck the layout 
+
+Index.cshtml
+------------
+@model List<string>
+<br />
+<br />
+<div class="border backgroundWhite p-4">
+    <div class="row">
+        <div class="col-6">
+            <h2 class="text-info"> Container List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i> &nbsp;  Create New </a>
+        </div>
+    </div>
+    <br />
+    <div>
+        @if (Model != null && Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        Container Name
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item
+                        </td>
+                        <td>
+                            <a class="btn btn-primary text-white" asp-action="Manage" asp-controller="Blob" asp-route-containerName="@item">
+                                Manage
+                            </a>
+
+                            <a class="btn btn-danger text-white" asp-action="Delete" asp-route-containerName="@item">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No category exists...</p>
+        }
+    </div>
+</div>
+
+Create.cshtml
+---------------
+@model ContainerModel
+
+<div class="container border p-3">
+    <h2 class="text-info pb-2">Create Category</h2>
+    <form method="post" asp-action="Create">
+        <div class="backgroundWhite">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row py-2">
+                <div class="col-2">
+                    <label asp-for="Name" class="col-form-label"></label>
+                </div>
+                <div class="col-10">
+                    <input asp-for="Name" class="form-control" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-6">
+                    <input type="submit" class="btn btn-info form-control" value="Create" />
+                </div>
+                <div class="col-6">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+     
+     
+--->Now add BlobModel class in Models folder like this 
+
+ namespace AzureBlobProject.Models
+{
+    public class BlobModel
+    {
+
+        public string Title { get; set; }
+        public string Comment { get; set; }
+        public string Uri { get; set; }
+    }
+}
+
+
+
+Now add IBlobService interface in Services folder and also BlobService class also in Services folder like this so code is present below 
+
+using AzureBlobProject.Models;
+
+namespace AzureBlobProject.Services
+{
+    public interface IBlobService
+    {
+        Task<List<string>> GetAllBlobs(string containerName);
+        Task<List<BlobModel>> GetAllBlobsWithUri(string containerName);
+        Task<string> GetBlob(string name, string containerName);
+        Task<bool> CreateBlob(string name, IFormFile file, string containerName, BlobModel blobModel);
+        Task<bool> DeleteBlob(string name, string containerName);
+
+    }
+}
+
+
+
+using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
+using AzureBlobProject.Models;
+
+namespace AzureBlobProject.Services
+{
+    public class BlobService : IBlobService
+    {
+        private readonly BlobServiceClient _blobClient;
+        public BlobService(BlobServiceClient blobClient)
+        {
+            _blobClient = blobClient;
+        }
+        public async Task<bool> CreateBlob(string name, IFormFile file, string containerName, BlobModel blobModel)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+
+            var blobClient = blobContainerClient.GetBlobClient(name);
+
+            var httpHeaders = new Azure.Storage.Blobs.Models.BlobHttpHeaders()
+            {
+                ContentType = file.ContentType
+            };
+
+            IDictionary<string, string> metaData = new Dictionary<string, string>();
+            if (!string.IsNullOrEmpty(blobModel.Title))
+            {
+                metaData.Add("title", blobModel.Title);
+            }
+            if (!string.IsNullOrEmpty(blobModel.Comment))
+            {
+                metaData.Add("comment", blobModel.Comment);
+            }
+
+            var result = await blobClient.UploadAsync(file.OpenReadStream(), httpHeaders, metaData);
+
+            //IDictionary<string,string> removeMetaData = new Dictionary<string, string>();
+
+            //metaData.Remove("title");
+            //await blobClient.SetMetadataAsync(metaData);
+
+            if (result != null)
+            {
+                return true;
+            }
+            return false;
+
+        }
+
+        public async Task<bool> DeleteBlob(string name, string containerName)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+
+            var blobClient = blobContainerClient.GetBlobClient(name);
+
+            return await blobClient.DeleteIfExistsAsync();
+        }
+
+        public async Task<List<string>> GetAllBlobs(string containerName)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+            var blobs = blobContainerClient.GetBlobsAsync();
+
+            List<string> blobNames = new List<string>();
+            await foreach (var blob in blobs)
+            {
+                blobNames.Add(blob.Name);
+            }
+
+            return blobNames;
+        }
+
+        public async Task<List<BlobModel>> GetAllBlobsWithUri(string containerName)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+            var blobs = blobContainerClient.GetBlobsAsync();
+
+            List<BlobModel> blobList = new List<BlobModel>();
+            string sasContainerSignature = "";
+
+            //if (blobContainerClient.CanGenerateSasUri)
+            //{
+            //    BlobSasBuilder blobSasBuilder = new()
+            //    {
+            //        BlobContainerName = blobContainerClient.Name,
+            //        Resource = "c",
+            //        ExpiresOn = DateTimeOffset.UtcNow.AddHours(1)
+            //    };
+
+            //    blobSasBuilder.SetPermissions(BlobSasPermissions.Read);
+
+            //    sasContainerSignature = blobContainerClient.GenerateSasUri(blobSasBuilder).AbsoluteUri.Split('?')[1].ToString();
+
+            //}
+
+
+            await foreach (var blob in blobs)
+            {
+                var blobClient = blobContainerClient.GetBlobClient(blob.Name);
+
+                BlobModel blobModel = new()
+                {
+                    Uri = blobClient.Uri.AbsoluteUri //+ "?"+sasContainerSignature
+                };
+
+                //if (blobClient.CanGenerateSasUri)
+                //{
+                //    BlobSasBuilder blobSasBuilder = new()
+                //    {
+                //        BlobContainerName = blobClient.GetParentBlobContainerClient().Name,
+                //        BlobName = blobClient.Name,
+                //        Resource="b",
+                //        ExpiresOn = DateTimeOffset.UtcNow.AddHours(1)
+                //    };
+
+                //    blobSasBuilder.SetPermissions(BlobSasPermissions.Read);
+
+                //    blobModel.Uri = blobClient.GenerateSasUri(blobSasBuilder).AbsoluteUri;
+
+                //}
+
+
+                BlobProperties properties = await blobClient.GetPropertiesAsync();
+                if (properties.Metadata.ContainsKey("title"))
+                {
+                    blobModel.Title = properties.Metadata["title"];
+                }
+                if (properties.Metadata.ContainsKey("comment"))
+                {
+                    blobModel.Comment = properties.Metadata["comment"];
+                }
+                blobList.Add(blobModel);
+            }
+
+            return blobList;
+        }
+
+        public async Task<string> GetBlob(string name, string containerName)
+        {
+            BlobContainerClient blobContainerClient = _blobClient.GetBlobContainerClient(containerName);
+
+            var blobClient = blobContainerClient.GetBlobClient(name);
+
+            if (blobClient != null)
+            {
+                return blobClient.Uri.AbsoluteUri;
+            }
+            return "";
+        }
+    }
+}
+
+---->now again register the dependency now in program.cs file 
+
+ builder.Services.AddSingleton<IContainerService, ContainerService>();
+ builder.Services.AddSingleton<IBlobService, BlobService>();// this line add it not above one it is for your understanding where to write okay 
+
+     
+Now add BlobController now and the code is like this 
+
+     using AzureBlobProject.Models;
+using AzureBlobProject.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AzureBlobProject.Controllers
+{
+    public class BlobController : Controller
+    {
+        private readonly IBlobService _blobService;
+        public BlobController(IBlobService blobService)
+        {
+            _blobService = blobService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Manage(string containerName)
+        {
+            var blobsObj = await _blobService.GetAllBlobs(containerName);
+            return View(blobsObj);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AddFile(string containerName)
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddFile(string containerName, IFormFile file, BlobModel blobModel)
+        {
+            if (file == null || file.Length < 1) return View();
+            //file name - xps_img2.png 
+            //new name - xps_img2_GUIDHERE.png
+            var fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + Guid.NewGuid() + Path.GetExtension(file.FileName);
+            var result = await _blobService.CreateBlob(fileName, file, containerName, blobModel);
+
+            if (result)
+                return RedirectToAction("Manage", new { containerName });
+
+
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ViewFile(string name, string containerName)
+        {
+            return Redirect(await _blobService.GetBlob(name, containerName));
+        }
+
+        public async Task<IActionResult> DeleteFile(string name, string containerName)
+        {
+            await _blobService.DeleteBlob(name, containerName);
+            return RedirectToAction("Manage", new { containerName });
+        }
+
+
+    }
+}
+
+
+---->add views now for Manage.cshtml and AddFile like this 
+
+     
+AddFile.cshtml
+-------------
+@model BlobModel
+
+<form method="post" asp-action="AddFile" asp-controller="Blob" enctype="multipart/form-data">
+    <div class="container">
+        <h3 class="py-2">Container Name -  @Context.Request.Query["containerName"].ToString()</h3>
+        <input hidden name="containerName" value="@Context.Request.Query["containerName"].ToString()" />
+        <div class="row border p-2">
+            <div class="col-12 pb-2"><h4 class="text-primary">Add Item to Blob :</h4></div>
+            <div class="col-3 py-2">Title MetaData</div>
+            <div class="col-9 py-2">
+                <input asp-for="Title" class="form-control py-2" />
+            </div>
+            <div class="col-3 py-2">Comment MetaData</div>
+            <div class="col-9 py-2">
+                <input asp-for="Comment" class="form-control py-2" />
+            </div>
+
+
+            <div class="form-group col-9">
+                <input type="file" class="form-control pt-1" name="file" />
+            </div>
+            <div class="form-group col-3">
+                <button type="submit" class="btn btn-success form-control">Add</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+Manage.cshtml
+--------------
+@model List<string>
+
+
+<div class="container p-4 border">
+    <div class="row">
+        <div class="col-6">
+            <h3> Container Name - @Context.Request.Query["containerName"].ToString()</h3>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-action="AddFile" asp-controller="Blob"
+               asp-route-containerName="@Context.Request.Query["containerName"].ToString()" class="btn btn-success">Add Blob</a>
+        </div>
+    </div>
+    <div class="container pt-4">
+        @foreach (var item in Model)
+        {
+            <div class="row py-1">
+                <div class="col-6">
+                    <a asp-action="ViewFile" asp-controller="Blob" target="_blank" asp-route-name="@item"
+                       asp-route-containerName="@Context.Request.Query["containerName"].ToString()">
+                        @item
+                    </a>
+
+                </div>
+                <div class="col-6">
+
+                    <a asp-action="DeleteFile" asp-controller="Blob" asp-route-name="@item" class="btn btn-danger"
+                       asp-route-containerName="@Context.Request.Query["containerName"].ToString()">
+                        Delete
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
