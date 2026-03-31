@@ -904,6 +904,8 @@ namespace ConsoleApp1
 
 create a new asp.net core mvc application with the name AzureBlobProject
 
+
+
 --->Now add dependencies in project Azure.Storage.Blobs of version 12.24.0 version add it 
 
 --->Go to portal of storage account which u  have created click containers left side dont select containers or any container and just go to access key and there copy the 
@@ -1494,4 +1496,8 @@ Manage.cshtml
     </div>
 </div>
 
+For all the above coding and more in depth idea how code is implemented you can check this series here everything in depth about azure is there 
 
+Bruhgpatel videos 
+-------------------
+https://www.youtube.com/watch?v=YVp3SBy90tw&list=PLeFMiSA9bHD6IS9bIuXzNcG-dAJmL1maa&index=1
