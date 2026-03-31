@@ -868,6 +868,40 @@ Both can be tested in Swagger UI or Postman.
 
 Azure storage Notes 
 ----------------------
+
+create a new project of console application and through this console application i want to put some data in data container 
+
+so Now add dependencies in project Azure.Storage.Blobs of version 12.24.0 version add it 
+
+and code is here like this 
+
+     using Azure.Storage.Blobs;
+using System;
+using System.IO;
+using System.Threading.Tasks;
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static string str_connection = "" ;// this value i had kept empty u have to take it from azure access keys and add it and in github u cant put sececet 
+        // connection like this becasue when u try to commit it tells secret information is there so for security reasong i cannot do commit so removed
+
+        static async Task Main()
+        {
+            BlobServiceClient blobServiceClient = new BlobServiceClient(str_connection);
+            BlobContainerClient container_client =
+            blobServiceClient.GetBlobContainerClient("data");
+            BlobClient blob_client = container_client.GetBlobClient("CNotes.txt");
+            using FileStream uploadFileStream = File.OpenRead(@"D:\CNotes.txt");
+            await blob_client.UploadAsync(uploadFileStream, true);
+            uploadFileStream.Close();
+            Console.WriteLine("File uploaded");
+            Console.WriteLine("Operation complete");
+        }
+    }
+}
+
+
 create a new asp.net core mvc application with the name AzureBlobProject
 
 --->Now add dependencies in project Azure.Storage.Blobs of version 12.24.0 version add it 
