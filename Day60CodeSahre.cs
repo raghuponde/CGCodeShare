@@ -884,7 +884,7 @@ connection string and put it that in app settings like this
   },
   "AllowedHosts": "*",
 
-  "BlobConnection":""
+  "BlobConnection":""// here i had not kept key as while commiting it was giving error that some body can go inside ur storage so not kept but u copy and keep in program okay 
 
 }
 
