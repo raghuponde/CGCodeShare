@@ -701,6 +701,7 @@ When IdentityUser is also a table in your database (e.g., when you want to store
 here’s what you should do step-by-step:
 
 ✅ 1. Create a Custom User Class (if needed)
+     
 Instead of using IdentityUser directly, you can extend it to include custom properties like FullName, Image, etc.
 
 using Microsoft.AspNetCore.Identity;
