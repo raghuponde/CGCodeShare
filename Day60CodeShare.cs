@@ -455,7 +455,10 @@ namespace CodeFirstEFDEmo
     }
 }
 
-Now i had created one controller like this
+Now i had created one controller like this here your shawbuckble version shoudl be 9.0.3 and i am usng 10 version which is not matching and compatibility issue is coming so 
+i had downgraded the version here ....
+
+
 
 step 10 :
 -----------
