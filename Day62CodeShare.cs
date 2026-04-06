@@ -55,7 +55,8 @@ namespace WebApplication1.Models
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 
-6)
+6) once build the solution and add-migration 
+and do update-database 
 
 
 
