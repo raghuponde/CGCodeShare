@@ -13,7 +13,28 @@ Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Tools
 
-4) add data folder and into that dbcontext code and also the model class Person okay 
+4) add data folder inside the project and 
+
+and add this class 
+
+   using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
+
+namespace WebApplication1.Data
+{
+    public class AppDbContext:DbContext
+    {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Person> Persons { get; set; } = null!;
+    }
+}
+
+
+   
 
 5) go to program.cs file write this below code and in this what i am doing is that 
 
