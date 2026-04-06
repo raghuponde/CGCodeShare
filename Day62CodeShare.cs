@@ -1,12 +1,12 @@
 
-Open asp.net core mvc application 
+1)Open asp.net core mvc application 
 
-and go to app settings and write like this 
+2)and go to app settings and write like this 
 
    "ConnectionStrings": {
     "AzureSqlConnection": ""
   }
-
+ 
 
 3) install entity framework packeages of version 8.0.24 packages in total 
 Microsoft.EntityFrameworkCore 
