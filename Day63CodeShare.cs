@@ -263,7 +263,7 @@ namespace ProductApi.Controllers
     }
 }
 ---------------
-  builder.Services.AddScoped<IproductService, ProductService>();
+  builder.Services.AddScoped<IproductService, ProductService>(); 
 
 
 now add a web app in azure and in program .cs add this code 
