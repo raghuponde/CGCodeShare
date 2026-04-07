@@ -48,7 +48,7 @@ namespace ProductApi.Models
         public int Stock { get; set; }
     }
 }
-
+ 
   using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 
