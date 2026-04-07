@@ -27,3 +27,9 @@
 
 }
 Note enter password manually here 
+
+4) install entity framework packeages of version 8.0.24 packages in total 
+Microsoft.EntityFrameworkCore 
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
+
