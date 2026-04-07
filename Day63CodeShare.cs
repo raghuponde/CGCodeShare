@@ -9,4 +9,21 @@
  
 
 
+3) from the portal where sql servver is there add connection string setting like this and And write like this
 
+   
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "AzureSqlConnection":"Server=tcp:raghuserver.database.windows.net,1433;Initial Catalog=raghudb;Persist Security Info=False;User ID=raghuadmin;Password=SqlServer#123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  }
+
+
+}
+Note enter password manually here 
