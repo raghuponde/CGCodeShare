@@ -73,3 +73,21 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 
 6)once build the solution and add-migration 
 and do update-database 
+
+7)Next add one folder in the project with the name Services and add one interface like this 
+
+using ProductApi.Models;
+
+namespace ProductApi.Services
+{
+    public interface IProductService
+    {
+        Task<List<Product>> GetAllProductsAsync();
+        Task<Product?> GetProductByIdAsync(int id);
+        Task<Product> CreateProductAsync(Product product);
+        Task<Product?> UpdateProductAsync(int id, Product product);
+        Task<bool> DeleteProductAsync(int id);
+    }
+}
+
+   
