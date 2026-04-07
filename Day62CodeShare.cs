@@ -59,4 +59,4 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn
 and do update-database 
 
 
-
+so now add people mvc controller with read and write actions with views and remember above i had gien sql server connection string of azure into my program .
