@@ -118,4 +118,150 @@ namespace ProductApi.Services
     }
 }
 Now I will implement this interface in ProductService class and and this ProductService i will use in ProductController of webpi  so give me complete code for ProductService and ProductController for the above secenaio
-  
+  The code which i got 
+
+  using Microsoft.EntityFrameworkCore;
+using ProductApi.Data;
+using ProductApi.Models;
+
+namespace ProductApi.Services
+{
+    public class ProductService : IproductService
+    {
+        private readonly AppDbContext _context;
+
+        public ProductService(AppDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<List<Product>> GetAllProductsAsync()
+        {
+            return await _context.Products.ToListAsync();
+        }
+
+        public async Task<Product?> GetProductByIdAsync(int id)
+        {
+            return await _context.Products.FindAsync(id);
+        }
+
+        public async Task<Product> CreateProductAsync(Product product)
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return product;
+        }
+
+        public async Task<Product?> UpdateProductAsync(int id, Product product)
+        {
+            var existingProduct = await _context.Products.FindAsync(id);
+
+            if (existingProduct == null)
+            {
+                return null;
+            }
+
+            existingProduct.Name = product.Name;
+            existingProduct.Category = product.Category;
+            existingProduct.Price = product.Price;
+            existingProduct.Stock = product.Stock;
+
+            await _context.SaveChangesAsync();
+            return existingProduct;
+        }
+
+        public async Task<bool> DeleteProductAsync(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return false;
+            }
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+    }
+}
+---
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using ProductApi.Models;
+using ProductApi.Services;
+
+namespace ProductApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductController : ControllerBase
+    {
+        private readonly IproductService _productService;
+
+        public ProductController(IproductService productService)
+        {
+            _productService = productService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<Product>>> GetAllProducts()
+        {
+            var products = await _productService.GetAllProductsAsync();
+            return Ok(products);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProductById(int id)
+        {
+            var product = await _productService.GetProductByIdAsync(id);
+
+            if (product == null)
+            {
+                return NotFound(new { message = $"Product with Id {id} not found." });
+            }
+
+            return Ok(product);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Product>> CreateProduct(Product product)
+        {
+            var createdProduct = await _productService.CreateProductAsync(product);
+
+            return CreatedAtAction(
+                nameof(GetProductById),
+                new { id = createdProduct.Id },
+                createdProduct);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Product>> UpdateProduct(int id, Product product)
+        {
+            var updatedProduct = await _productService.UpdateProductAsync(id, product);
+
+            if (updatedProduct == null)
+            {
+                return NotFound(new { message = $"Product with Id {id} not found." });
+            }
+
+            return Ok(updatedProduct);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteProduct(int id)
+        {
+            var deleted = await _productService.DeleteProductAsync(id);
+
+            if (!deleted)
+            {
+                return NotFound(new { message = $"Product with Id {id} not found." });
+            }
+
+            return NoContent();
+        }
+    }
+}
+---------------
+  builder.Services.AddScoped<IproductService, ProductService>();
+
