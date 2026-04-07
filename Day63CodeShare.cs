@@ -265,3 +265,23 @@ namespace ProductApi.Controllers
 ---------------
   builder.Services.AddScoped<IproductService, ProductService>();
 
+
+now add a web app in azure and in program .cs add this code 
+
+  // Configure the HTTP request pipeline.
+  if (app.Environment.IsDevelopment())
+  {
+      app.UseSwagger();
+      app.UseSwaggerUI();
+  }
+  else
+  {
+      // Enable Swagger in production too for API testing
+      app.UseSwagger();
+      app.UseSwaggerUI(options =>
+      {
+          options.SwaggerEndpoint("/swagger/v1/swagger.json", "Product API v1");
+      });
+  }
+
+means else as u have done already publish and code has changed again so do again publish and then after the url /swagger/index u type it will work
