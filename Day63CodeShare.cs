@@ -90,4 +90,33 @@ namespace ProductApi.Services
     }
 }
 
-   
+8) go to chat gpt and give him model Product and also above interface and ask him ProductService code which is your class 
+   which will implement IProductService and also give me ProductController code also 
+
+   namespace ProductApi.Models
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public int Stock { get; set; }
+
+    }
+}
+for the above model the interface is like this 
+using ProductApi.Models;
+
+namespace ProductApi.Services
+{
+    public interface IproductService
+    {
+        Task<List<Product>> GetAllProductsAsync();
+        Task<Product?> GetProductByIdAsync(int id);
+        Task<Product> CreateProductAsync(Product product);
+        Task<Product?> UpdateProductAsync(int id, Product product);
+        Task<bool> DeleteProductAsync(int id);
+    }
+}
+Now I will implement this interface in ProductService class and and this ProductService i will use in ProductController of webpi  so give me complete code for ProductService and ProductController for the above secenaio
