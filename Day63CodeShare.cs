@@ -70,3 +70,6 @@ namespace WebApplication1.Data
 
    var connectionString = builder.Configuration.GetConnectionString("AzureSqlConnection"); // here in appsetting u have to give this value //okay from statement 2 okay 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+6)once build the solution and add-migration 
+and do update-database 
