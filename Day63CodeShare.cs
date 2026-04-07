@@ -90,10 +90,8 @@ namespace ProductApi.Services
     }
 }
 
-8) go to chat gpt and give him model Product and also above interface and ask him ProductService code which is your class 
-   which will implement IProductService and also give me ProductController code also 
-
-   namespace ProductApi.Models
+8) go to chat gpt 
+namespace ProductApi.Models
 {
     public class Product
     {
@@ -120,3 +118,4 @@ namespace ProductApi.Services
     }
 }
 Now I will implement this interface in ProductService class and and this ProductService i will use in ProductController of webpi  so give me complete code for ProductService and ProductController for the above secenaio
+  
