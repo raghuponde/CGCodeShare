@@ -11,7 +11,7 @@ the class name and function name as same as sum here and even constructor also i
 while creating app select Httptrigger means your app will be called some body request though http url so i had selected that option from drop down 
 if any Blob is called then blob trigger function u have to select okay 
 
-
+and keep authorization level as anonymous  here 
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
