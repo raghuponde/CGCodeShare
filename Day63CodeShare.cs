@@ -455,5 +455,8 @@ Now i am configuring the local asp.net core mvc application which is
  app setting configration and kept in notepad 
 
  now for the local asp.net core mvc a new web app you create and give name as usingefconfigdemo
+in 
+
+   builder.Configuration.AddAzureAppConfiguration(kzJzPxx4lCg1vucik0USVNfhRR1d3buS1OXi9vJQQJ99CCAC1i4Tk8KJ2MAAABAZAC18f0");
 
  
