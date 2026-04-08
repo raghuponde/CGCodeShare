@@ -330,5 +330,5 @@ namespace ProductConsumeMVC.Controllers
      
     }
 }
-
+Now add view for Index it should be empty view without model and check the layout option by default it is enabled only 
 
