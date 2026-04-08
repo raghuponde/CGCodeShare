@@ -297,3 +297,10 @@ and go to app settings
   }
 
 here put base url of azure api 
+
+next go to Layout page and add this line after footer 
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+as i am using jquery ajax method
+
+
