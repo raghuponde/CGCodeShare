@@ -8,6 +8,9 @@ Go to visual studio and create a function app locally now here name given as Cal
 so while creating some default code u will get means class name and functionname all will be same as function1 here i am doing sum so i had changed 
 the class name and function name as same as sum here and even constructor also i changed as sum here 
 
+while creating app select Httptrigger means your app will be called some body request though http url so i had selected that option from drop down 
+if any Blob is called then blob trigger function u have to select okay 
+
 
 
 using Microsoft.AspNetCore.Http;
