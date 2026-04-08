@@ -448,4 +448,12 @@ and paste this code fully on this page by deleting earlier code
         });
     </script>
 }
+Now i am configuring the local asp.net core mvc application which is 
 
+ like this i had removed 
+
+ app setting configration and kept in notepad 
+
+ now for the local asp.net core mvc a new web app you create and give name as usingefconfigdemo
+
+ 
