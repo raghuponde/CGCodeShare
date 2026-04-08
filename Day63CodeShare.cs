@@ -455,12 +455,19 @@ Now i am configuring the local asp.net core mvc application which is
  app setting configration and kept in notepad 
 
  now for the local asp.net core mvc a new web app you create and give name as usingefconfigdemo
-in 
+in that app you have to configure connection string settings in enviornment variables in connection strings 
+and save the settings and then run the app it will run eventhough you have removed settings from local now same settings 
+you can shift at centralized location by creating application app config and there in configuration explorer
+set these values as key value pair and give name as Common:Settings:dbpassword
 
-   builder.Configuration.AddAzureAppConfiguration(kzJzPxx4lCg1vucik0USVNfhRR1d3buS1OXi9vJQQJ99CCAC1i4Tk8KJ2MAAABAZAC18f0");
-                                                  
+install one package in local Microsoft.Azure.AppConfiguration.AspNetCore
+
+and write the below code in program.cs 
+
+     builder.Configuration.AddAzureAppConfiguration(""); //here provide the end point from settings--access settings--read only of 
+                                            
 var dbPassword = builder.Configuration["Common:Settings:dbpassword"];
-
+ 
  // 3. Build the full connection string using that password
  var connectionString =
      $"Server=tcp:newdbservercg.database.windows.net,1433;" +
@@ -473,4 +480,4 @@ var dbPassword = builder.Configuration["Common:Settings:dbpassword"];
      $"TrustServerCertificate=False;" +
      $"Connection Timeout=30;";
 
- 
+ here i am connecting to centralized settings server and getting password from there 
