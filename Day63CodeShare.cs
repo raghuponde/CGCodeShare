@@ -293,7 +293,7 @@ and go to app settings
 
 
  "ApiSettings": {
-    "BaseUrl": "https://productapidemo.azurewebsites.net/api"
+    "BaseUrl": "https://productwebapicgapp-ehafefffb3faenhd.centralus-01.azurewebsites.net/api"
   }
 
 here put base url of azure api 
