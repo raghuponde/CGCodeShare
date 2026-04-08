@@ -458,5 +458,19 @@ Now i am configuring the local asp.net core mvc application which is
 in 
 
    builder.Configuration.AddAzureAppConfiguration(kzJzPxx4lCg1vucik0USVNfhRR1d3buS1OXi9vJQQJ99CCAC1i4Tk8KJ2MAAABAZAC18f0");
+                                                  
+var dbPassword = builder.Configuration["Common:Settings:dbpassword"];
+
+ // 3. Build the full connection string using that password
+ var connectionString =
+     $"Server=tcp:newdbservercg.database.windows.net,1433;" +
+     $"Initial Catalog=newdb;" +
+     $"Persist Security Info=False;" +
+     $"User ID=sqlraghu;" +
+     $"Password={dbPassword};" +
+     $"MultipleActiveResultSets=False;" +
+     $"Encrypt=True;" +
+     $"TrustServerCertificate=False;" +
+     $"Connection Timeout=30;";
 
  
