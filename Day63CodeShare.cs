@@ -285,3 +285,15 @@ now add a web app in azure and in program .cs add this code
   }
 
 means else as u have done already publish and code has changed again so do again publish and then after the url /swagger/index u type it will work
+
+
+Now creeate and MVC client application with the name ProductAPIClient  
+
+and go to app settings 
+
+
+ "ApiSettings": {
+    "BaseUrl": "https://productapidemo.azurewebsites.net/api"
+  }
+
+here put base url of azure api 
