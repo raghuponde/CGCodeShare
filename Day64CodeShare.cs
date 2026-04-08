@@ -11,7 +11,9 @@ the class name and function name as same as sum here and even constructor also i
 while creating app select Httptrigger means your app will be called some body request though http url so i had selected that option from drop down 
 if any Blob is called then blob trigger function u have to select okay 
 
-and keep authorization level as anonymous  here 
+and keep authorization level as anonymous  here  as anybody should be able to access it okay .
+
+  
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,4 +43,16 @@ public class Sum
     }
 }
 
-so 
+so run the above program some url you will get paste that url into browser and type 
+http://localhost:7145/api/Sum?x=10&y=20 and type query string values you will get the output now 
+
+so this function i want to publish in fucntion app of azure so from here locally u have to publish into azure function app url 
+here website will not bounce back like it was doing in web app you have to go overviww of funciton app and need to brwose the url okay 
+
+same thing url when i am trying i am not getting like local in azure and when i am cicking the publish url there also it is asking me to again 
+sign in and on this url also i tride ? and & which i tried for local now next 
+so the function i can see in overview left tab and down i can see sum function next so in code and test section i had checked by wrtign x and y values it is working 
+but the url is not workingn so locally when u run the code take it from api and paste it online azure it will work so like this u can use azure functions 
+  
+
+
