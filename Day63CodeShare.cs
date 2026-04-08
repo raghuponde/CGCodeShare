@@ -303,4 +303,32 @@ next go to Layout page and add this line after footer
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 as i am using jquery ajax method
 
+Next add ProductController of empty mvc application into the controllers folder 
+
+and add the follwing code provided below 
+
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+
+namespace ProductConsumeMVC.Controllers
+{
+    public class ProductsController : Controller
+    {
+        private readonly IConfiguration _config;
+
+        public ProductsController(IConfiguration config)
+        {
+            _config = config;
+        }
+
+        public IActionResult Index()
+        {
+            ViewBag.ApiBaseUrl = _config["ApiSettings:BaseUrl"];
+            return View();
+        }
+
+     
+    }
+}
+
 
