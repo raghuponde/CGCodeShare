@@ -325,5 +325,172 @@ Now run again  multiple functions it will automatically creates a view here
 so now i can see the queeue created here here i am not wantedly entering valeus in file as i had not written code for that 
 
 
+Now go to localsettings.json of azure function 
+
+and add this 
+
+ "AzureSqlDatabase": "Server=LAPTOP-4G8BHPK9\\SQLEXPRESS;Database=AzureFundamentals;TrustServerCertificate=True;Trusted_Connection=True;"
+and change server name and add one database in that server with AzureFundamentals 
+
+create database AzureFundamentals
+
+and keep remaining same okay ..and add this table locally 
 
 
+CREATE TABLE [dbo].[SalesRequests] (
+    [Id] [nvarchar](450) NOT NULL,
+    [Name] [nvarchar](max) NOT NULL,
+    [Email] [nvarchar](max) NOT NULL,
+    [Phone] [nvarchar](max) NOT NULL,
+    [Status] [nvarchar](max) NOT NULL,
+    CONSTRAINT [PK_SalesRequests] PRIMARY KEY CLUSTERED (
+        [Id] ASC
+    )
+);
+
+Next add this table in remote also means in azure also okay ..
+next show slide 2 which tells what task u are doing 
+
+Now add Data Folder in function project and in that add one class ApplicationDbContext 
+Now install 3 packages of entity framework here of 8.0.24 okay 
+
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Tools
+
+  using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TangyAzureFunc.Models;
+
+namespace TangyAzureFunc.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
+        public DbSet<SalesRequest> SalesRequests { get; set; }
+        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<SalesRequest>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+            });
+        }
+    }
+}
+
+
+then in program.cs of function app see added line s
+
+
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Azure.Functions.Worker.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using TangyAzureFunc.Data;
+
+var builder = FunctionsApplication.CreateBuilder(args);
+
+builder.ConfigureFunctionsWebApplication();
+
+builder.Services
+    .AddApplicationInsightsTelemetryWorkerService()
+    .ConfigureFunctionsApplicationInsights();
+
+
+string connectionString = Environment.GetEnvironmentVariable("AzureSqlDatabase"); //added
+
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));//added 
+
+builder.Build().Run();
+
+Now i have to work on final trigger where queue trigger will happen and my database which is local gets populated and here  i can add many functions in function app there is no limit 
+so now i am adding second function like this 
+
+No need to create new projet right click the project and add new azure function now and give name as OnQueueTriggerUpdateDatabase
+
+so let everthing be default select queue trigger and add it 
+
+using System;
+using Azure.Storage.Queues.Models;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Logging;
+
+namespace TangyAzureFunc;
+
+public class OnQueueTriggerUpdateDatabase
+{
+    private readonly ILogger<OnQueueTriggerUpdateDatabase> _logger;
+
+    public OnQueueTriggerUpdateDatabase(ILogger<OnQueueTriggerUpdateDatabase> logger)
+    {
+        _logger = logger;
+    }
+
+    [Function(nameof(OnQueueTriggerUpdateDatabase))]
+    public void Run([QueueTrigger("myqueue-items", Connection = "")] QueueMessage message)
+    {
+        _logger.LogInformation("C# Queue trigger function processed: {messageText}", message.MessageText);
+    }
+}
+
+will look like this 
+
+ and now chnage the code like this 
+
+  using Azure.Storage.Queues.Models;
+using Microsoft.Azure.Functions.Worker;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using System;
+using TangyAzureFunc.Data;
+using TangyAzureFunc.Models;
+
+namespace TangyAzureFunc;
+
+public class OnQueueTriggerUpdateDatabase
+{
+    private readonly ApplicationDbContext _dbContext;
+    private readonly ILogger<OnQueueTriggerUpdateDatabase> _logger;
+
+    public OnQueueTriggerUpdateDatabase(ILogger<OnQueueTriggerUpdateDatabase> logger, ApplicationDbContext dbContext)
+    {
+        _logger = logger;
+        _dbContext = dbContext;
+    }
+
+    [Function(nameof(OnQueueTriggerUpdateDatabase))]
+    public void Run([QueueTrigger("SalesRequestOutBound")] QueueMessage message)
+    {
+        string messageBody = message.Body.ToString();
+        SalesRequest? salesRequest = JsonConvert.DeserializeObject<SalesRequest>(messageBody);
+
+        if (salesRequest != null)
+        {
+            salesRequest.Status = "";
+            _dbContext.SalesRequests.Add(salesRequest);
+            _dbContext.SaveChanges();
+        }
+        else
+        {
+            _logger.LogWarning("Failed to deserialize the message body into a SalesRequest object.");
+        }
+    }
+}
+
+next if u want to see the same in azure sql db means comment and put like this your azure connection
+
+
+  
