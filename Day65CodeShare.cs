@@ -52,7 +52,7 @@ Now go to index view of home controller and delete all content over there and ad
         </div>
         <div class="row py-1">
             <div class="col-3">
-                Upload HeadShot:
+                Upload Resume:
             </div>
             <div class="col-6">
                 <input type="file" class="form-control pt-1" name="file" />
@@ -68,5 +68,8 @@ Now go to index view of home controller and delete all content over there and ad
         </div>
     </div>
 </form>
+
+
+Run the application and see the design of this index page once which is created based on above model 
 
 
