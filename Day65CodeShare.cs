@@ -494,3 +494,14 @@ next if u want to see the same in azure sql db means comment and put like this y
 
 
   
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "paste here ",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    //"AzureSqlDatabase": "Server=LAPTOP-4G8BHPK9\\SQLEXPRESS;Database=AzureFundamentals;TrustServerCertificate=True;Trusted_Connection=True;",
+    "AzureSqlDatabase": "Server=tcp:raghuserver.database.windows.net,1433;Initial Catalog=raghudb;Persist Security Info=False;User ID=raghuadmin;Password=SqlServer#123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  }
+}
+
+Now it will go to azure sql okay 
