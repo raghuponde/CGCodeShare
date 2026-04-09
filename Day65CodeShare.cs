@@ -305,7 +305,7 @@ public class OnSalesUploadWriteToQueue
 {
     private readonly ILogger<OnSalesUploadWriteToQueue> _logger;
 
-    public OnSalesUploadWriteToQueue(ILogger<OnSalesUploadWriteToQueue> logger)
+    public OnSalesUploadWriteToQueue(ILogger<OnSalesUploadWriteToQueue> logger) 
     {
         _logger = logger;
     }
