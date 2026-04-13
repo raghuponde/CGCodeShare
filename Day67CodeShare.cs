@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[SpookyRequests] (
     [Email] [nvarchar](max) NOT NULL,
     [Phone] [nvarchar](max) NOT NULL,
   
-    CONSTRAINT [PK_SalesRequests] PRIMARY KEY CLUSTERED (
+    CONSTRAINT [PK_SalesRequests1] PRIMARY KEY CLUSTERED (
         [Id] ASC
     )
 );
