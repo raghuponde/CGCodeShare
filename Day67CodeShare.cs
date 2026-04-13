@@ -57,7 +57,7 @@ and remove that desing and keep this design provided below
       
 
         <div class="row py-1">
-            <div class="col-3">
+            <div class="col-3"> 
             </div>
             <div class="col-6">
                 <button type="submit" class="btn btn-success">Apply</button>
