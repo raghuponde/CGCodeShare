@@ -68,4 +68,9 @@ and remove that desing and keep this design provided below
 
 add the following package in Newtonsoft.Json of stable version in the project 
 
+and in program.cs add this   builder.Services.AddHttpClient();
+
+  // Add services to the container.
+  builder.Services.AddControllersWithViews();
+  builder.Services.AddHttpClient();
 
