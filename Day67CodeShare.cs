@@ -65,3 +65,7 @@ and remove that desing and keep this design provided below
         </div>
     </div>
 </form>
+
+add the following package in Newtonsoft.Json of stable version in the project 
+
+
