@@ -74,3 +74,13 @@ and in program.cs add this   builder.Services.AddHttpClient();
   builder.Services.AddControllersWithViews();
   builder.Services.AddHttpClient();
 
+Then in the Home controller add this 
+
+       private readonly IHttpClientFactory _httpClientFactory;
+
+   public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
+   {
+       _logger = logger;
+       _httpClientFactory = httpClientFactory;
+   }
+
