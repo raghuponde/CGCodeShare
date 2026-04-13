@@ -84,3 +84,26 @@ Then in the Home controller add this
        _httpClientFactory = httpClientFactory;
    }
 
+now from get of index you will go the view where u will fill the form and after filling it will go to post of index which is given 
+below 
+  [HttpPost]
+  public async Task<IActionResult> Index(SpookyRequest spookyrequest)
+  {
+      spookyrequest.Id = Guid.NewGuid().ToString(); //added 
+      using var client = _httpClientFactory.CreateClient();
+      //   client.BaseAddress = new Uri("http://localhost:7198/api/");
+      var json = JsonConvert.SerializeObject(spookyrequest);
+      
+      using (var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json"))
+      {
+          HttpResponseMessage response = await client.PostAsync("https://prod-08.centralus.logic.azure.com:443/workflows/9d2bb315c75f4104979d6eced9820173/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=dj_cs9Dx943x3H_ji2VHHThOGbfmJbrCxJWbCpVOLIw", content);
+          string returnValue = await response.Content.ReadAsStringAsync();
+      }
+
+      return RedirectToAction(nameof(Index));
+  }
+
+you have to copy the code same as it is but shoudl should some parameters 
+
+
+
