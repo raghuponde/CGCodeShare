@@ -106,11 +106,13 @@ below
 you have to copy the code same as it is but shoudl should some parameters 
 
 add this table in azure 
- public class SpookyRequest
-    {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-     
-    }
+CREATE TABLE [dbo].[SpookyRequests] (
+    [Id] [nvarchar](450) NOT NULL,
+    [Name] [nvarchar](max) NOT NULL,
+    [Email] [nvarchar](max) NOT NULL,
+    [Phone] [nvarchar](max) NOT NULL,
+  
+    CONSTRAINT [PK_SalesRequests] PRIMARY KEY CLUSTERED (
+        [Id] ASC
+    )
+);
