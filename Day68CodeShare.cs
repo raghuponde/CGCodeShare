@@ -181,4 +181,351 @@ so this is the settings which i had done in my json file that only i am using it
 Now just build and run the application once to check whether any error is there on not all things are proeprly set or not for that purpose we have to do this
 
   
-  so till now i checked it is working fine next task 
+  so till now i checked it is working fine next task now add one Empty MVC controller ItemsController and write the code like this 
+
+
+using Microsoft.AspNetCore.Mvc;
+using CosmosDB_Demo.Models;
+using CosmosDB_Demo.Data;
+
+namespace CosmosDB_Demo.Controllers
+{
+    public class ItemsController : Controller
+    {
+        private readonly CosmosDbService _cosmosDbService;
+
+        public ItemsController(CosmosDbService cosmosdbservice)
+        {
+            _cosmosDbService = cosmosdbservice;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var items = await _cosmosDbService.GetItemsAsync("SELECT * FROM c");
+            return View(items);
+        }
+       
+        public async Task<IActionResult> Details(string id)
+        {
+            var item = await _cosmosDbService.GetItemAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Itemmodel item)
+        {
+            if (ModelState.IsValid)
+            {
+                await _cosmosDbService.AddItemAsync(item);
+                return RedirectToAction("Index");
+            }
+
+            return View(item);
+        }
+
+        public async Task<IActionResult> Edit(string id)
+        {
+            var item = await _cosmosDbService.GetItemAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, Itemmodel item)
+        {
+            if (id != item.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                await _cosmosDbService.UpdateItemAsync(id, item);
+                return RedirectToAction("Index");
+            }
+
+            return View(item);
+        }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var item = await _cosmosDbService.GetItemAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            await _cosmosDbService.DeleteItemAsync(id);
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Search(string query)
+        {
+            var items = await _cosmosDbService.GetItemsAsync($"SELECT * FROM c WHERE CONTAINS(LOWER(c.name),'{query}')");
+            return View("Index", items);
+        }
+    }
+}
+
+
+next add index view empty one and add the follwing code 
+
+Index.cshtml
+-------------
+@model IEnumerable<Itemmodel>
+
+<h2>Items</h2>
+
+<form asp-action="Search" method="get">
+    <input type="text" name="query" placeholder="Search items..." />
+    <input type="submit" value="Search" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Category</td>
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create">Create New</a>
+
+
+now run and see Items/index whether upto this is working or not okay 
+
+
+Create view 
+-------------
+@model Itemmodel
+
+@{
+    ViewData["Title"] = "Create Item";
+}
+
+<h2>Create Item</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+next same manner add Details view 
+Details view 
+--------------
+@model Itemmodel
+
+@{
+    ViewData["Title"] = "Item Details";
+}
+
+<h2>Item Details</h2>
+
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a> |
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+Edit view 
+------------
+@model Itemmodel
+
+@{
+    ViewData["Title"] = "Edit Item";
+}
+
+<h2>Edit Item</h2>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control" readonly />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Category" class="control-label"></label>
+        <input asp-for="Category" class="form-control" />
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+Delete view 
+----------
+@model Itemmodel
+
+@{
+    ViewData["Title"] = "Delete Item";
+}
+
+<h2>Delete Item</h2>
+
+<h3>Are you sure you want to delete this item?</h3>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <h4>Item</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+         </dl>
+   </div>
+
+
+            @* <div class="form-group"> *@
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            @* </div> *@
+</form>
+
+
