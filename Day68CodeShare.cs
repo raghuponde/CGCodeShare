@@ -16,11 +16,11 @@ https://raghucosmosdb.documents.azure.com:443/
 
 copy now primary key over here 
 
-
+not pasting as github will give error so paste it in visual studio from cosmos portal
 
   then copy primary connection string here 
 
-
+not pasting as github will give error so paste it in visual studio from cosmos portal
 
 so all these is neeed to establish connection with asp.net core mvc code which will talk to cosmos db okay here 
 
@@ -40,7 +40,8 @@ Add required paramters over here in app settings file first
   "AllowedHosts": "*",
   "CosmosDb": {
     "Endpoint": "https://raghucosmosdb.documents.azure.com:443/",
-    "PrimaryKey": "",
+    "PrimaryKey": "",//not pasting as github will give error so paste it in visual studio from cosmos portal
+
      "DatabaseName": "DemoDB",
     "ContainerName": "items"
   }
