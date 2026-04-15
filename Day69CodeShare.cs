@@ -2,7 +2,7 @@
 Azure Cosmos DB is mainly considered a NoSQL database for semi-structured data, especially when you use its document model with JSON items. Microsoft describes Azure Cosmos DB as schema-free or schema-agnostic for NoSQL data, and its data modeling guidance says it is designed to store and query unstructured and semi-structured data.
 
 
-  
+   
   
 Demo from visual studio 
 ------------------------
