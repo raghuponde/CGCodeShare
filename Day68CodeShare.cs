@@ -13,3 +13,18 @@ Add these packages in console app
 Azure.Identity 1.21.0 stable version add it 
 
 Azure.Security.KeyVault.Keys  4.9.0 version 
+
+add this much basic template into the console application 
+
+ string tenantId = ""
+ string clientId = "";
+ string clientSecret = "";
+
+
+ var credential = new ClientSecretCredential(tenantId,clientId,clientSecret);
+
+ string vaultUrl = "https://key-vault-cg.vault.azure.net/";
+ string keyName = "key-cg";
+
+
+ var keyClient = new KeyClient(new Uri(vaultUrl), credential);
