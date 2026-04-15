@@ -52,7 +52,7 @@ after writing above code properly write below lines
        EncryptionAlgorithm.RsaOaep,
        encryptResult.Ciphertext);
 
-   string decryptedText = Encoding.UTF8.GetString(decryptResult.Plaintext);
+   string decryptedText = Encoding.UTF8.GetString(decryptResult.Plaintext); 
 
    Console.WriteLine("\nDecrypted text:");
    Console.WriteLine(decryptedText);
