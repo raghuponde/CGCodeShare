@@ -1,4 +1,11 @@
 
+Azure Cosmos DB is mainly considered a NoSQL database for semi-structured data, especially when you use its document model with JSON items. Microsoft describes Azure Cosmos DB as schema-free or schema-agnostic for NoSQL data, and its data modeling guidance says it is designed to store and query unstructured and semi-structured data.
+
+
+  
+  
+Demo from visual studio 
+------------------------
 create an resouce of azure cosmos db with the name raghucosmosdb 
 
 and then go to Data Explorer section and create a database name with DemoDB and by clicking on same database add container inside this database which is nothing but a table here 
