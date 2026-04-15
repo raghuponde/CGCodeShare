@@ -8,3 +8,8 @@ First create an Azure key vault in azure portal and then you will see there thre
 so after creeating key vault and one key and create a dummy app go to console application and create an project with the same name of app 
 
 
+Add these packages in console app
+
+Azure.Identity 1.21.0 stable version add it 
+
+Azure.Security.KeyVault.Keys  4.9.0 version 
