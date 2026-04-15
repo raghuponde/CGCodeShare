@@ -58,3 +58,7 @@ after writing above code properly write below lines
    Console.WriteLine(decryptedText);
 
    Console.ReadLine();
+
+convert your main method like this 
+
+     static async Task Main(string[] args)
