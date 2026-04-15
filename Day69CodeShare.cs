@@ -5,6 +5,9 @@ Azure Cosmos DB is mainly considered a NoSQL database for semi-structured data, 
    https://microsoftedge.github.io/Demos/json-dummy-data/
 
    Take this data :https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json
+   https://codeblogmoney.com/json-example-with-data-types-including-json-array/  //for complex scenarios ask chat gpt how  i can get this data so here company stores data in one format 
+// so that format it is giving it to u in the form of web api and in web api data format typ will be json only.
+
 
 
   
