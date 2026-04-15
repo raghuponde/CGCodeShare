@@ -28,3 +28,33 @@ add this much basic template into the console application
 
 
  var keyClient = new KeyClient(new Uri(vaultUrl), credential);
+
+
+after writing above code properly write below lines 
+
+   KeyVaultKey key;
+
+   key = await keyClient.GetKeyAsync(keyName);
+
+   string originalText = "Sensitive order data for CloudXeus Technology Services";
+   byte[] plaintextBytes = Encoding.UTF8.GetBytes(originalText);
+
+   var cryptoClient = new CryptographyClient(key.Id, credential);
+
+   EncryptResult encryptResult = await cryptoClient.EncryptAsync(
+       EncryptionAlgorithm.RsaOaep,
+       plaintextBytes);
+
+   Console.WriteLine("Encrypted text (Base64):");
+   Console.WriteLine(Convert.ToBase64String(encryptResult.Ciphertext));
+
+   DecryptResult decryptResult = await cryptoClient.DecryptAsync(
+       EncryptionAlgorithm.RsaOaep,
+       encryptResult.Ciphertext);
+
+   string decryptedText = Encoding.UTF8.GetString(decryptResult.Plaintext);
+
+   Console.WriteLine("\nDecrypted text:");
+   Console.WriteLine(decryptedText);
+
+   Console.ReadLine();
