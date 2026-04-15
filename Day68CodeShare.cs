@@ -72,3 +72,6 @@ convert your main method like this
 so Now i am having a storage account raghustoragecg and data as container as shown in s1 image and now in side data container i want to add the image but i want to encrypt the image and add it and when i want to download or want to see the image i should decrypt the image and want to see for this in second image s2 I had created a key-vault with key key-cg so now i want to create an app in console visual studio 2026 to encrypt and decrypt the image which is to be kept in data container so in app registration i will create a new app and want to work with it as shown in image 3
 I am having a sample program for just encrypting text as showin in image 4 but i want a simillar program like this where i can encrypt and decrypt image
 so for this give me in detail all the steps in detail step by step with complete souce code of image encryption and decryption and what packages need to be added etc and what role to be assingned blob usage also mention
+
+
+https://learn.microsoft.com/en-us/azure/storage/blobs/storage-encrypt-decrypt-blobs-key-vault?tabs=roles-azure-portal%2Cpackages-dotnetcli  //check this url also 
